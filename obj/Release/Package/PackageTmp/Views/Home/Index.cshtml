@@ -1,0 +1,432 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<div class="wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">Dashboard</h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Dashboard</li>
+                    </ol>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+
+    @if ((int)Session["PromedioCamposUsuario"] == 100)
+    {
+        <!-- /.content-header -->
+        if (Session["RolUsuario"] == null)
+        {
+            <h1> Aun no se le ha asignado un rol, Favor comunicarse con el administrador</h1>
+        }
+        else
+        {
+            if (Session["RolUsuario"].ToString() == "Administrador")
+            {
+                <!-- Small boxes (Stat box) -->
+                <div class="row">
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-info">
+                            <div class="inner">
+                                <h3>@Session["UsuariosPendientes"]</h3>
+
+                                <p>Usuarios Pendientes por asignación</p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-bag"></i>
+                            </div>
+                            <a href="@Url.Action("Index", "AspNetUsers",new {IdUsuarioPendientes = Session["IdUsuario"]}, null)" class="small-box-footer">Click para mas información <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <br />
+
+                <div id="content-wrapper" class="d-flex flex-column">
+                    <div id="content">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-black">Estado de Documentos de Usuarios</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table id="example1" class="table table-bordered table-striped table-dark table-responsive-lg ">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-warning">Acciones</th>
+                                                <th class="text-warning">Usuario</th>
+                                                <th class="text-warning">Documento</th>
+                                                <th class="text-warning">Estado</th>
+                                                <th class="text-warning">Fecha</th>
+                                            </tr>
+                                        </thead>
+                                        <tfoot>
+                                            <tr>
+                                                <th class="text-warning">Acciones</th>
+                                                <th class="text-warning">Usuario</th>
+                                                <th class="text-warning">Documento</th>
+                                                <th class="text-warning">Estado</th>
+                                                <th class="text-warning">Fecha</th>
+                                            </tr>
+                                        </tfoot>
+                                        <tbody>
+                                            @{
+                                                foreach (var item in ViewBag.DocumentosUsuarios)
+                                                {
+
+                                                    if (@item.Estado == 1)
+                                                    {
+                                                        <tr>
+                                                            <td>
+                                                                <a href="@Url.Action("Edit", "DocumentosUsuarios", new { id = item.Id })" class="btn btn-sm btn-dark" title="Editar">
+                                                                    <img src="~/Content/img/ico/streamlinehq-interface-edit-pencil-interface-essential-50.png" height="20" width="20" />
+                                                                </a>
+                                                            </td>
+                                                            <td>@item.AspNetUsers.Nombre</td>
+                                                            <td>@item.Nombre</td>
+                                                            <td><span class="badge badge-secondary">Pronto a Vencer</span></td>
+                                                            <td>@item.FechaFinal</td>
+                                                        </tr>
+                                                    }
+                                                    else
+                                                    {
+                                                        if (@item.Estado == 2)
+                                                        {
+                                                            <tr>
+                                                                <td>
+                                                                    <a href="@Url.Action("Edit", "DocumentosUsuarios", new { id = item.Id })" class="btn btn-sm btn-dark" title="Editar">
+                                                                        <img src="~/Content/img/ico/streamlinehq-interface-edit-pencil-interface-essential-50.png" height="20" width="20" />
+                                                                    </a>
+                                                                </td>
+                                                                <td>@item.AspNetUsers.Nombre</td>
+                                                                <td>@item.Nombre</td>
+                                                                <td><span class="badge badge-warning">Limite Vencimiento</span></td>
+                                                                <td>@item.FechaFinal</td>
+                                                            </tr>
+                                                        }
+                                                        else
+                                                        {
+                                                            if (@item.Estado == 3)
+                                                            {
+                                                                <tr>
+                                                                    <td>
+                                                                        <a href="@Url.Action("Edit", "DocumentosUsuarios", new { id = item.Id })" class="btn btn-sm btn-dark" title="Editar">
+                                                                            <img src="~/Content/img/ico/streamlinehq-interface-edit-pencil-interface-essential-50.png" height="20" width="20" />
+                                                                        </a>
+                                                                    </td>
+                                                                    <td>@item.AspNetUsers.Nombre</td>
+                                                                    <td>@item.Nombre</td>
+                                                                    <td><span class="badge badge-danger">Vencido</span></td>
+                                                                    <td>@item.FechaFinal</td>
+                                                                </tr>
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>              
+            }
+        }
+    }
+    else
+    {
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="callout callout-danger">
+                <a href="@Url.Action("Edit", "AspNetUsers", new {Id=Session["Id"]})">
+                    <center>
+                        <div>
+                            <img src="~/Content/img/formulario.png" heigth="130px" width="130" />
+                            <h3>Debe completar primero los datos personales del usuario</h3>
+                        </div>
+                    </center>
+                </a>
+            </div>
+        </div>
+    }
+</div>
+
+<section class="content">
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    Sales
+                    <h5 class="modal-title" id="exampleModalLabel">Seguro que desea cerrar Sesion</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Seleccione "Cerrar" a continuación si está listo para finalizar su sesión actual.
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="login.html">Salir</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+<aside class="control-sidebar control-sidebar-dark">
+</aside>
+<script src="~/Content/plugins/jquery/jquery.min.js"></script>
+<script src="~/Content/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="~/Content/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="~/Content/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="~/Content/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="~/Content/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="~/Content/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="~/Content/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="~/Content/plugins/jszip/jszip.min.js"></script>
+<script src="~/Content/plugins/pdfmake/pdfmake.min.js"></script>
+<script src="~/Content/plugins/pdfmake/vfs_fonts.js"></script>
+<script src="~/Content/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="~/Content/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="~/Content/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+<script src="~/Content/js/adminlte.min.js"></script>
+<script src="~/Content/js/demo.js"></script>
+<script src="~/Content/plugins/jquery/jquery.min.js"></script>
+<script src="~/Content/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="~/Content/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+
+<script>
+    $(function () {
+        $('#DtpLiquidacion').datetimepicker({
+            format: "yyyy-MM-DD"
+        });
+        /* ChartJS
+         * -------
+         * Here we will create a few charts using ChartJS
+         */
+
+        //--------------
+        //- AREA CHART -
+        //--------------
+
+        // Get context with jQuery - using jQuery's .get() method.
+        var areaChartCanvas = $('#areaChart').get(0).getContext('2d')
+
+        var areaChartData = {
+            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+            datasets: [
+                {
+                    label: 'Digital Goods',
+                    backgroundColor: 'rgba(60,141,188,0.9)',
+                    borderColor: 'rgba(60,141,188,0.8)',
+                    pointRadius: false,
+                    pointColor: '#3b8bba',
+                    pointStrokeColor: 'rgba(60,141,188,1)',
+                    pointHighlightFill: '#fff',
+                    pointHighlightStroke: 'rgba(60,141,188,1)',
+                    data: [28, 48, 40, 19, 86, 27, 90]
+                },
+                {
+                    label: 'Electronics',
+                    backgroundColor: 'rgba(210, 214, 222, 1)',
+                    borderColor: 'rgba(210, 214, 222, 1)',
+                    pointRadius: false,
+                    pointColor: 'rgba(210, 214, 222, 1)',
+                    pointStrokeColor: '#c1c7d1',
+                    pointHighlightFill: '#fff',
+                    pointHighlightStroke: 'rgba(220,220,220,1)',
+                    data: [65, 59, 80, 81, 56, 55, 40]
+                },
+            ]
+        }
+
+        var areaChartOptions = {
+            maintainAspectRatio: false,
+            responsive: true,
+            legend: {
+                display: false
+            },
+            scales: {
+                xAxes: [{
+                    gridLines: {
+                        display: false,
+                    }
+                }],
+                yAxes: [{
+                    gridLines: {
+                        display: false,
+                    }
+                }]
+            }
+        }
+
+        // This will get the first returned node in the jQuery collection.
+        new Chart(areaChartCanvas, {
+            type: 'line',
+            data: areaChartData,
+            options: areaChartOptions
+        })
+
+        //-------------
+        //- LINE CHART -
+        //--------------
+        var lineChartCanvas = $('#lineChart').get(0).getContext('2d')
+        var lineChartOptions = $.extend(true, {}, areaChartOptions)
+        var lineChartData = $.extend(true, {}, areaChartData)
+        lineChartData.datasets[0].fill = false;
+        lineChartData.datasets[1].fill = false;
+        lineChartOptions.datasetFill = false
+
+        var lineChart = new Chart(lineChartCanvas, {
+            type: 'line',
+            data: lineChartData,
+            options: lineChartOptions
+        })
+
+        //-------------
+        //- DONUT CHART -
+        //-------------
+        // Get context with jQuery - using jQuery's .get() method.
+        var donutChartCanvas = $('#donutChart').get(0).getContext('2d')
+        var donutData = {
+            labels: [
+                'Chrome',
+                'IE',
+                'FireFox',
+                'Safari',
+                'Opera',
+                'Navigator',
+            ],
+            datasets: [
+                {
+                    data: [700, 500, 400, 600, 300, 100],
+                    backgroundColor: ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de'],
+                }
+            ]
+        }
+        var donutOptions = {
+            maintainAspectRatio: false,
+            responsive: true,
+        }
+        //Create pie or douhnut chart
+        // You can switch between pie and douhnut using the method below.
+        new Chart(donutChartCanvas, {
+            type: 'doughnut',
+            data: donutData,
+            options: donutOptions
+        })
+
+        //-------------
+        //- PIE CHART -
+        //-------------
+        // Get context with jQuery - using jQuery's .get() method.
+        var pieChartCanvas = $('#pieChart').get(0).getContext('2d')
+        var pieData = donutData;
+        var pieOptions = {
+            maintainAspectRatio: false,
+            responsive: true,
+        }
+        //Create pie or douhnut chart
+        // You can switch between pie and douhnut using the method below.
+        new Chart(pieChartCanvas, {
+            type: 'pie',
+            data: pieData,
+            options: pieOptions
+        })
+
+        //-------------
+        //- BAR CHART -
+        //-------------
+        var barChartCanvas = $('#barChart').get(0).getContext('2d')
+        var barChartData = $.extend(true, {}, areaChartData)
+        var temp0 = areaChartData.datasets[0]
+        var temp1 = areaChartData.datasets[1]
+        barChartData.datasets[0] = temp1
+        barChartData.datasets[1] = temp0
+
+        var barChartOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            datasetFill: false
+        }
+
+        new Chart(barChartCanvas, {
+            type: 'bar',
+            data: barChartData,
+            options: barChartOptions
+        })
+
+        //---------------------
+        //- STACKED BAR CHART -
+        //---------------------
+        var stackedBarChartCanvas = $('#stackedBarChart').get(0).getContext('2d')
+        var stackedBarChartData = $.extend(true, {}, barChartData)
+
+        var stackedBarChartOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                xAxes: [{
+                    stacked: true,
+                }],
+                yAxes: [{
+                    stacked: true
+                }]
+            }
+        }
+
+        new Chart(stackedBarChartCanvas, {
+            type: 'bar',
+            data: stackedBarChartData,
+            options: stackedBarChartOptions
+        })
+    })
+</script>
+<script>
+    $('#AsesorModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget) // Button that triggered the modal
+        var recipient = button.data('whatever') // Extract info from data-* attributes
+        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+        var modal = $(this)
+        modal.find('.modal-title').text('New message to ' + recipient)
+        modal.find('.modal-body input').val(recipient)
+    })
+    $('#NuevoDespacho').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget) // Button that triggered the modal
+        var recipient = button.data('whatever') // Extract info from data-* attributes
+        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+        var modal = $(this)
+        modal.find('.modal-title').text('New message to ' + recipient)
+        modal.find('.modal-body input').val(recipient)
+    })
+</script>
+
+
+@Scripts.Render("~/bundles/js")
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+<script src="@Url.Content("~/Scripts/Global.js")"></script>
+
+
+@section Scripts
+        {
+    @Scripts.Render("~/bundles/jqueryval")
+
+}

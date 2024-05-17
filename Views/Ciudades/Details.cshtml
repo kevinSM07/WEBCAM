@@ -1,0 +1,52 @@
+﻿@model WEBCAM.Context.TblCiudades
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Información de la</h2>
+
+<div>
+    <h4>Ciudad</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            Departamento
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TblDepartamentos.Nombre)
+        </dd>
+
+    </dl>
+</div>
+<div class="form-group">
+    <a href="@Url.Action("Index", "Ciudades")" class="btn btn-sm btn-dark" title="Regresar">
+        <img src="~/Content/img/ico/streamlinehq-interface-arrows-turn-backward-interface-essential-50.png" height="30" width="30" />
+    </a>
+    <a href="@Url.Action("Edit", "Ciudades", new { id = Model.Id })" class="btn btn-sm btn-dark" title="Editar">
+
+        <img src="~/Content/img/ico/streamlinehq-interface-edit-pencil-interface-essential-50.png" height="30" width="30" />
+    </a>
+    <br />
+</div>
+
+@Scripts.Render("~/bundles/js")
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+<script src="@Url.Content("~/Scripts/Global.js")"></script>
+
+
+@section Scripts
+        {
+    @Scripts.Render("~/bundles/jqueryval")
+
+}

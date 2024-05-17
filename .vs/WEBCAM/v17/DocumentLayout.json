@@ -1,0 +1,149 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Gis_Soporte\\Downloads\\Doc U\\PROYECTO\\WEBCAM\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{9DF3C997-A039-4FD8-BEB0-D69830C23D04}|WEBCAM.csproj|c:\\users\\gis_soporte\\downloads\\doc u\\proyecto\\webcam\\views\\aspnetuserlogins\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9DF3C997-A039-4FD8-BEB0-D69830C23D04}|WEBCAM.csproj|solutionrelative:views\\aspnetuserlogins\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9DF3C997-A039-4FD8-BEB0-D69830C23D04}|WEBCAM.csproj|C:\\Users\\Gis_Soporte\\Downloads\\Doc U\\PROYECTO\\WEBCAM\\views\\home\\about.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9DF3C997-A039-4FD8-BEB0-D69830C23D04}|WEBCAM.csproj|solutionrelative:views\\home\\about.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9DF3C997-A039-4FD8-BEB0-D69830C23D04}|WEBCAM.csproj|C:\\Users\\Gis_Soporte\\Downloads\\Doc U\\PROYECTO\\WEBCAM\\packages.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{9DF3C997-A039-4FD8-BEB0-D69830C23D04}|WEBCAM.csproj|solutionrelative:packages.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9DF3C997-A039-4FD8-BEB0-D69830C23D04}|WEBCAM.csproj|C:\\Users\\Gis_Soporte\\Downloads\\Doc U\\PROYECTO\\WEBCAM\\app_start\\identityconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9DF3C997-A039-4FD8-BEB0-D69830C23D04}|WEBCAM.csproj|solutionrelative:app_start\\identityconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9DF3C997-A039-4FD8-BEB0-D69830C23D04}|WEBCAM.csproj|C:\\Users\\Gis_Soporte\\Downloads\\Doc U\\PROYECTO\\WEBCAM\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9DF3C997-A039-4FD8-BEB0-D69830C23D04}|WEBCAM.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9DF3C997-A039-4FD8-BEB0-D69830C23D04}|WEBCAM.csproj|C:\\Users\\Gis_Soporte\\Downloads\\Doc U\\PROYECTO\\WEBCAM\\views\\home\\contact.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9DF3C997-A039-4FD8-BEB0-D69830C23D04}|WEBCAM.csproj|solutionrelative:views\\home\\contact.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9DF3C997-A039-4FD8-BEB0-D69830C23D04}|WEBCAM.csproj|C:\\Users\\Gis_Soporte\\Downloads\\Doc U\\PROYECTO\\WEBCAM\\content\\plugins\\dropzone\\dropzone-amd-module.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{9DF3C997-A039-4FD8-BEB0-D69830C23D04}|WEBCAM.csproj|solutionrelative:content\\plugins\\dropzone\\dropzone-amd-module.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9DF3C997-A039-4FD8-BEB0-D69830C23D04}|WEBCAM.csproj|C:\\Users\\Gis_Soporte\\Downloads\\Doc U\\PROYECTO\\WEBCAM\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9DF3C997-A039-4FD8-BEB0-D69830C23D04}|WEBCAM.csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Gis_Soporte\\Downloads\\Doc U\\PROYECTO\\WEBCAM\\Views\\AspNetUserLogins\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\AspNetUserLogins\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Gis_Soporte\\Downloads\\Doc U\\PROYECTO\\WEBCAM\\Views\\AspNetUserLogins\\Index.cshtml",
+              "RelativeToolTip": "Views\\AspNetUserLogins\\Index.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAvAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-17T14:18:19.627Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "packages.config",
+              "DocumentMoniker": "C:\\Users\\Gis_Soporte\\Downloads\\Doc U\\PROYECTO\\WEBCAM\\packages.config",
+              "RelativeDocumentMoniker": "packages.config",
+              "ToolTip": "C:\\Users\\Gis_Soporte\\Downloads\\Doc U\\PROYECTO\\WEBCAM\\packages.config",
+              "RelativeToolTip": "packages.config",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2024-05-17T14:16:34.447Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "IdentityConfig.cs",
+              "DocumentMoniker": "C:\\Users\\Gis_Soporte\\Downloads\\Doc U\\PROYECTO\\WEBCAM\\App_Start\\IdentityConfig.cs",
+              "RelativeDocumentMoniker": "App_Start\\IdentityConfig.cs",
+              "ToolTip": "C:\\Users\\Gis_Soporte\\Downloads\\Doc U\\PROYECTO\\WEBCAM\\App_Start\\IdentityConfig.cs",
+              "RelativeToolTip": "App_Start\\IdentityConfig.cs",
+              "ViewState": "AQIAAJYAAAAAAAAAAAAmwJsAAAAyAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-17T14:15:23.118Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "About.cshtml",
+              "DocumentMoniker": "C:\\Users\\Gis_Soporte\\Downloads\\Doc U\\PROYECTO\\WEBCAM\\Views\\Home\\About.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\About.cshtml",
+              "ToolTip": "C:\\Users\\Gis_Soporte\\Downloads\\Doc U\\PROYECTO\\WEBCAM\\Views\\Home\\About.cshtml",
+              "RelativeToolTip": "Views\\Home\\About.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-17T14:13:01.047Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Contact.cshtml",
+              "DocumentMoniker": "C:\\Users\\Gis_Soporte\\Downloads\\Doc U\\PROYECTO\\WEBCAM\\Views\\Home\\Contact.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\Contact.cshtml",
+              "ToolTip": "C:\\Users\\Gis_Soporte\\Downloads\\Doc U\\PROYECTO\\WEBCAM\\Views\\Home\\Contact.cshtml",
+              "RelativeToolTip": "Views\\Home\\Contact.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAKAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-17T14:12:59.944Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "dropzone-amd-module.js",
+              "DocumentMoniker": "C:\\Users\\Gis_Soporte\\Downloads\\Doc U\\PROYECTO\\WEBCAM\\Content\\plugins\\dropzone\\dropzone-amd-module.js",
+              "RelativeDocumentMoniker": "Content\\plugins\\dropzone\\dropzone-amd-module.js",
+              "ToolTip": "C:\\Users\\Gis_Soporte\\Downloads\\Doc U\\PROYECTO\\WEBCAM\\Content\\plugins\\dropzone\\dropzone-amd-module.js",
+              "RelativeToolTip": "Content\\plugins\\dropzone\\dropzone-amd-module.js",
+              "ViewState": "AQIAAKAYAAAAAAAAAAAewKwYAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-05-17T14:11:59.968Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\Gis_Soporte\\Downloads\\Doc U\\PROYECTO\\WEBCAM\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\Gis_Soporte\\Downloads\\Doc U\\PROYECTO\\WEBCAM\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Controllers\\HomeController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB0AAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-17T14:10:32.629Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Gis_Soporte\\Downloads\\Doc U\\PROYECTO\\WEBCAM\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Gis_Soporte\\Downloads\\Doc U\\PROYECTO\\WEBCAM\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "Views\\Home\\Index.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-17T14:10:32.902Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

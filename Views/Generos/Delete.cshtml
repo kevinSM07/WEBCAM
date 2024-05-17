@@ -1,0 +1,55 @@
+﻿@model WEBCAM.Context.TblGeneros
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Eliminar</h2>
+
+<h3>Estás seguro que quieres eliminar el genero?</h3>
+<div>
+    <h4>TblGeneros</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Observacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Observacion)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <a href="@Url.Action("Index", "Generos")" class="btn btn-sm btn-dark" title="Regresar">
+                <img src="~/Content/img/ico/streamlinehq-interface-arrows-turn-backward-interface-essential-50.png" height="20" width="20" />
+            </a>
+            <input type="submit" value="Eliminar" class="btn btn-sm btn-dark" style="color:gold;" title="Eliminar" />
+            <br />
+        </div>
+    }
+</div>
+@Scripts.Render("~/bundles/js")
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+<script src="@Url.Content("~/Scripts/Global.js")"></script>
+
+
+@section Scripts
+        {
+    @Scripts.Render("~/bundles/jqueryval")
+
+}

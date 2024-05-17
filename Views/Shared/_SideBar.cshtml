@@ -1,0 +1,600 @@
+﻿ <!-- Main Sidebar Container -->
+<aside class="main-sidebar sidebar-dark-yellow elevation-4">
+    <!-- Brand Logo -->
+    <center>
+        <div class="logo">
+            <a href="~/Home/" class="brand-link">
+                <img src="~/Content/img/sexy-Logo.png" alt="WEBCAM" class="img-responsive" width="190" height="160" />
+            </a>
+        </div>
+    </center>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        @if (Session["status"] != null)
+        {
+            <!-- Sidebar user panel (optional) -->
+            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                <div class="image">
+                    <img src="~/Content/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                </div>
+                <div class="info">
+                    <a href="#" data-toggle="modal" data-target="#logoutModal">
+
+                        @Session["Nombres"] @Session["Apellidos"]
+                    </a>
+                    <br />
+                    @Html.ActionLink("Datos de usuario", "AspNetUsers", new { }, new { @class = "text-danger" })
+                    <div class="progress progress-sm active">
+                        <div class="progress-bar-animated bg-success progress-bar-striped" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: @Session["PromedioCamposUsurio"] %">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            if (int.Parse(Session["PromedioCamposUsuario"].ToString()) == 100)
+            {
+                if (Session["status"] != null)
+                {
+                    <!-- SidebarSearch Form -->
+                    <div class="form-inline">
+                        <div class="input-group" data-widget="sidebar-search">
+                            <input class="form-control form-control-sidebar" type="search" placeholder="Buscar" aria-label="Buscar">
+                            <div class="input-group-append">
+                                <button class="btn btn-sidebar">
+                                    <i class="fas fa-search fa-fw"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <nav class="mt-2">
+                        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                            <!-- Add icons to the links using the .nav-icon class
+                            with font-awesome or any other icon font library -->
+                            <li class="nav-item ui-selectmenu-open">
+                                <a href="@Url.Action("Index", "Home", null,null)" class="nav-link active">
+                                    <i class="nav-icon fas fa-dashboard"></i>
+                                    <p>
+                                        Dashboard
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item ui-selectmenu-open colorpicker-disabled">
+                                <a href="#" class="nav-link active">
+                                    <i class="nav-icon fas fa-user-alt"></i>
+                                    <p>
+                                        Opciones de Menu
+                                        <i class="right fas fa-angle-left"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <!-- treeview-->
+
+                                    @{
+                                        //string codigo_user = Session["ss_UserCodigo"].ToString().Trim().ToUpper();
+                                        List<WEBCAM.Context.RolOperacion> objClass = Session["status"] as List<WEBCAM.Context.RolOperacion>;
+                                    }
+                                    @foreach (var item in objClass.OrderBy(m => m.Operaciones.Modulo.Nombre))
+                                    {
+                                        if (item.Operaciones.Nombre == "Ver")
+                                        {
+                                            <li class="nav-item">
+                                                <a href="@Url.Action("Index", item.Operaciones.Modulo.Nombre, null,null)" class="nav-link active">
+                                                    <i class="far fa-circle nav-icon"></i>
+                                                    <p>@item.Operaciones.Modulo.Descripcion</p>
+                                                </a>
+                                            </li>
+                                        }
+
+                                    }
+
+
+                                </ul>
+                            </li>
+                            <!--Menu vehiculos-->
+                            <!--<li class="nav-item ui-selectmenu-open">
+                                <a href="#" class="nav-link active">
+                                    <i class="nav-icon fas fa-car-alt"></i>
+                                    <p>
+                                        Vehiculos
+                                        <i class="right fas fa-angle-left"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="@Url.Action("Index", "TiposVehiculos", null,null)" class="nav-link active">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Listado de Tipos de Vehiculos</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="@Url.Action("Index", "Vehiculos", null,null)" class="nav-link active">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Listado de Vehiculos</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="@Url.Action("Index", "DocumentosVehiculos", null,null)" class="nav-link active">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Listado de Documentos de los Vehiculos</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="@Url.Action("Index", "ConductoresVehiculos", null,null)" class="nav-link active">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Listado de Conductores y Vehiculos</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>-->
+                            <!--Menu lugares-->
+                            <!--<li class="nav-item ui-selectmenu-open">
+                                <a href="#" class="nav-link active">
+                                    <i class="nav-icon fas fa-city"></i>
+                                    <p>
+                                        Lugares
+                                        <i class="right fas fa-angle-left"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="@Url.Action("Index", "Paises", null,null)" class="nav-link active">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Listado de Paises</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="@Url.Action("Index", "Departamentos", null,null)" class="nav-link active">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Listado de Departamentos</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="@Url.Action("Index", "Ciudades", null,null)" class="nav-link active">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Listado de Ciudades</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="@Url.Action("Index", "TiposLugares", null,null)" class="nav-link active">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Listado de Tipos de Lugares</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="@Url.Action("Index", "Lugares", null,null)" class="nav-link active">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Listado de Lugares</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>-->
+                            <!--Menu productos y servicios-->
+                            <!--<li class="nav-item ui-selectmenu-open">
+                                <a href="#" class="nav-link active">
+                                    <i class="nav-icon fas fa-shopping-cart"></i>
+                                    <p>
+                                        Productos y Servicios
+                                        <i class="right fas fa-angle-left"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="@Url.Action("Index", "TiposProductos", null,null)" class="nav-link active">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Listado de Tipos de Productos</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="@Url.Action("Index", "Productos", null,null)" class="nav-link active">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Listado de Productos</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="@Url.Action("Index", "Gastos", null,null)" class="nav-link active">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Listado de Gastos</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="@Url.Action("Index", "EncabezadosServicios", null,null)" class="nav-link active">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Listado de Servicios</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="@Url.Action("Index", "DetallesServicios", null,null)" class="nav-link active">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Listado de Detalle de los Servicios</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="@Url.Action("Index", "ServiciosGastos", null,null)" class="nav-link active">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Listado de Gastos Servicios</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="@Url.Action("Index", "ServiciosProductos", null,null)" class="nav-link active">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Listado de Productos Servicios</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>-->
+                            <!--Menu calendario-->
+                            <!--<li class="nav-item ui-selectmenu-open">
+                                <a href="#" class="nav-link active">
+                                    <i class="nav-icon fas fa-calendar-alt"></i>
+                                    <p>
+                                        Calendario y Cuadre
+                                        <i class="right fas fa-angle-left"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="@Url.Action("Index", "EncabezadosCuadres", null,null)" class="nav-link active">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Listado de Cuadre</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="@Url.Action("Index", "Calendarios", null,null)" class="nav-link active">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Listado de Calendarios</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>-->
+                            <!--Menu calificaciones-->
+                            <!--<li class="nav-item ui-selectmenu-open">
+                                <a href="#" class="nav-link active">
+                                    <i class="nav-icon fas fa-comment-dots"></i>
+                                    <p>
+                                        Calificaciones
+                                        <i class="right fas fa-angle-left"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="@Url.Action("Index", "Calificaciones", null,null)" class="nav-link active">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Listado de Calificaciones</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="@Url.Action("Index", "TiposCampos", null,null)" class="nav-link active">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Listado de Tipos de Campos</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="@Url.Action("Index", "Campos", null,null)" class="nav-link active">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Listado de Campos</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="@Url.Action("Index", "Formularios", null,null)" class="nav-link active">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Listado de Formularios</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="@Url.Action("Index", "CamposFormularios", null,null)" class="nav-link active">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Listado de Campos Formularios</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>-->
+                        </ul>
+                    </nav>
+                }
+                else
+                {
+                    if (Session["status"].ToString() == "1")
+                    {
+
+                        <!-- SidebarSearch Form -->
+                        <div class="form-inline">
+                            <div class="input-group" data-widget="sidebar-search">
+                                <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+                                <div class="input-group-append">
+                                    <button class="btn btn-sidebar">
+                                        <i class="fas fa-search fa-fw"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- Sidebar Menu -->
+                        <nav class="mt-2">
+                            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                                <!-- Add icons to the links using the .nav-icon class
+                                with font-awesome or any other icon font library -->
+                                <li class="nav-item menu-open">
+                                    <a href="~/Home/" class="nav-link active">
+                                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                                        <p>
+                                            Gestion de usuarios
+                                            <i class="right fas fa-angle-left"></i>
+                                        </p>
+                                    </a>
+                                    <ul class="nav nav-treeview">
+
+                                        <li class="nav-item">
+                                            <a href="@Url.Action("Index", "AspNetUsers", null,null)" class="nav-link active">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <p>Listado de Usuarios</p>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="@Url.Action("Index", "AspNetRoles", null,null)" class="nav-link active">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <p>Listado de Roles</p>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="@Url.Action("Index", "AspNetUserClaims", null,null)" class="nav-link active">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <p>Listado de Reclamaciones</p>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="@Url.Action("Index", "AspNetUserLogins", null,null)" class="nav-link active">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <p>Listado de Inicio de sesión</p>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="@Url.Action("Index", "Pasajeros", null,null)" class="nav-link active">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <p>Listado de Pasajeros</p>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="@Url.Action("Index", "TiposDocumentos", null,null)" class="nav-link active">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <p>Listado de Tipos de Documentos</p>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="@Url.Action("Index", "Generos", null,null)" class="nav-link active">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <p>Listado de Genero</p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                            </ul>
+                        </nav>
+
+                        <!-- /.sidebar-menu -->
+                        <!-- Sidebar Menu -->
+                        <nav class="mt-2">
+                            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                                <!-- Add icons to the links using the .nav-icon class
+                                with font-awesome or any other icon font library -->
+                                <li class="nav-item menu-open">
+                                    <a href="~/Home/" class="nav-link active">
+                                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                                        <p>
+                                            Gestion de vehiculos
+                                            <i class="right fas fa-angle-left"></i>
+                                        </p>
+                                    </a>
+                                    <ul class="nav nav-treeview">
+                                        <li class="nav-item">
+                                            <a href="@Url.Action("Index", "TiposVehiculos", null,null)" class="nav-link active">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <p>Listado de Tipos de Vehiculos</p>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="@Url.Action("Index", "Vehiculos", null,null)" class="nav-link active">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <p>Listado de Vehiculos</p>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="@Url.Action("Index", "DocumentosVehiculos", null,null)" class="nav-link active">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <p>Listado de Documentos de los Vehiculos</p>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="@Url.Action("Index", "ConductoresVehiculos", null,null)" class="nav-link active">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <p>Listado de Conductores y Vehiculos</p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                            </ul>
+                        </nav>
+
+
+                    }
+                    else
+                    {
+                        if (Session["status"].ToString() == "2")
+                        {
+                            <!-- SidebarSearch Form -->
+                            <div class="form-inline">
+                                <div class="input-group" data-widget="sidebar-search">
+                                    <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-sidebar">
+                                            <i class="fas fa-search fa-fw"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <!-- Sidebar Menu -->
+                            <nav class="mt-2">
+                                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                                    <!-- Add icons to the links using the .nav-icon class
+                                    with font-awesome or any other icon font library -->
+                                    <li class="nav-item">
+                                        <a href="#" class="nav-link active">
+                                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                                            <p>
+                                                Ordenes de Compra
+                                                <i class="right fas fa-angle-left"></i>
+                                            </p>
+                                        </a>
+                                        <ul class="nav nav-treeview">
+                                            <li class="nav-item">
+                                                <a href="@Url.Action("Index", "Paises", null,null)" class="nav-link active">
+                                                    <i class="far fa-circle nav-icon"></i>
+                                                    <p>Listado de Paises</p>
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a href="@Url.Action("Index", "Departamentos", null,null)" class="nav-link active">
+                                                    <i class="far fa-circle nav-icon"></i>
+                                                    <p>Listado de Departamentos</p>
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a href="@Url.Action("Index", "Ciudades", null,null)" class="nav-link active">
+                                                    <i class="far fa-circle nav-icon"></i>
+                                                    <p>Listado de Ciudades</p>
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a href="@Url.Action("Index", "TiposLugares", null,null)" class="nav-link active">
+                                                    <i class="far fa-circle nav-icon"></i>
+                                                    <p>Listado de Tipos de Lugares</p>
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a href="@Url.Action("Index", "Lugares", null,null)" class="nav-link active">
+                                                    <i class="far fa-circle nav-icon"></i>
+                                                    <p>Listado de Lugares</p>
+                                                </a>
+                                            </li>
+
+                                        </ul>
+                                    </li>
+                                    @*<li class="nav-item ">
+                                            <a href="#" class="nav-link active">
+                                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                                <p>
+                                                    Maestros
+                                                    <i class="right fas fa-angle-left"></i>
+                                                </p>
+                                            </a>
+                                            <ul class="nav nav-treeview">
+                                                <li class="nav-item">
+                                                    <a href="@Url.Action("Index", "TecniCenterCalendars", new {Id=Session["Id"]},null)" class="nav-link ">
+                                                        <i class="far fa-circle nav-icon"></i>
+                                                        <p>Calendario de Servicio</p>
+                                                    </a>
+                                                </li>
+
+                                                <li class="nav-item">
+                                                    <a href="@Url.Action("Index", "ServicePackages", new {IdUser=Session["Id"] },null)" class="nav-link ">
+                                                        <i class="far fa-circle nav-icon"></i>
+                                                        <p>Servicios</p>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="@Url.Action("Index", "Impuestos", new {IdUser=Session["Id"] },null)" class="nav-link ">
+                                                        <i class="far fa-circle nav-icon"></i>
+                                                        <p>Impuestos</p>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="@Url.Action("Index", "Tasks", new {IdUser=Session["Id"] },null)" class="nav-link ">
+                                                        <i class="far fa-circle nav-icon"></i>
+                                                        <p>Tareas</p>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="@Url.Action("Index", "Suppliers", new {Id=Session["Id"]},null)" class="nav-link ">
+                                                        <i class="far fa-circle nav-icon"></i>
+                                                        <p>Proveedores</p>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="@Url.Action("Index", "MaterialTypes", new {Id=Session["Id"]},null)" class="nav-link">
+                                                        <i class="far fa-circle nav-icon"></i>
+                                                        <p>Tipos Productos</p>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="@Url.Action("Index", "Materials", new {Id=Session["Id"]},null)" class="nav-link">
+                                                        <i class="far fa-circle nav-icon"></i>
+                                                        <p>Productos</p>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="@Url.Action("Index", "AspNetUsers", new {IdUser=Session["Id"] },null)" class="nav-link">
+                                                        <i class="far fa-circle nav-icon"></i>
+                                                        <p>Terceros</p>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="@Url.Action("Index", "UserRoles", new {IdUser=Session["Id"] },null)" class="nav-link">
+                                                        <i class="far fa-circle nav-icon"></i>
+                                                        <p>Rol de empleados</p>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="~/TecniCenterTimes" class="nav-link">
+                                                        <i class="far fa-circle nav-icon"></i>
+                                                        <p>Horarios</p>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="~/Suppliers" class="nav-link">
+                                                        <i class="far fa-circle nav-icon"></i>
+                                                        <p>Proveedores</p>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>*@
+
+                                </ul>
+                            </nav>
+                            <!-- /.sidebar-menu -->
+                        }
+                    }
+                }
+            }
+        }
+
+    </div>
+
+
+
+    <!-- /.sidebar -->
+</aside>
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Seguro que desea cerrar Sesion</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Seleccione "Cerrar" a continuación si está listo para finalizar su sesión actual.
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                <a class="btn btn-primary" href="@Url.Action("LogOff", "Account", new {},null)">Salir</a>
+            </div>
+        </div>
+    </div>
+</div>

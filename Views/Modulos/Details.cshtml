@@ -1,0 +1,37 @@
+﻿@model WEBCAM.Context.Modulo
+
+@{
+    ViewBag.Title = "Ver";
+}
+
+<h2>Informecion de</h2>
+
+<div>
+    <h4>Modulo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Volver al listado", "Index")
+</p>
+@Scripts.Render("~/bundles/js")
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+<script src="@Url.Content("~/Scripts/Global.js")"></script>
+
+
+@section Scripts
+        {
+    @Scripts.Render("~/bundles/jqueryval")
+
+}

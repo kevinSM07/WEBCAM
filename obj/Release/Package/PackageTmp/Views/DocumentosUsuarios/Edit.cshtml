@@ -1,0 +1,144 @@
+﻿@model WEBCAM.Context.TblDocumentosUsuarios
+
+@{
+    ViewBag.Title = "Edit";
+}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/Content/plugins/fontawesome-free/css/all.min.css">
+    <!-- daterange picker -->
+    <link rel="stylesheet" href="~/Content/plugins/daterangepicker/daterangepicker.css">
+    <!-- iCheck for checkboxes and radio inputs -->
+    <link rel="stylesheet" href="~/Content/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- Bootstrap Color Picker -->
+    <link rel="stylesheet" href="~/Content/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css">
+    <!-- Tempusdominus Bootstrap 4 -->
+    <link rel="stylesheet" href="~/Content/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <!-- Select2 -->
+    <link rel="stylesheet" href="~/Content/plugins/select2/css/select2.min.css">
+    <link rel="stylesheet" href="~/Content/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+    <!-- Bootstrap4 Duallistbox -->
+    <link rel="stylesheet" href="~/Content/plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">
+    <!-- BS Stepper -->
+    <link rel="stylesheet" href="~/Content/plugins/bs-stepper/css/bs-stepper.min.css">
+    <!-- dropzonejs -->
+    <link rel="stylesheet" href="~/Content/plugins/dropzone/min/dropzone.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/Content/css/adminlte.min.css">
+</head>
+@using (Html.BeginForm("Edit", "DocumentosUsuarios", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card card-default">
+                <div class="card-header">
+                    <h3 class="card-title">Cargar Documento</h3>
+                </div>
+                <div class="card-body">
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+                        <h4>Documento para Usuario</h4>
+                        <hr />
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-2">
+                                Fecha Inicio:
+                            </label>
+                            <div class="col-md-2">
+                                <input id="DtpFechaInicial" name="DtpFechaInicial" type="date" />
+                            </div>
+                            <label class="control-label col-md-2">
+                                Fecha Final:
+                            </label>
+                            <div class="col-md-2">
+                                <input id="DtpFechaFinal" name="DtpFechaFinal" type="date" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-5">
+                                Seleccione un Archivo no mayor a 2MB
+                            </label>
+                            @Html.ValidationMessageFor(model => model.Ruta, "", new { @class = "text-danger" })
+                            <div class="form-group col-md-12">
+                                <input type="file" class="form-control col-xl-4" id="flArchivo" name="flArchivo" aria-describedby="flArchivo" placeholder="Archivo">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="form-group">
+                <a href="@Url.Action("Index", "DocumentosUsuarios")" class="btn btn-sm btn-dark" title="Regresar">
+                    <img src="~/Content/img/ico/streamlinehq-interface-arrows-turn-backward-interface-essential-50.png" height="30" width="30" />
+                </a>
+                <input type="submit" value="Guardar" class="btn btn-outline-success" />
+                <br />
+            </div>
+        </div>
+    </div>
+}
+
+<script>
+    $(function () {
+        $('#DtpFechaInicial').datetimepicker({
+            format: "yyyy-MM-DD"
+        });
+        $('#DtpFechaFinal').datetimepicker({
+            format: "yyyy-MM-DD"
+        });
+    })
+</script>
+
+@Scripts.Render("~/bundles/js")
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+<script src="@Url.Content("~/Scripts/Global.js")"></script>
+
+
+@section Scripts
+        {
+    @Scripts.Render("~/bundles/jqueryval")
+
+}
+
+<!-- Select2 -->
+<script src="~/Content/plugins/select2/js/select2.full.min.js"></script>
+<!-- Bootstrap4 Duallistbox -->
+<script src="~/Content/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
+<!-- InputMask -->
+<script src="~/Content/plugins/moment/moment.min.js"></script>
+<script src="~/Content/plugins/inputmask/jquery.inputmask.min.js"></script>
+<!-- date-range-picker -->
+<script src="~/Content/plugins/daterangepicker/daterangepicker.js"></script>
+<!-- bootstrap color picker -->
+<script src="~/Content/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="~/Content/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<!-- Bootstrap Switch -->
+<script src="~/Content/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+<!-- BS-Stepper -->
+<script src="~/Content/plugins/bs-stepper/js/bs-stepper.min.js"></script>
+<!-- dropzonejs -->
+<script src="~/Content/plugins/dropzone/min/dropzone.min.js"></script>
+<!-- AdminLTE App -->
+<script src="~/Content/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="~/Content/js/demo.js"></script>

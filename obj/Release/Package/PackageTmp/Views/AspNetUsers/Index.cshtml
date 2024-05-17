@@ -1,0 +1,426 @@
+﻿@model IEnumerable<WEBCAM.Context.AspNetUsers>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Listado de Usuarios</h2>
+
+@using (Html.BeginForm("Index", "AspNetUsers", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="card shadow mb-4">
+
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Listado de Usuarios</h6>
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-tool" data-card-widget="remove">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="form-group col-md-4">
+                    <label class="control-label col-md-18">
+                        Subir Usuario masivamente
+                    </label>
+                    <div class="form-group col-md-18">
+                        <input type="file" class="form-control col-xl-12" id="flUsuarios" name="flUsuarios" aria-describedby="flUsuarios" placeholder="Usuarios">
+                    </div>
+                </div>
+                <div class="form-group col-md-2">
+                    <input type="submit" name="BtnSubir" value="Subir" class="btn btn-outline-success" />
+                </div>
+                <div class="form-group col-md-2">
+                    <input type="submit" name="BtnDescarga" value="Descargar Plantilla" class="btn btn-outline-success" />
+                </div>
+
+            </div>
+        </div>
+    </div>
+}
+
+<div id="content-wrapper" class="d-flex flex-column">
+
+
+    <div class="modal fade" id="AsignarHabilidadModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 id="exampleModalLabel"> Asignar Habilidad</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <br />
+                    <input type="text" class="form-control" name="txtUsuario" hidden="hidden">
+                    <br />
+                    <div class="form-group">
+                        Seleccione Una Habilidad:
+                        <div class="col-md-10">
+                            @Html.DropDownList("SelectedHabilidad", ViewBag.Habilidad as IEnumerable<SelectListItem>, htmlAttributes: new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-succes" type="submit" name="BtnAsignarHabilidad" value="BtnAsignarHabilidad">
+                        Asignar
+                    </button>
+                    <button class="btn btn-warning" type="submit" name="BtnRemoverHabilidad" value="BtnRemoverHabilidad">
+                        Remover
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="RolModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form action="/AspNetUsers/Index" method="post">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Seguro que desea cerrar Sesion</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <br />
+                    <input type="text" class="form-control" name="txtUsuario" placeholder="CedulaUsuario" required autofocus>
+                    <br />
+                    <input type="password" class="form-control" name="txtRol" placeholder="IdRol" required>
+                    <br />
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" type="submit" name="BtnAsignar" value="BtnAsignar">
+                            Asignar
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="AsignarRolModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form action="/AspNetUsers/Index" method="post">
+                    <div class="modal-header">
+                        <h5 id="exampleModalLabel"> Asignar Rol</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <br />
+                        <input type="text" class="form-control" name="txtUsuario" hidden="hidden">
+                        <br />
+                        <div class="form-group">
+                            Seleccione Un Rol:
+                            <div class="col-md-10">
+                                @Html.DropDownList("SelectedRol", ViewBag.Rol as IEnumerable<SelectListItem>, htmlAttributes: new { @class = "form-control" })
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button class="btn btn-succes" type="submit" name="BtnAsignar" value="BtnAsignar">
+                            Asignar
+                        </button>
+                        <button class="btn btn-warning" type="submit" name="BtnRemover" value="BtnRemover">
+                            Remover
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div id="content">
+        <div class="margin">
+            <div class="btn-group">
+                <button type="button" class="btn btn-warning">Acciones de Usuario</button>
+                <button type="button" class="btn btn-warning dropdown-toggle dropdown-hover dropdown-icon" data-toggle="dropdown">
+                    <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <div class="dropdown-menu" role="menu">
+                    <a class="dropdown-item" href="@Url.Action("Create", "AspNetUsers", null,null)">Crear Usuario</a>
+                    <a class="dropdown-item" href="@Url.Action("Index", "AspNetRoles", null,null)">ver Roles</a>
+                    <a class="dropdown-item" href="@Url.Action("Index", "Generos", null,null)">Generos</a>
+                    <a class="dropdown-item" href="@Url.Action("Index", "TiposDocumentos", null,null)">Tipos de Documentos</a>
+                    <a class="dropdown-item" href="@Url.Action("Index", "TipoHabilidades", null,null)">Tipos de Habilidad</a>
+                    <a class="dropdown-item" href="@Url.Action("Index", "Ciudades", null,null)">Ciudades</a>
+                    <a class="dropdown-item" href="@Url.Action("Index", "Departamentos", null,null)">Departametos</a>
+                    <a class="dropdown-item" href="@Url.Action("Index", "Paises", null,null)">Paises</a>
+                    <a class="dropdown-item" href="@Url.Action("Index", "AspNetUserClaims", null, null)">Reclamaciones</a>
+                </div>
+            </div>
+        </div>
+        <div class="card shadow mb-4">
+
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-warning">Listado de Usuarios</h6>
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table id="example1" class="table table-condensed table-striped table-dark   table-responsive-lg ">
+                        <thead>
+                            <tr>
+                                <th class="text-warning">
+                                    Acciones
+                                </th>
+                                <th class="text-yellow">
+                                    Roles
+                                </th>
+                                <th class="text-yellow">
+                                    Habilidades
+                                </th>
+                                <th class="text-yellow">
+                                    @Html.DisplayNameFor(model => model.Email)
+                                </th>
+                                <th class="text-yellow">
+                                    Documentos
+                                </th>
+                                <th class="text-yellow">
+                                    Tipo de Identidad
+                                </th>
+                                <th class="text-yellow">
+                                    Número de Identidad
+                                </th>
+                                <th class="text-yellow">
+                                    Ciudad
+                                </th>
+                                <th class="text-yellow">
+                                    Genero
+                                </th>
+                                <th class="text-yellow">
+                                    @Html.DisplayNameFor(model => model.Nombre)
+                                </th>
+                                <th class="text-yellow">
+                                    @Html.DisplayNameFor(model => model.Apellido)
+                                </th>
+                                <th class="text-yellow">
+                                    @Html.DisplayNameFor(model => model.Celular)
+                                </th>
+                                <th class="text-yellow">
+                                    @Html.DisplayNameFor(model => model.Direccion)
+                                </th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th class="text-yellow">
+                                    Acciones
+                                </th>
+                                <th class="text-yellow">
+                                    Roles
+                                </th>
+                                <th class="text-yellow">
+                                    Habilidades
+                                </th>
+                                <th class="text-yellow">
+                                    @Html.DisplayNameFor(model => model.Email)
+                                </th>
+                                <th class="text-yellow">
+                                    Documentos
+                                </th>
+                                <th class="text-yellow">
+                                    Tipo de Identidad
+                                </th>
+                                <th class="text-yellow">
+                                    Número de Identidad
+                                </th>
+                                <th class="text-yellow">
+                                    Ciudad
+                                </th>
+                                <th class="text-yellow">
+                                    Genero
+                                </th>
+                                <th class="text-yellow">
+                                    @Html.DisplayNameFor(model => model.Nombre)
+                                </th>
+                                <th class="text-yellow">
+                                    @Html.DisplayNameFor(model => model.Apellido)
+                                </th>
+                                <th class="text-yellow">
+                                    @Html.DisplayNameFor(model => model.Celular)
+                                </th>
+                                <th class="text-yellow">
+                                    @Html.DisplayNameFor(model => model.Direccion)
+                                </th>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        <a href="@Url.Action("Edit", "AspNetUsers", new { id = item.Id })" class="btn btn-sm btn-dark" title="Editar">
+                                            <img src="~/Content/img/ico/streamlinehq-interface-edit-pencil-interface-essential-50.png" height="30" width="30" />
+                                        </a>
+                                        <a href="@Url.Action("Details", "AspNetUsers", new { id = item.Id })" class="btn btn-sm btn-dark" title="Ver">
+                                            <img src="~/Content/img/ico/streamlinehq-interface-edit-view-interface-essential-50.png" height="30" width="30" />
+                                        </a>
+                                        <a href="@Url.Action("Delete", "AspNetUsers", new { id = item.Id })" class="btn btn-sm btn-dark" title="Eliminar">
+                                            <img src="~/Content/img/ico/streamlinehq-interface-delete-2-interface-essential-50.png" height="30" width="30" />
+                                        </a>
+                                        <a href="@Url.Action("Index", "DocumentosUsuarios", new { Usuarioid = item.Id })" class="btn btn-sm btn-dark" title="Documentos">
+                                            <img src="~/Content/img/ico/interface-file-add-alternate.png" height="30" width="30" />
+                                        </a>
+                                        <button type="button" class="btn btn-sm btn-dark" data-toggle="modal" data-target="#AsignarRolModal" data-whatever="@item.Id" style="color:gold;" title="Roles">
+                                            <img src="~/Content/img/icons8-grupos-de-usuarios-80.png" height="30" width="30" />
+                                        </button>
+                                        @if (item.AspNetRoles.Count(m => m.Name == "Conductor") > 0)
+                                        {
+                                            <button type="button" class="btn btn-sm btn-dark" data-toggle="modal" data-target="#AsignarHabilidadModal" data-whatever="@item.Id" style="color:gold;" title="Habilidad">
+                                                <img src="~/Content/img/habilidad-Editado.png" height="30" width="30" />
+                                            </button>
+                                        }
+                                        @if (item.AspNetRoles.Count(m => m.Name == "Cliente") > 0)
+                                        {
+                                            <button type="button" class="btn btn-sm btn-dark" data-toggle="modal" data-target="#AsignarHabilidadModal" data-whatever="@item.Id" style="color:gold;" title="Clases de Clientes">Clases</button>
+                                        }
+                                        @if (item.EmailConfirmed == false)
+                                        {
+                                            <a href="@Url.Action("Confirmar", "AspNetUsers", new { IdUsuario = item.Id })" class="btn btn-sm btn-dark" title="Confirmar">
+                                                <img src="~/Content/img/ico/streamlinehq-interface-validation-check-interface-essential-50.png" height="30" width="30" />
+                                            </a>
+                                        }
+                                    </td>
+                                    <td>
+                                        @foreach (var itemrol in item.AspNetRoles)
+                                        {
+                                            @Html.DisplayFor(modelItem => itemrol.Name);
+                                            <br />
+                                        }
+                                    </td>
+                                    <td>
+                                        @foreach (var itemrol in item.TblHabilidades)
+                                        {
+                                            @Html.DisplayFor(modelItem => itemrol.Nombre);
+                                            <br />
+                                        }
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Email)
+                                    </td>
+                                    <td>
+                                        @foreach (var itemDocumento in item.TblDocumentosUsuarios)
+                                        {
+                                            <a class="table-div" href="@itemDocumento.Ruta" target="blank">*@Html.DisplayFor(modelItem => itemDocumento.Nombre)</a><br />
+                                        }
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TblTiposDocumentos.Nombre)
+                                    </td>
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.NroIdentificacion)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TblCiudades.Nombre)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TblGeneros.Nombre)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Nombre)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Apellido)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Celular)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Direccion)
+                                    </td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@Scripts.Render("~/bundles/js")
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+<script src="@Url.Content("~/Scripts/Global.js")"></script>
+<!-- Bootstrap -->
+@section Scripts
+        {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<script>
+    $(function () {
+        $("#example1").DataTable({
+            "paging": true,
+            "lengthChange": true,
+            "searching": true,
+            "ordering": false,
+            "info": true,
+            "autoWidth": true,
+            "responsive": true,
+            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+        $('#example2').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": false,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": true,
+        });
+    });
+    $('#AsignarRolModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget) // Button that triggered the modal
+        var recipient = button.data('whatever') // Extract info from data-* attributes
+        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+        var modal = $(this)
+        modal.find('.modal-title').text('New message to ' + recipient)
+        modal.find('.modal-body input').val(recipient)
+    })
+    $('#AsignarHabilidadModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget) // Button that triggered the modal
+        var recipient = button.data('whatever') // Extract info from data-* attributes
+        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+        var modal = $(this)
+        modal.find('.modal-title').text('New message to ' + recipient)
+        modal.find('.modal-body input').val(recipient)
+    })
+    $('#EliminarRolModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget) // Button that triggered the modal
+        var recipient = button.data('whatever') // Extract info from data-* attributes
+        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+        var modal = $(this)
+        modal.find('.modal-title').text('New message to ' + recipient)
+        modal.find('.modal-body input').val(recipient)
+    })
+</script>

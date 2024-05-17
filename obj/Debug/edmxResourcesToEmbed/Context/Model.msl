@@ -1,0 +1,804 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DBGIVPlusModelStoreContainer" CdmEntityContainer="DBGIVPlusEntities">
+    <EntitySetMapping Name="C__MigrationHistory">
+      <EntityTypeMapping TypeName="DBGIVPlusModel.C__MigrationHistory">
+        <MappingFragment StoreEntitySet="__MigrationHistory">
+          <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+          <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetRoles">
+      <EntityTypeMapping TypeName="DBGIVPlusModel.AspNetRoles">
+        <MappingFragment StoreEntitySet="AspNetRoles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdTecniCenter" ColumnName="IdTecniCenter" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserClaims">
+      <EntityTypeMapping TypeName="DBGIVPlusModel.AspNetUserClaims">
+        <MappingFragment StoreEntitySet="AspNetUserClaims">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="IdTecniCenter" ColumnName="IdTecniCenter" />
+          <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+          <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserLogins">
+      <EntityTypeMapping TypeName="DBGIVPlusModel.AspNetUserLogins">
+        <MappingFragment StoreEntitySet="AspNetUserLogins">
+          <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+          <ScalarProperty Name="IdTecniCenter" ColumnName="IdTecniCenter" />
+          <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserRoles">
+      <EntityTypeMapping TypeName="DBGIVPlusModel.AspNetUserRoles">
+        <MappingFragment StoreEntitySet="AspNetUserRoles">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="IdTecniCenter" ColumnName="IdTecniCenter" />
+          <ScalarProperty Name="IdCreatedUser" ColumnName="IdCreatedUser" />
+          <ScalarProperty Name="CreatedDatetime" ColumnName="CreatedDatetime" />
+          <ScalarProperty Name="IdUpdatedUser" ColumnName="IdUpdatedUser" />
+          <ScalarProperty Name="UpdatedDatetime" ColumnName="UpdatedDatetime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUsers">
+      <EntityTypeMapping TypeName="DBGIVPlusModel.AspNetUsers">
+        <MappingFragment StoreEntitySet="AspNetUsers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdCountry" ColumnName="IdCountry" />
+          <ScalarProperty Name="IdCustomerGroup" ColumnName="IdCustomerGroup" />
+          <ScalarProperty Name="IdTecniCenter" ColumnName="IdTecniCenter" />
+          <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+          <ScalarProperty Name="Details" ColumnName="Details" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+          <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+          <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+          <ScalarProperty Name="IdCreatedUser" ColumnName="IdCreatedUser" />
+          <ScalarProperty Name="CreatedDatetime" ColumnName="CreatedDatetime" />
+          <ScalarProperty Name="IdUpdatedUser" ColumnName="IdUpdatedUser" />
+          <ScalarProperty Name="UpdatedDatetime" ColumnName="UpdatedDatetime" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CarMake">
+      <EntityTypeMapping TypeName="DBGIVPlusModel.CarMake">
+        <MappingFragment StoreEntitySet="CarMake">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdTecniCenter" ColumnName="IdTecniCenter" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="IdCreatedUser" ColumnName="IdCreatedUser" />
+          <ScalarProperty Name="IdCreatedDatetime" ColumnName="IdCreatedDatetime" />
+          <ScalarProperty Name="IdUpdatedUser" ColumnName="IdUpdatedUser" />
+          <ScalarProperty Name="UpdatedDatetime" ColumnName="UpdatedDatetime" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cars">
+      <EntityTypeMapping TypeName="DBGIVPlusModel.Cars">
+        <MappingFragment StoreEntitySet="Cars">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdTecniCenter" ColumnName="IdTecniCenter" />
+          <ScalarProperty Name="IdOwner" ColumnName="IdOwner" />
+          <ScalarProperty Name="CarModel" ColumnName="CarModel" />
+          <ScalarProperty Name="IdCarMake" ColumnName="IdCarMake" />
+          <ScalarProperty Name="PlateNumber" ColumnName="PlateNumber" />
+          <ScalarProperty Name="Color" ColumnName="Color" />
+          <ScalarProperty Name="ChassisNumber" ColumnName="ChassisNumber" />
+          <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
+          <ScalarProperty Name="Transmission" ColumnName="Transmission" />
+          <ScalarProperty Name="Mileage" ColumnName="Mileage" />
+          <ScalarProperty Name="PhotoName" ColumnName="PhotoName" />
+          <ScalarProperty Name="IdCreatedUser" ColumnName="IdCreatedUser" />
+          <ScalarProperty Name="CreatedDatetime" ColumnName="CreatedDatetime" />
+          <ScalarProperty Name="IdUpdatedUser" ColumnName="IdUpdatedUser" />
+          <ScalarProperty Name="UpdatedDatetime" ColumnName="UpdatedDatetime" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CiSessions">
+      <EntityTypeMapping TypeName="DBGIVPlusModel.CiSessions">
+        <MappingFragment StoreEntitySet="CiSessions">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdTecniCenter" ColumnName="IdTecniCenter" />
+          <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+          <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+          <ScalarProperty Name="Data" ColumnName="Data" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Countries">
+      <EntityTypeMapping TypeName="DBGIVPlusModel.Countries">
+        <MappingFragment StoreEntitySet="Countries">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdTecniCenter" ColumnName="IdTecniCenter" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Currency">
+      <EntityTypeMapping TypeName="DBGIVPlusModel.Currency">
+        <MappingFragment StoreEntitySet="Currency">
+          <ScalarProperty Name="Iso" ColumnName="Iso" />
+          <ScalarProperty Name="IdTecniCenter" ColumnName="IdTecniCenter" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CustomerGroups">
+      <EntityTypeMapping TypeName="DBGIVPlusModel.CustomerGroups">
+        <MappingFragment StoreEntitySet="CustomerGroups">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdTecniCenter" ColumnName="IdTecniCenter" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="DiscountPercentage" ColumnName="DiscountPercentage" />
+          <ScalarProperty Name="IdCreatedUser" ColumnName="IdCreatedUser" />
+          <ScalarProperty Name="CreatedDatetime" ColumnName="CreatedDatetime" />
+          <ScalarProperty Name="IdUpdatedUser" ColumnName="IdUpdatedUser" />
+          <ScalarProperty Name="UpdatedDatetime" ColumnName="UpdatedDatetime" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="DBGIVPlusModel.Customers">
+        <MappingFragment StoreEntitySet="Customers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdTecniCenter" ColumnName="IdTecniCenter" />
+          <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+          <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+          <ScalarProperty Name="Nric" ColumnName="Nric" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="CustomerGroup" ColumnName="CustomerGroup" />
+          <ScalarProperty Name="IdCreatedUser" ColumnName="IdCreatedUser" />
+          <ScalarProperty Name="CreatedDatetime" ColumnName="CreatedDatetime" />
+          <ScalarProperty Name="IdUpdatedUser" ColumnName="IdUpdatedUser" />
+          <ScalarProperty Name="UpdatedDatetime" ColumnName="UpdatedDatetime" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Defects">
+      <EntityTypeMapping TypeName="DBGIVPlusModel.Defects">
+        <MappingFragment StoreEntitySet="Defects">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdTecniCenter" ColumnName="IdTecniCenter" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="IdCreatedUser" ColumnName="IdCreatedUser" />
+          <ScalarProperty Name="CreatedDatetime" ColumnName="CreatedDatetime" />
+          <ScalarProperty Name="IdUpdatedUser" ColumnName="IdUpdatedUser" />
+          <ScalarProperty Name="UpdatedDatetime" ColumnName="UpdatedDatetime" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetalleImpuesto">
+      <EntityTypeMapping TypeName="DBGIVPlusModel.DetalleImpuesto">
+        <MappingFragment StoreEntitySet="DetalleImpuesto">
+          <ScalarProperty Name="IdMaterial" ColumnName="IdMaterial" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdDetPurchaseOrder" ColumnName="IdDetPurchaseOrder" />
+          <ScalarProperty Name="IdImpuesto" ColumnName="IdImpuesto" />
+          <ScalarProperty Name="IdCreatedUser" ColumnName="IdCreatedUser" />
+          <ScalarProperty Name="CreatedDatetime" ColumnName="CreatedDatetime" />
+          <ScalarProperty Name="IdUpdatedUser" ColumnName="IdUpdatedUser" />
+          <ScalarProperty Name="UpdatedDatetime" ColumnName="UpdatedDatetime" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetPurchaseOrder">
+      <EntityTypeMapping TypeName="DBGIVPlusModel.DetPurchaseOrder">
+        <MappingFragment StoreEntitySet="DetPurchaseOrder">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdEncPurchaseOrder" ColumnName="IdEncPurchaseOrder" />
+          <ScalarProperty Name="IdTecniCenter" ColumnName="IdTecniCenter" />
+          <ScalarProperty Name="IdMaterial" ColumnName="IdMaterial" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+          <ScalarProperty Name="IdCreatedUser" ColumnName="IdCreatedUser" />
+          <ScalarProperty Name="CreatedDatetime" ColumnName="CreatedDatetime" />
+          <ScalarProperty Name="IdUpdatedUser" ColumnName="IdUpdatedUser" />
+          <ScalarProperty Name="UpdatedDatetime" ColumnName="UpdatedDatetime" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetServiceJobs">
+      <EntityTypeMapping TypeName="DBGIVPlusModel.DetServiceJobs">
+        <MappingFragment StoreEntitySet="DetServiceJobs">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdEncServiceJobs" ColumnName="IdEncServiceJobs" />
+          <ScalarProperty Name="IdTecniCenter" ColumnName="IdTecniCenter" />
+          <ScalarProperty Name="IdServicePackage" ColumnName="IdServicePackage" />
+          <ScalarProperty Name="IdMaterial" ColumnName="IdMaterial" />
+          <ScalarProperty Name="DiscountPercentage" ColumnName="DiscountPercentage" />
+          <ScalarProperty Name="DiscountAmt" ColumnName="DiscountAmt" />
+          <ScalarProperty Name="SubtotalAmt" ColumnName="SubtotalAmt" />
+          <ScalarProperty Name="TaxAmt" ColumnName="TaxAmt" />
+          <ScalarProperty Name="GrandtotalAmt" ColumnName="GrandtotalAmt" />
+          <ScalarProperty Name="IdServiceAdvisor" ColumnName="IdServiceAdvisor" />
+          <ScalarProperty Name="IdTechnician" ColumnName="IdTechnician" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EncPurchaseOrder">
+      <EntityTypeMapping TypeName="DBGIVPlusModel.EncPurchaseOrder">
+        <MappingFragment StoreEntitySet="EncPurchaseOrder">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdTecniCenter" ColumnName="IdTecniCenter" />
+          <ScalarProperty Name="IdSupplier" ColumnName="IdSupplier" />
+          <ScalarProperty Name="PoQTY" ColumnName="PoQTY" />
+          <ScalarProperty Name="PoDate" ColumnName="PoDate" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="IdReceivedUser" ColumnName="IdReceivedUser" />
+          <ScalarProperty Name="ReceivedDatetime" ColumnName="ReceivedDatetime" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="IdCreatedUser" ColumnName="IdCreatedUser" />
+          <ScalarProperty Name="CreatedDatetime" ColumnName="CreatedDatetime" />
+          <ScalarProperty Name="IdUpdatedUser" ColumnName="IdUpdatedUser" />
+          <ScalarProperty Name="UpdatedDatetime" ColumnName="UpdatedDatetime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EncServiceJobs">
+      <EntityTypeMapping TypeName="DBGIVPlusModel.EncServiceJobs">
+        <MappingFragment StoreEntitySet="EncServiceJobs">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdTecniCenter" ColumnName="IdTecniCenter" />
+          <ScalarProperty Name="InvoiceNumber" ColumnName="InvoiceNumber" />
+          <ScalarProperty Name="IdAspNetUsers" ColumnName="IdAspNetUsers" />
+          <ScalarProperty Name="IdCar" ColumnName="IdCar" />
+          <ScalarProperty Name="IdCreatedUser" ColumnName="IdCreatedUser" />
+          <ScalarProperty Name="CreatedDatetime" ColumnName="CreatedDatetime" />
+          <ScalarProperty Name="IdUpdatedUser" ColumnName="IdUpdatedUser" />
+          <ScalarProperty Name="IpdatedDatetime" ColumnName="IpdatedDatetime" />
+          <ScalarProperty Name="IdEndedUser" ColumnName="IdEndedUser" />
+          <ScalarProperty Name="EndedDatetime" ColumnName="EndedDatetime" />
+          <ScalarProperty Name="IdInvoiceUser" ColumnName="IdInvoiceUser" />
+          <ScalarProperty Name="InvoiceDatetime" ColumnName="InvoiceDatetime" />
+          <ScalarProperty Name="PaymentAction" ColumnName="PaymentAction" />
+          <ScalarProperty Name="Vt_Status" ColumnName="Vt_Status" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Impuesto">
+      <EntityTypeMapping TypeName="DBGIVPlusModel.Impuesto">
+        <MappingFragment StoreEntitySet="Impuesto">
+          <ScalarProperty Name="IdTecniCentro" ColumnName="IdTecniCentro" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Porcentaje" ColumnName="Porcentaje" />
+          <ScalarProperty Name="IdCreatedUser" ColumnName="IdCreatedUser" />
+          <ScalarProperty Name="CreatedDatetime" ColumnName="CreatedDatetime" />
+          <ScalarProperty Name="IdUpdatedUser" ColumnName="IdUpdatedUser" />
+          <ScalarProperty Name="UpdatedDatetime" ColumnName="UpdatedDatetime" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Inventory">
+      <EntityTypeMapping TypeName="DBGIVPlusModel.Inventory">
+        <MappingFragment StoreEntitySet="Inventory">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdTecniCenter" ColumnName="IdTecniCenter" />
+          <ScalarProperty Name="IdMaterials" ColumnName="IdMaterials" />
+          <ScalarProperty Name="Sku" ColumnName="Sku" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InventoryUpdatedLogs">
+      <EntityTypeMapping TypeName="DBGIVPlusModel.InventoryUpdatedLogs">
+        <MappingFragment StoreEntitySet="InventoryUpdatedLogs">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdTecniCenter" ColumnName="IdTecniCenter" />
+          <ScalarProperty Name="IdInventory" ColumnName="IdInventory" />
+          <ScalarProperty Name="IdMaterial" ColumnName="IdMaterial" />
+          <ScalarProperty Name="Sku" ColumnName="Sku" />
+          <ScalarProperty Name="BeforeQty" ColumnName="BeforeQty" />
+          <ScalarProperty Name="UpdateQty" ColumnName="UpdateQty" />
+          <ScalarProperty Name="AfterQty" ColumnName="AfterQty" />
+          <ScalarProperty Name="IdCreatedUser" ColumnName="IdCreatedUser" />
+          <ScalarProperty Name="CreatedDatetime" ColumnName="CreatedDatetime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Materials">
+      <EntityTypeMapping TypeName="DBGIVPlusModel.Materials">
+        <MappingFragment StoreEntitySet="Materials">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdTecniCenter" ColumnName="IdTecniCenter" />
+          <ScalarProperty Name="Sku" ColumnName="Sku" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="MaterialType" ColumnName="MaterialType" />
+          <ScalarProperty Name="Cost" ColumnName="Cost" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="IdCreatedUser" ColumnName="IdCreatedUser" />
+          <ScalarProperty Name="CreatedDatetime" ColumnName="CreatedDatetime" />
+          <ScalarProperty Name="IdUpdatedUser" ColumnName="IdUpdatedUser" />
+          <ScalarProperty Name="UpdatedDatetime" ColumnName="UpdatedDatetime" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MaterialType">
+      <EntityTypeMapping TypeName="DBGIVPlusModel.MaterialType">
+        <MappingFragment StoreEntitySet="MaterialType">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdTecniCenter" ColumnName="IdTecniCenter" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="IdCreatedUser" ColumnName="IdCreatedUser" />
+          <ScalarProperty Name="CreatedDatetime" ColumnName="CreatedDatetime" />
+          <ScalarProperty Name="IdUpdatedUser" ColumnName="IdUpdatedUser" />
+          <ScalarProperty Name="UpdatedDatetime" ColumnName="UpdatedDatetime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PaymentMethod">
+      <EntityTypeMapping TypeName="DBGIVPlusModel.PaymentMethod">
+        <MappingFragment StoreEntitySet="PaymentMethod">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdTecniCenter" ColumnName="IdTecniCenter" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="IdCreatedUser" ColumnName="IdCreatedUser" />
+          <ScalarProperty Name="CreatedDatetime" ColumnName="CreatedDatetime" />
+          <ScalarProperty Name="IdUpdatedUser" ColumnName="IdUpdatedUser" />
+          <ScalarProperty Name="UpdatedDatetime" ColumnName="UpdatedDatetime" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PurchaseOrder">
+      <EntityTypeMapping TypeName="DBGIVPlusModel.PurchaseOrder">
+        <MappingFragment StoreEntitySet="PurchaseOrder">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdTecniCenter" ColumnName="IdTecniCenter" />
+          <ScalarProperty Name="PoNumber" ColumnName="PoNumber" />
+          <ScalarProperty Name="DiscountAmount" ColumnName="DiscountAmount" />
+          <ScalarProperty Name="DiscountPercentage" ColumnName="DiscountPercentage" />
+          <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+          <ScalarProperty Name="Tax" ColumnName="Tax" />
+          <ScalarProperty Name="GrandTotal" ColumnName="GrandTotal" />
+          <ScalarProperty Name="IdSupplier" ColumnName="IdSupplier" />
+          <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
+          <ScalarProperty Name="SupplierEmail" ColumnName="SupplierEmail" />
+          <ScalarProperty Name="SupplierTel" ColumnName="SupplierTel" />
+          <ScalarProperty Name="SupplierFax" ColumnName="SupplierFax" />
+          <ScalarProperty Name="SupplierAddress" ColumnName="SupplierAddress" />
+          <ScalarProperty Name="SupplierTax" ColumnName="SupplierTax" />
+          <ScalarProperty Name="PoDate" ColumnName="PoDate" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="IdCreatedUser" ColumnName="IdCreatedUser" />
+          <ScalarProperty Name="CreatedDatetime" ColumnName="CreatedDatetime" />
+          <ScalarProperty Name="IdUpdatedUser" ColumnName="IdUpdatedUser" />
+          <ScalarProperty Name="UpdatedDatetime" ColumnName="UpdatedDatetime" />
+          <ScalarProperty Name="IdReceivedUser" ColumnName="IdReceivedUser" />
+          <ScalarProperty Name="ReceivedDatetime" ColumnName="ReceivedDatetime" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PurchaseOrderItems">
+      <EntityTypeMapping TypeName="DBGIVPlusModel.PurchaseOrderItems">
+        <MappingFragment StoreEntitySet="PurchaseOrderItems">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdTecniCenter" ColumnName="IdTecniCenter" />
+          <ScalarProperty Name="IdPurchaseOrder" ColumnName="IdPurchaseOrder" />
+          <ScalarProperty Name="IdMaterial" ColumnName="IdMaterial" />
+          <ScalarProperty Name="MaterialSku" ColumnName="MaterialSku" />
+          <ScalarProperty Name="OrderedQty" ColumnName="OrderedQty" />
+          <ScalarProperty Name="ReceivedQty" ColumnName="ReceivedQty" />
+          <ScalarProperty Name="Cost" ColumnName="Cost" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PurchaseOrderStatus">
+      <EntityTypeMapping TypeName="DBGIVPlusModel.PurchaseOrderStatus">
+        <MappingFragment StoreEntitySet="PurchaseOrderStatus">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdTecniCenter" ColumnName="IdTecniCenter" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="IdCreatedUser" ColumnName="IdCreatedUser" />
+          <ScalarProperty Name="CreatedDatetime" ColumnName="CreatedDatetime" />
+          <ScalarProperty Name="IdUpdatedUser" ColumnName="IdUpdatedUser" />
+          <ScalarProperty Name="UpdatedDatetime" ColumnName="UpdatedDatetime" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ServiceJobDefects">
+      <EntityTypeMapping TypeName="DBGIVPlusModel.ServiceJobDefects">
+        <MappingFragment StoreEntitySet="ServiceJobDefects">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdTecniCenter" ColumnName="IdTecniCenter" />
+          <ScalarProperty Name="IdServiceJob" ColumnName="IdServiceJob" />
+          <ScalarProperty Name="IdDefect" ColumnName="IdDefect" />
+          <ScalarProperty Name="DefectName" ColumnName="DefectName" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="IdStartedUser" ColumnName="IdStartedUser" />
+          <ScalarProperty Name="StartedDatetime" ColumnName="StartedDatetime" />
+          <ScalarProperty Name="IdEndedUser" ColumnName="IdEndedUser" />
+          <ScalarProperty Name="EndedDatetime" ColumnName="EndedDatetime" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ServiceJobDefectsMaterial">
+      <EntityTypeMapping TypeName="DBGIVPlusModel.ServiceJobDefectsMaterial">
+        <MappingFragment StoreEntitySet="ServiceJobDefectsMaterial">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdTecniCenter" ColumnName="IdTecniCenter" />
+          <ScalarProperty Name="IdServiceJob" ColumnName="IdServiceJob" />
+          <ScalarProperty Name="IdServiceJobDefects" ColumnName="IdServiceJobDefects" />
+          <ScalarProperty Name="IdMaterial" ColumnName="IdMaterial" />
+          <ScalarProperty Name="MaterialSku" ColumnName="MaterialSku" />
+          <ScalarProperty Name="MaterialName" ColumnName="MaterialName" />
+          <ScalarProperty Name="Request_Qty" ColumnName="Request_Qty" />
+          <ScalarProperty Name="IssuedQty" ColumnName="IssuedQty" />
+          <ScalarProperty Name="Cost" ColumnName="Cost" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="RequestedUser" ColumnName="RequestedUser" />
+          <ScalarProperty Name="RequestedDatetime" ColumnName="RequestedDatetime" />
+          <ScalarProperty Name="IdIssuedUser" ColumnName="IdIssuedUser" />
+          <ScalarProperty Name="IssuedDatetime" ColumnName="IssuedDatetime" />
+          <ScalarProperty Name="CustomerApproved" ColumnName="CustomerApproved" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ServiceJobPackageMaterial">
+      <EntityTypeMapping TypeName="DBGIVPlusModel.ServiceJobPackageMaterial">
+        <MappingFragment StoreEntitySet="ServiceJobPackageMaterial">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdTecniCenter" ColumnName="IdTecniCenter" />
+          <ScalarProperty Name="IdServiceJob" ColumnName="IdServiceJob" />
+          <ScalarProperty Name="IdServiceJobPackage" ColumnName="IdServiceJobPackage" />
+          <ScalarProperty Name="Idtask" ColumnName="Idtask" />
+          <ScalarProperty Name="IdMaterial" ColumnName="IdMaterial" />
+          <ScalarProperty Name="MaterialSku" ColumnName="MaterialSku" />
+          <ScalarProperty Name="MaterialName" ColumnName="MaterialName" />
+          <ScalarProperty Name="RequestQty" ColumnName="RequestQty" />
+          <ScalarProperty Name="IssuedQty" ColumnName="IssuedQty" />
+          <ScalarProperty Name="Cost" ColumnName="Cost" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="IdRequestedUser" ColumnName="IdRequestedUser" />
+          <ScalarProperty Name="RequestedDatetime" ColumnName="RequestedDatetime" />
+          <ScalarProperty Name="IdIssuedUser" ColumnName="IdIssuedUser" />
+          <ScalarProperty Name="IssuedDatetime" ColumnName="IssuedDatetime" />
+          <ScalarProperty Name="RequestApproved" ColumnName="RequestApproved" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ServiceJobPackages">
+      <EntityTypeMapping TypeName="DBGIVPlusModel.ServiceJobPackages">
+        <MappingFragment StoreEntitySet="ServiceJobPackages">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdTecniCenter" ColumnName="IdTecniCenter" />
+          <ScalarProperty Name="IdServiceJob" ColumnName="IdServiceJob" />
+          <ScalarProperty Name="Idpackage" ColumnName="Idpackage" />
+          <ScalarProperty Name="PackageName" ColumnName="PackageName" />
+          <ScalarProperty Name="PackagePrice" ColumnName="PackagePrice" />
+          <ScalarProperty Name="PackageType" ColumnName="PackageType" />
+          <ScalarProperty Name="DiscountApplicable" ColumnName="DiscountApplicable" />
+          <ScalarProperty Name="IdStartedUser" ColumnName="IdStartedUser" />
+          <ScalarProperty Name="StartedDatetime" ColumnName="StartedDatetime" />
+          <ScalarProperty Name="IdEndedUser" ColumnName="IdEndedUser" />
+          <ScalarProperty Name="EndedDatetime" ColumnName="EndedDatetime" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ServiceJobPayments">
+      <EntityTypeMapping TypeName="DBGIVPlusModel.ServiceJobPayments">
+        <MappingFragment StoreEntitySet="ServiceJobPayments">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdTecniCenter" ColumnName="IdTecniCenter" />
+          <ScalarProperty Name="IdServiceJob" ColumnName="IdServiceJob" />
+          <ScalarProperty Name="InvoiceNumb" ColumnName="InvoiceNumb" />
+          <ScalarProperty Name="IdPaymentType" ColumnName="IdPaymentType" />
+          <ScalarProperty Name="PaymentTypeName" ColumnName="PaymentTypeName" />
+          <ScalarProperty Name="PaymentAmount" ColumnName="PaymentAmount" />
+          <ScalarProperty Name="ChequeNumber" ColumnName="ChequeNumber" />
+          <ScalarProperty Name="IdCreatedUser" ColumnName="IdCreatedUser" />
+          <ScalarProperty Name="CreatedDatetime" ColumnName="CreatedDatetime" />
+          <ScalarProperty Name="IdUpdatedUser" ColumnName="IdUpdatedUser" />
+          <ScalarProperty Name="IpdatedDatetime" ColumnName="IpdatedDatetime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ServiceJobs">
+      <EntityTypeMapping TypeName="DBGIVPlusModel.ServiceJobs">
+        <MappingFragment StoreEntitySet="ServiceJobs">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdTecniCenter" ColumnName="IdTecniCenter" />
+          <ScalarProperty Name="InvoiceNumber" ColumnName="InvoiceNumber" />
+          <ScalarProperty Name="DiscountPercentage" ColumnName="DiscountPercentage" />
+          <ScalarProperty Name="DiscountAmt" ColumnName="DiscountAmt" />
+          <ScalarProperty Name="SubtotalAmt" ColumnName="SubtotalAmt" />
+          <ScalarProperty Name="TaxAmt" ColumnName="TaxAmt" />
+          <ScalarProperty Name="GrandtotalAmt" ColumnName="GrandtotalAmt" />
+          <ScalarProperty Name="IdServiceAdvisor" ColumnName="IdServiceAdvisor" />
+          <ScalarProperty Name="IdTechnician" ColumnName="IdTechnician" />
+          <ScalarProperty Name="IdCustomer" ColumnName="IdCustomer" />
+          <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+          <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="IdCar" ColumnName="IdCar" />
+          <ScalarProperty Name="CarPlateNumber" ColumnName="CarPlateNumber" />
+          <ScalarProperty Name="MileageBefore" ColumnName="MileageBefore" />
+          <ScalarProperty Name="MileageAfter" ColumnName="MileageAfter" />
+          <ScalarProperty Name="IdCreatedUser" ColumnName="IdCreatedUser" />
+          <ScalarProperty Name="CreatedDatetime" ColumnName="CreatedDatetime" />
+          <ScalarProperty Name="IdUpdatedUser" ColumnName="IdUpdatedUser" />
+          <ScalarProperty Name="IpdatedDatetime" ColumnName="IpdatedDatetime" />
+          <ScalarProperty Name="IdEndedUser" ColumnName="IdEndedUser" />
+          <ScalarProperty Name="EndedDatetime" ColumnName="EndedDatetime" />
+          <ScalarProperty Name="IdInvoiceUser" ColumnName="IdInvoiceUser" />
+          <ScalarProperty Name="InvoiceDatetime" ColumnName="InvoiceDatetime" />
+          <ScalarProperty Name="PaymentAction" ColumnName="PaymentAction" />
+          <ScalarProperty Name="Vt_Status" ColumnName="Vt_Status" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ServiceJobStatus">
+      <EntityTypeMapping TypeName="DBGIVPlusModel.ServiceJobStatus">
+        <MappingFragment StoreEntitySet="ServiceJobStatus">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdTecniCenter" ColumnName="IdTecniCenter" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="IdCreatedUser" ColumnName="IdCreatedUser" />
+          <ScalarProperty Name="CreatedDatetime" ColumnName="CreatedDatetime" />
+          <ScalarProperty Name="IdUpdatedUser" ColumnName="IdUpdatedUser" />
+          <ScalarProperty Name="UpdatedDatetime" ColumnName="UpdatedDatetime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ServicePackage">
+      <EntityTypeMapping TypeName="DBGIVPlusModel.ServicePackage">
+        <MappingFragment StoreEntitySet="ServicePackage">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdTecniCenter" ColumnName="IdTecniCenter" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="CarMakeTipe" ColumnName="CarMakeTipe" />
+          <ScalarProperty Name="DiscountApplicable" ColumnName="DiscountApplicable" />
+          <ScalarProperty Name="TimeService" ColumnName="TimeService" />
+          <ScalarProperty Name="IdCreatedUser" ColumnName="IdCreatedUser" />
+          <ScalarProperty Name="CreatedDatetime" ColumnName="CreatedDatetime" />
+          <ScalarProperty Name="IdUpdatedUser" ColumnName="IdUpdatedUser" />
+          <ScalarProperty Name="UpdatedDatetime" ColumnName="UpdatedDatetime" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ServicePackageTasks">
+      <EntityTypeMapping TypeName="DBGIVPlusModel.ServicePackageTasks">
+        <MappingFragment StoreEntitySet="ServicePackageTasks">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdTecniCenter" ColumnName="IdTecniCenter" />
+          <ScalarProperty Name="IdServicePackage" ColumnName="IdServicePackage" />
+          <ScalarProperty Name="Task" ColumnName="Task" />
+          <ScalarProperty Name="IdCreatedUser" ColumnName="IdCreatedUser" />
+          <ScalarProperty Name="CreatedDatetime" ColumnName="CreatedDatetime" />
+          <ScalarProperty Name="IdUpdatedUser" ColumnName="IdUpdatedUser" />
+          <ScalarProperty Name="UpdatedDatetime" ColumnName="UpdatedDatetime" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SiteSetting">
+      <EntityTypeMapping TypeName="DBGIVPlusModel.SiteSetting">
+        <MappingFragment StoreEntitySet="SiteSetting">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdTecniCenter" ColumnName="IdTecniCenter" />
+          <ScalarProperty Name="SiteName" ColumnName="SiteName" />
+          <ScalarProperty Name="SiteLogo" ColumnName="SiteLogo" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="Timezone" ColumnName="Timezone" />
+          <ScalarProperty Name="Pagination" ColumnName="Pagination" />
+          <ScalarProperty Name="Tax" ColumnName="Tax" />
+          <ScalarProperty Name="Currency" ColumnName="Currency" />
+          <ScalarProperty Name="DatetimeFormat" ColumnName="DatetimeFormat" />
+          <ScalarProperty Name="IsUpdatedUser" ColumnName="IsUpdatedUser" />
+          <ScalarProperty Name="UpdatedDatetime" ColumnName="UpdatedDatetime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Suppliers">
+      <EntityTypeMapping TypeName="DBGIVPlusModel.Suppliers">
+        <MappingFragment StoreEntitySet="Suppliers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdTecniCenter" ColumnName="IdTecniCenter" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Nit" ColumnName="Nit" />
+          <ScalarProperty Name="IdCreatedUser" ColumnName="IdCreatedUser" />
+          <ScalarProperty Name="CreatedDatetime" ColumnName="CreatedDatetime" />
+          <ScalarProperty Name="IdUpdatedUser" ColumnName="IdUpdatedUser" />
+          <ScalarProperty Name="UpdatedDatetime" ColumnName="UpdatedDatetime" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="DBGIVPlusModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tasks">
+      <EntityTypeMapping TypeName="DBGIVPlusModel.Tasks">
+        <MappingFragment StoreEntitySet="Tasks">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdTecniCenter" ColumnName="IdTecniCenter" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="IdCreatedUser" ColumnName="IdCreatedUser" />
+          <ScalarProperty Name="CreatedDatetime" ColumnName="CreatedDatetime" />
+          <ScalarProperty Name="IdUpdatedUser" ColumnName="IdUpdatedUser" />
+          <ScalarProperty Name="UpdatedDatetime" ColumnName="UpdatedDatetime" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TecniCenter">
+      <EntityTypeMapping TypeName="DBGIVPlusModel.TecniCenter">
+        <MappingFragment StoreEntitySet="TecniCenter">
+          <ScalarProperty Name="IdTecnicentro" ColumnName="IdTecnicentro" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Nit" ColumnName="Nit" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Celular" ColumnName="Celular" />
+          <ScalarProperty Name="Mapa" ColumnName="Mapa" />
+          <ScalarProperty Name="Logo" ColumnName="Logo" />
+          <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TecniCenterCalendar">
+      <EntityTypeMapping TypeName="DBGIVPlusModel.TecniCenterCalendar">
+        <MappingFragment StoreEntitySet="TecniCenterCalendar">
+          <ScalarProperty Name="IdCalendar" ColumnName="IdCalendar" />
+          <ScalarProperty Name="IdTecniCenter" ColumnName="IdTecniCenter" />
+          <ScalarProperty Name="IdNetUser" ColumnName="IdNetUser" />
+          <ScalarProperty Name="IdVehiculo" ColumnName="IdVehiculo" />
+          <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
+          <ScalarProperty Name="IdServicePackage" ColumnName="IdServicePackage" />
+          <ScalarProperty Name="FechaServicio" ColumnName="FechaServicio" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="DescripcionServicio" ColumnName="DescripcionServicio" />
+          <ScalarProperty Name="TipoServicio" ColumnName="TipoServicio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TecniCenterTimes">
+      <EntityTypeMapping TypeName="DBGIVPlusModel.TecniCenterTimes">
+        <MappingFragment StoreEntitySet="TecniCenterTimes">
+          <ScalarProperty Name="IdTimeTecnicentro" ColumnName="IdTimeTecnicentro" />
+          <ScalarProperty Name="IdTecnicentro" ColumnName="IdTecnicentro" />
+          <ScalarProperty Name="Dia" ColumnName="Dia" />
+          <ScalarProperty Name="Festivo" ColumnName="Festivo" />
+          <ScalarProperty Name="HoraInicial" ColumnName="HoraInicial" />
+          <ScalarProperty Name="HoraFinal" ColumnName="HoraFinal" />
+          <ScalarProperty Name="HoraEntreServicios" ColumnName="HoraEntreServicios" />
+          <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Timezones">
+      <EntityTypeMapping TypeName="DBGIVPlusModel.Timezones">
+        <MappingFragment StoreEntitySet="Timezones">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdTecniCenter" ColumnName="IdTecniCenter" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Timezone" ColumnName="Timezone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserRoles">
+      <EntityTypeMapping TypeName="DBGIVPlusModel.UserRoles">
+        <MappingFragment StoreEntitySet="UserRoles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdTecniCenter" ColumnName="IdTecniCenter" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Details" ColumnName="Details" />
+          <ScalarProperty Name="IdCreatedUser" ColumnName="IdCreatedUser" />
+          <ScalarProperty Name="CreatedDatetime" ColumnName="CreatedDatetime" />
+          <ScalarProperty Name="IdUpdatedUser" ColumnName="IdUpdatedUser" />
+          <ScalarProperty Name="UpdatedDatetime" ColumnName="UpdatedDatetime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="DBGIVPlusModel.Users">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdTecniCenter" ColumnName="IdTecniCenter" />
+          <ScalarProperty Name="Fullname" ColumnName="Fullname" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="IdRole" ColumnName="IdRole" />
+          <ScalarProperty Name="CreatedUser" ColumnName="CreatedUser" />
+          <ScalarProperty Name="CreatedDatetime" ColumnName="CreatedDatetime" />
+          <ScalarProperty Name="IdUpdatedUser" ColumnName="IdUpdatedUser" />
+          <ScalarProperty Name="UpdatedDatetime" ColumnName="UpdatedDatetime" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tercero">
+      <EntityTypeMapping TypeName="DBGIVPlusModel.Tercero">
+        <MappingFragment StoreEntitySet="Tercero">
+          <ScalarProperty Name="IdTercero" ColumnName="IdTercero" />
+          <ScalarProperty Name="PrimerNombre" ColumnName="PrimerNombre" />
+          <ScalarProperty Name="SegundoNombre" ColumnName="SegundoNombre" />
+          <ScalarProperty Name="IdTipoIdentificacion" ColumnName="IdTipoIdentificacion" />
+          <ScalarProperty Name="NumeroIdentificacion" ColumnName="NumeroIdentificacion" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+          <ScalarProperty Name="Celular" ColumnName="Celular" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="IdCiudad" ColumnName="IdCiudad" />
+          <ScalarProperty Name="IdPais" ColumnName="IdPais" />
+          <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+          <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+          <ScalarProperty Name="IdCreatedUser" ColumnName="IdCreatedUser" />
+          <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+          <ScalarProperty Name="UpdateCreatedUser" ColumnName="UpdateCreatedUser" />
+          <ScalarProperty Name="UpdateDateTime" ColumnName="UpdateDateTime" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

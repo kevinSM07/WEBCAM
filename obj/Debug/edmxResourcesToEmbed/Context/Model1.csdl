@@ -1,0 +1,385 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WECAMDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="C__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="RolOperacion" Relationship="Self.FK_RolOperacion_AspNetRoles" FromRole="AspNetRoles" ToRole="RolOperacion" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaims">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_AspNetUserClaims_AspNetUsers" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogins">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_AspNetUserLogins_AspNetUsers" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="IdGenero" Type="Guid" />
+    <Property Name="IdCiudad" Type="Guid" />
+    <Property Name="IdTipoDocumento" Type="Guid" />
+    <Property Name="NroIdentificacion" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Celular" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Direccion" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="RazonSocial" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TipoSangre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FechaNacimiento" Type="DateTime" Precision="3" />
+    <Property Name="Edad" Type="Int32" />
+    <Property Name="IngresosMensuales" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FechaIngreso" Type="DateTime" Precision="3" />
+    <Property Name="FechaEgreso" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_AspNetUserClaims_AspNetUsers" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+    <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_AspNetUserLogins_AspNetUsers" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+    <NavigationProperty Name="TblCiudades" Relationship="Self.FK_AspNetUsers_TblCiudades" FromRole="AspNetUsers" ToRole="TblCiudades" />
+    <NavigationProperty Name="TblGeneros" Relationship="Self.FK_AspNetUsers_TblGeneros" FromRole="AspNetUsers" ToRole="TblGeneros" />
+    <NavigationProperty Name="TblTiposDocumentos" Relationship="Self.FK_AspNetUsers_TblTiposDocumentos" FromRole="AspNetUsers" ToRole="TblTiposDocumentos" />
+    <NavigationProperty Name="TblDocumentosUsuarios" Relationship="Self.FK_TblDocumentosUsuarios_AspNetUsers" FromRole="AspNetUsers" ToRole="TblDocumentosUsuarios" />
+    <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+  </EntityType>
+  <EntityType Name="Modulo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Operaciones" Relationship="Self.FK_Operaciones_Modulo" FromRole="Modulo" ToRole="Operaciones" />
+  </EntityType>
+  <EntityType Name="Operaciones">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IdModulo" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="Modulo" Relationship="Self.FK_Operaciones_Modulo" FromRole="Operaciones" ToRole="Modulo" />
+    <NavigationProperty Name="RolOperacion" Relationship="Self.FK_RolOperacion_Operaciones" FromRole="Operaciones" ToRole="RolOperacion" />
+  </EntityType>
+  <EntityType Name="RolOperacion">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="IdRol" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IdOperacion" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="AspNetRoles" Relationship="Self.FK_RolOperacion_AspNetRoles" FromRole="RolOperacion" ToRole="AspNetRoles" />
+    <NavigationProperty Name="Operaciones" Relationship="Self.FK_RolOperacion_Operaciones" FromRole="RolOperacion" ToRole="Operaciones" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TblCiudades">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdDepartamento" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_AspNetUsers_TblCiudades" FromRole="TblCiudades" ToRole="AspNetUsers" />
+    <NavigationProperty Name="TblDepartamentos" Relationship="Self.FK_TblCiudades" FromRole="TblCiudades" ToRole="TblDepartamentos" />
+  </EntityType>
+  <EntityType Name="TblDepartamentos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdPais" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="TblCiudades" Relationship="Self.FK_TblCiudades" FromRole="TblDepartamentos" ToRole="TblCiudades" />
+    <NavigationProperty Name="TblPaises" Relationship="Self.FK_TblDepartamentos" FromRole="TblDepartamentos" ToRole="TblPaises" />
+  </EntityType>
+  <EntityType Name="TblDocumentosUsuarios">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Observaciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Estado" Type="Int32" />
+    <Property Name="Idusuario" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="FechaInicio" Type="DateTime" Precision="3" />
+    <Property Name="FechaFinal" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_TblDocumentosUsuarios_AspNetUsers" FromRole="TblDocumentosUsuarios" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="TblGeneros">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Observacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_AspNetUsers_TblGeneros" FromRole="TblGeneros" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="TblPaises">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="TblDepartamentos" Relationship="Self.FK_TblDepartamentos" FromRole="TblPaises" ToRole="TblDepartamentos" />
+  </EntityType>
+  <EntityType Name="TblTiposDocumentos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_AspNetUsers_TblTiposDocumentos" FromRole="TblTiposDocumentos" ToRole="AspNetUsers" />
+  </EntityType>
+  <Association Name="FK_RolOperacion_AspNetRoles">
+    <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1" />
+    <End Role="RolOperacion" Type="Self.RolOperacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetRoles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RolOperacion">
+        <PropertyRef Name="IdRol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AspNetUserClaims_AspNetUsers">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+    <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaims">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AspNetUserLogins_AspNetUsers">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+    <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogins">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AspNetUsers_TblCiudades">
+    <End Role="TblCiudades" Type="Self.TblCiudades" Multiplicity="0..1" />
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblCiudades">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUsers">
+        <PropertyRef Name="IdCiudad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AspNetUsers_TblGeneros">
+    <End Role="TblGeneros" Type="Self.TblGeneros" Multiplicity="0..1" />
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblGeneros">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUsers">
+        <PropertyRef Name="IdGenero" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AspNetUsers_TblTiposDocumentos">
+    <End Role="TblTiposDocumentos" Type="Self.TblTiposDocumentos" Multiplicity="0..1" />
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblTiposDocumentos">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUsers">
+        <PropertyRef Name="IdTipoDocumento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblDocumentosUsuarios_AspNetUsers">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="TblDocumentosUsuarios" Type="Self.TblDocumentosUsuarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TblDocumentosUsuarios">
+        <PropertyRef Name="Idusuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Operaciones_Modulo">
+    <End Role="Modulo" Type="Self.Modulo" Multiplicity="1" />
+    <End Role="Operaciones" Type="Self.Operaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Modulo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Operaciones">
+        <PropertyRef Name="IdModulo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RolOperacion_Operaciones">
+    <End Role="Operaciones" Type="Self.Operaciones" Multiplicity="1" />
+    <End Role="RolOperacion" Type="Self.RolOperacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Operaciones">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RolOperacion">
+        <PropertyRef Name="IdOperacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblCiudades">
+    <End Role="TblDepartamentos" Type="Self.TblDepartamentos" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="TblCiudades" Type="Self.TblCiudades" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblDepartamentos">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TblCiudades">
+        <PropertyRef Name="IdDepartamento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblDepartamentos">
+    <End Role="TblPaises" Type="Self.TblPaises" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="TblDepartamentos" Type="Self.TblDepartamentos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblPaises">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TblDepartamentos">
+        <PropertyRef Name="IdPais" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AspNetUserRoles">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
+    <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" />
+    <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" />
+    <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" />
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
+    <EntitySet Name="Modulo" EntityType="Self.Modulo" />
+    <EntitySet Name="Operaciones" EntityType="Self.Operaciones" />
+    <EntitySet Name="RolOperacion" EntityType="Self.RolOperacion" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="TblCiudades" EntityType="Self.TblCiudades" />
+    <EntitySet Name="TblDepartamentos" EntityType="Self.TblDepartamentos" />
+    <EntitySet Name="TblDocumentosUsuarios" EntityType="Self.TblDocumentosUsuarios" />
+    <EntitySet Name="TblGeneros" EntityType="Self.TblGeneros" />
+    <EntitySet Name="TblPaises" EntityType="Self.TblPaises" />
+    <EntitySet Name="TblTiposDocumentos" EntityType="Self.TblTiposDocumentos" />
+    <AssociationSet Name="FK_RolOperacion_AspNetRoles" Association="Self.FK_RolOperacion_AspNetRoles">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="RolOperacion" EntitySet="RolOperacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AspNetUserClaims_AspNetUsers" Association="Self.FK_AspNetUserClaims_AspNetUsers">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AspNetUserLogins_AspNetUsers" Association="Self.FK_AspNetUserLogins_AspNetUsers">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AspNetUsers_TblCiudades" Association="Self.FK_AspNetUsers_TblCiudades">
+      <End Role="TblCiudades" EntitySet="TblCiudades" />
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AspNetUsers_TblGeneros" Association="Self.FK_AspNetUsers_TblGeneros">
+      <End Role="TblGeneros" EntitySet="TblGeneros" />
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AspNetUsers_TblTiposDocumentos" Association="Self.FK_AspNetUsers_TblTiposDocumentos">
+      <End Role="TblTiposDocumentos" EntitySet="TblTiposDocumentos" />
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblDocumentosUsuarios_AspNetUsers" Association="Self.FK_TblDocumentosUsuarios_AspNetUsers">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="TblDocumentosUsuarios" EntitySet="TblDocumentosUsuarios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Operaciones_Modulo" Association="Self.FK_Operaciones_Modulo">
+      <End Role="Modulo" EntitySet="Modulo" />
+      <End Role="Operaciones" EntitySet="Operaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RolOperacion_Operaciones" Association="Self.FK_RolOperacion_Operaciones">
+      <End Role="Operaciones" EntitySet="Operaciones" />
+      <End Role="RolOperacion" EntitySet="RolOperacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblCiudades" Association="Self.FK_TblCiudades">
+      <End Role="TblDepartamentos" EntitySet="TblDepartamentos" />
+      <End Role="TblCiudades" EntitySet="TblCiudades" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblDepartamentos" Association="Self.FK_TblDepartamentos">
+      <End Role="TblPaises" EntitySet="TblPaises" />
+      <End Role="TblDepartamentos" EntitySet="TblDepartamentos" />
+    </AssociationSet>
+    <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

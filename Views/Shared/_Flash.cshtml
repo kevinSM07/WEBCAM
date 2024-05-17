@@ -1,0 +1,18 @@
+﻿@foreach (var flash in Request.GetFlashMessages())
+    {
+
+        <span class="icon text-white-50 alert btn-@flash.Type">
+            <i class="fas fa-info-circle"></i>
+            <span class="alert btn-@flash.Type  ">@flash.Message</span>
+        </span>
+
+
+    }
+
+@*<script type="text/javascript">
+    $(function () {
+        $("#alert_placeholder").flashMessage();
+    });
+</script>
+
+<div id="alert_placeholder"></div>*@

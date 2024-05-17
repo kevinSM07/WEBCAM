@@ -1,0 +1,45 @@
+﻿@model WEBCAM.Context.RolOperacion
+
+@{
+    ViewBag.Title = "Ver";
+}
+
+<h2>Detalles</h2>
+
+<div>
+    <h4>RolOperacion</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AspNetRoles.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AspNetRoles.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Operaciones.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Operaciones.Nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Volver al listado", "Index")
+</p>
+@Scripts.Render("~/bundles/js")
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+<script src="@Url.Content("~/Scripts/Global.js")"></script>
+
+
+@section Scripts
+        {
+    @Scripts.Render("~/bundles/jqueryval")
+
+}

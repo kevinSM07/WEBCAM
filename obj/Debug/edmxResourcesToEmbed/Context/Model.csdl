@@ -1,0 +1,1652 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBGIVPlusModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="C__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IdTecniCenter" Type="Guid" />
+    <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AspNetUserRoles" Relationship="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" FromRole="AspNetRoles" ToRole="AspNetUserRoles" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaims">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IdTecniCenter" Type="Guid" />
+    <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_AspNetUserClaims_AspNetUsers" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogins">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IdTecniCenter" Type="Guid" />
+    <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_AspNetUserLogins_AspNetUsers" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUserRoles">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RoleId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IdTecniCenter" Type="Guid" />
+    <Property Name="IdCreatedUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CreatedDatetime" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="IdUpdatedUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UpdatedDatetime" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="AspNetRoles" Relationship="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" FromRole="AspNetUserRoles" ToRole="AspNetRoles" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_AspNetUserRoles_AspNetUsers" FromRole="AspNetUserRoles" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IdCountry" Type="Guid" />
+    <Property Name="IdCustomerGroup" Type="Guid" />
+    <Property Name="IdTecniCenter" Type="Guid" />
+    <Property Name="IdRol" Type="Guid" />
+    <Property Name="Details" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Firstname" Type="String" MaxLength="499" FixedLength="false" Unicode="false" />
+    <Property Name="Lastname" Type="String" MaxLength="499" FixedLength="false" Unicode="false" />
+    <Property Name="Cedula" Type="String" MaxLength="99" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="PostalCode" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="IdCreatedUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDatetime" Type="DateTime" Precision="0" />
+    <Property Name="IdUpdatedUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="UpdatedDatetime" Type="DateTime" Precision="0" />
+    <Property Name="Status" Type="Int32" />
+    <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_AspNetUserClaims_AspNetUsers" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+    <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_AspNetUserLogins_AspNetUsers" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+    <NavigationProperty Name="AspNetUserRoles" Relationship="Self.FK_AspNetUserRoles_AspNetUsers" FromRole="AspNetUsers" ToRole="AspNetUserRoles" />
+    <NavigationProperty Name="Countries" Relationship="Self.FK_AspNetUsers_Countries" FromRole="AspNetUsers" ToRole="Countries" />
+    <NavigationProperty Name="CustomerGroups" Relationship="Self.FK_AspNetUsers_CustomerGroups" FromRole="AspNetUsers" ToRole="CustomerGroups" />
+    <NavigationProperty Name="UserRoles" Relationship="Self.FK_AspNetUsers_UserRoles" FromRole="AspNetUsers" ToRole="UserRoles" />
+    <NavigationProperty Name="Cars" Relationship="Self.FK_Cars_AspNetUsers" FromRole="AspNetUsers" ToRole="Cars" />
+    <NavigationProperty Name="TecniCenterCalendar" Relationship="Self.FK_TecniCenterCalendar_AspNetUsers" FromRole="AspNetUsers" ToRole="TecniCenterCalendar" />
+  </EntityType>
+  <EntityType Name="CarMake">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="IdTecniCenter" Type="Guid" />
+    <Property Name="Name" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Type" Type="Int32" Nullable="false" />
+    <Property Name="IdCreatedUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IdCreatedDatetime" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="IdUpdatedUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UpdatedDatetime" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Cars" Relationship="Self.FK_Cars_CarMake" FromRole="CarMake" ToRole="Cars" />
+  </EntityType>
+  <EntityType Name="Cars">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="IdTecniCenter" Type="Guid" />
+    <Property Name="IdOwner" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CarModel" Type="String" MaxLength="499" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdCarMake" Type="Guid" Nullable="false" />
+    <Property Name="PlateNumber" Type="String" MaxLength="499" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Color" Type="String" MaxLength="499" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ChassisNumber" Type="String" MaxLength="499" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="RegistrationDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Transmission" Type="Int32" Nullable="false" />
+    <Property Name="Mileage" Type="Int32" Nullable="false" />
+    <Property Name="PhotoName" Type="String" MaxLength="499" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdCreatedUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CreatedDatetime" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="IdUpdatedUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UpdatedDatetime" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_Cars_AspNetUsers" FromRole="Cars" ToRole="AspNetUsers" />
+    <NavigationProperty Name="CarMake" Relationship="Self.FK_Cars_CarMake" FromRole="Cars" ToRole="CarMake" />
+    <NavigationProperty Name="EncServiceJobs" Relationship="Self.FK_EncServiceJobs_Cars" FromRole="Cars" ToRole="EncServiceJobs" />
+    <NavigationProperty Name="TecniCenterCalendar" Relationship="Self.FK_TecniCenterCalendar_Cars" FromRole="Cars" ToRole="TecniCenterCalendar" />
+  </EntityType>
+  <EntityType Name="CiSessions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="IdTecniCenter" Type="Guid" />
+    <Property Name="IpAddress" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Timestamp" Type="Int32" Nullable="false" />
+    <Property Name="Data" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Countries">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="IdTecniCenter" Type="Guid" />
+    <Property Name="Code" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FullName" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_AspNetUsers_Countries" FromRole="Countries" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="Currency">
+    <Key>
+      <PropertyRef Name="Iso" />
+    </Key>
+    <Property Name="Iso" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="IdTecniCenter" Type="Guid" />
+    <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CustomerGroups">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="IdTecniCenter" Type="Guid" />
+    <Property Name="Name" Type="String" MaxLength="499" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DiscountPercentage" Type="Double" Nullable="false" />
+    <Property Name="IdCreatedUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CreatedDatetime" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="IdUpdatedUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UpdatedDatetime" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_AspNetUsers_CustomerGroups" FromRole="CustomerGroups" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="Customers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="IdTecniCenter" Type="Guid" />
+    <Property Name="Firstname" Type="String" MaxLength="499" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Lastname" Type="String" MaxLength="499" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nric" Type="String" MaxLength="99" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="499" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Mobile" Type="String" MaxLength="499" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PostalCode" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Country" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CustomerGroup" Type="Int32" Nullable="false" />
+    <Property Name="IdCreatedUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CreatedDatetime" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="IdUpdatedUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UpdatedDatetime" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Defects">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="IdTecniCenter" Type="Guid" />
+    <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdCreatedUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CreatedDatetime" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="IdUpdatedUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UpdatedDatetime" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ServiceJobDefects" Relationship="Self.FK_ServiceJobDefects_Defects" FromRole="Defects" ToRole="ServiceJobDefects" />
+  </EntityType>
+  <EntityType Name="DetalleImpuesto">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="IdDetPurchaseOrder" Type="Guid" Nullable="false" />
+    <Property Name="IdImpuesto" Type="Guid" Nullable="false" />
+    <Property Name="IdCreatedUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CreatedDatetime" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="IdUpdatedUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UpdatedDatetime" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="DetPurchaseOrder" Relationship="Self.FK_DetalleImpuesto_DetPurchaseOrder" FromRole="DetalleImpuesto" ToRole="DetPurchaseOrder" />
+    <NavigationProperty Name="Impuesto" Relationship="Self.FK_DetalleImpuesto_Impuesto" FromRole="DetalleImpuesto" ToRole="Impuesto" />
+    <Property Name="IdMaterial" Type="Guid" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DetPurchaseOrder">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="IdEncPurchaseOrder" Type="Guid" Nullable="false" />
+    <Property Name="IdTecniCenter" Type="Guid" />
+    <Property Name="IdMaterial" Type="Guid" Nullable="false" />
+    <Property Name="Cantidad" Type="Double" Nullable="false" />
+    <Property Name="Precio" Type="Double" Nullable="false" />
+    <Property Name="IdCreatedUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CreatedDatetime" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="IdUpdatedUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UpdatedDatetime" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="DetalleImpuesto" Relationship="Self.FK_DetalleImpuesto_DetPurchaseOrder" FromRole="DetPurchaseOrder" ToRole="DetalleImpuesto" />
+    <NavigationProperty Name="EncPurchaseOrder" Relationship="Self.FK_DetPurchaseOrder_EncPurchaseOrder" FromRole="DetPurchaseOrder" ToRole="EncPurchaseOrder" />
+    <NavigationProperty Name="Materials" Relationship="Self.FK_DetPurchaseOrder_Materials" FromRole="DetPurchaseOrder" ToRole="Materials" />
+  </EntityType>
+  <EntityType Name="DetServiceJobs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="IdEncServiceJobs" Type="Guid" Nullable="false" />
+    <Property Name="IdTecniCenter" Type="Guid" />
+    <Property Name="IdServicePackage" Type="Guid" />
+    <Property Name="IdMaterial" Type="Guid" />
+    <Property Name="DiscountPercentage" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DiscountAmt" Type="Double" Nullable="false" />
+    <Property Name="SubtotalAmt" Type="Double" Nullable="false" />
+    <Property Name="TaxAmt" Type="Double" Nullable="false" />
+    <Property Name="GrandtotalAmt" Type="Double" Nullable="false" />
+    <Property Name="IdServiceAdvisor" Type="Guid" Nullable="false" />
+    <Property Name="IdTechnician" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="EncServiceJobs" Relationship="Self.FK_DetServiceJobs_EncServiceJobs" FromRole="DetServiceJobs" ToRole="EncServiceJobs" />
+    <NavigationProperty Name="Materials" Relationship="Self.FK_DetServiceJobs_Materials" FromRole="DetServiceJobs" ToRole="Materials" />
+    <NavigationProperty Name="ServicePackage" Relationship="Self.FK_DetServiceJobs_ServicePackage" FromRole="DetServiceJobs" ToRole="ServicePackage" />
+  </EntityType>
+  <EntityType Name="EncPurchaseOrder">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="IdTecniCenter" Type="Guid" />
+    <Property Name="IdSupplier" Type="Guid" Nullable="false" />
+    <Property Name="PoQTY" Type="Int32" Nullable="false" />
+    <Property Name="PoDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdReceivedUser" Type="Guid" Nullable="false" />
+    <Property Name="ReceivedDatetime" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="IdCreatedUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CreatedDatetime" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="IdUpdatedUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UpdatedDatetime" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="DetPurchaseOrder" Relationship="Self.FK_DetPurchaseOrder_EncPurchaseOrder" FromRole="EncPurchaseOrder" ToRole="DetPurchaseOrder" />
+    <NavigationProperty Name="PurchaseOrderStatus" Relationship="Self.FK_EncPurchaseOrder_PurchaseOrderStatus" FromRole="EncPurchaseOrder" ToRole="PurchaseOrderStatus" />
+    <NavigationProperty Name="Suppliers" Relationship="Self.FK_EncPurchaseOrder_Suppliers" FromRole="EncPurchaseOrder" ToRole="Suppliers" />
+    <NavigationProperty Name="TecniCenter" Relationship="Self.FK_EncPurchaseOrder_TecniCenter" FromRole="EncPurchaseOrder" ToRole="TecniCenter" />
+  </EntityType>
+  <EntityType Name="EncServiceJobs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="IdTecniCenter" Type="Guid" />
+    <Property Name="InvoiceNumber" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdAspNetUsers" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IdCar" Type="Guid" Nullable="false" />
+    <Property Name="IdCreatedUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CreatedDatetime" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="IdUpdatedUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IpdatedDatetime" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="IdEndedUser" Type="Guid" Nullable="false" />
+    <Property Name="EndedDatetime" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="IdInvoiceUser" Type="Guid" Nullable="false" />
+    <Property Name="InvoiceDatetime" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="PaymentAction" Type="Int32" Nullable="false" />
+    <Property Name="Vt_Status" Type="Int32" Nullable="false" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Cars" Relationship="Self.FK_EncServiceJobs_Cars" FromRole="EncServiceJobs" ToRole="Cars" />
+    <NavigationProperty Name="DetServiceJobs" Relationship="Self.FK_DetServiceJobs_EncServiceJobs" FromRole="EncServiceJobs" ToRole="DetServiceJobs" />
+    <NavigationProperty Name="ServiceJobStatus" Relationship="Self.FK_EncServiceJobs_ServiceJobStatus" FromRole="EncServiceJobs" ToRole="ServiceJobStatus" />
+    <NavigationProperty Name="TecniCenter" Relationship="Self.FK_EncServiceJobs_TecniCenter" FromRole="EncServiceJobs" ToRole="TecniCenter" />
+    <NavigationProperty Name="ServiceJobDefects" Relationship="Self.FK_ServiceJobDefects_EncServiceJobs" FromRole="EncServiceJobs" ToRole="ServiceJobDefects" />
+    <NavigationProperty Name="ServiceJobDefectsMaterial" Relationship="Self.FK_ServiceJobDefectsMaterial_EncServiceJobs" FromRole="EncServiceJobs" ToRole="ServiceJobDefectsMaterial" />
+    <NavigationProperty Name="ServiceJobPackageMaterial" Relationship="Self.FK_ServiceJobPackageMaterial_EncServiceJobs" FromRole="EncServiceJobs" ToRole="ServiceJobPackageMaterial" />
+    <NavigationProperty Name="ServiceJobPackages" Relationship="Self.FK_ServiceJobPackages_EncServiceJobs" FromRole="EncServiceJobs" ToRole="ServiceJobPackages" />
+    <NavigationProperty Name="ServiceJobPayments" Relationship="Self.FK_ServiceJobPayments_EncServiceJobs" FromRole="EncServiceJobs" ToRole="ServiceJobPayments" />
+  </EntityType>
+  <EntityType Name="Impuesto">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Porcentaje" Type="Double" Nullable="false" />
+    <Property Name="IdCreatedUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CreatedDatetime" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="IdUpdatedUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UpdatedDatetime" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="DetalleImpuesto" Relationship="Self.FK_DetalleImpuesto_Impuesto" FromRole="Impuesto" ToRole="DetalleImpuesto" />
+    <Property Name="IdTecniCentro" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="TecniCenter" Relationship="DBGIVPlusModel.FK_Impuesto_TecniCenter" FromRole="Impuesto" ToRole="TecniCenter" />
+  </EntityType>
+  <EntityType Name="Inventory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="IdTecniCenter" Type="Guid" />
+    <Property Name="IdMaterials" Type="Guid" Nullable="false" />
+    <Property Name="Sku" Type="String" MaxLength="499" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Quantity" Type="Double" Nullable="false" />
+    <NavigationProperty Name="Materials" Relationship="Self.FK_Inventory_Materials" FromRole="Inventory" ToRole="Materials" />
+    <NavigationProperty Name="InventoryUpdatedLogs" Relationship="Self.FK_InventoryUpdatedLogs_Inventory" FromRole="Inventory" ToRole="InventoryUpdatedLogs" />
+  </EntityType>
+  <EntityType Name="InventoryUpdatedLogs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="IdTecniCenter" Type="Guid" />
+    <Property Name="IdInventory" Type="Guid" Nullable="false" />
+    <Property Name="IdMaterial" Type="Guid" Nullable="false" />
+    <Property Name="Sku" Type="String" MaxLength="499" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="BeforeQty" Type="Double" Nullable="false" />
+    <Property Name="UpdateQty" Type="Double" Nullable="false" />
+    <Property Name="AfterQty" Type="Double" Nullable="false" />
+    <Property Name="IdCreatedUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CreatedDatetime" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Inventory" Relationship="Self.FK_InventoryUpdatedLogs_Inventory" FromRole="InventoryUpdatedLogs" ToRole="Inventory" />
+    <NavigationProperty Name="Materials" Relationship="Self.FK_InventoryUpdatedLogs_Materials" FromRole="InventoryUpdatedLogs" ToRole="Materials" />
+  </EntityType>
+  <EntityType Name="Materials">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="IdTecniCenter" Type="Guid" />
+    <Property Name="Sku" Type="String" MaxLength="499" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="499" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MaterialType" Type="Int32" Nullable="false" />
+    <Property Name="Cost" Type="Double" Nullable="false" />
+    <Property Name="Price" Type="Double" Nullable="false" />
+    <Property Name="IdCreatedUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CreatedDatetime" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="IdUpdatedUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UpdatedDatetime" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="DetPurchaseOrder" Relationship="Self.FK_DetPurchaseOrder_Materials" FromRole="Materials" ToRole="DetPurchaseOrder" />
+    <NavigationProperty Name="DetServiceJobs" Relationship="Self.FK_DetServiceJobs_Materials" FromRole="Materials" ToRole="DetServiceJobs" />
+    <NavigationProperty Name="Inventory" Relationship="Self.FK_Inventory_Materials" FromRole="Materials" ToRole="Inventory" />
+    <NavigationProperty Name="InventoryUpdatedLogs" Relationship="Self.FK_InventoryUpdatedLogs_Materials" FromRole="Materials" ToRole="InventoryUpdatedLogs" />
+    <NavigationProperty Name="MaterialType1" Relationship="Self.FK_Materials_MaterialType" FromRole="Materials" ToRole="MaterialType" />
+    <NavigationProperty Name="ServiceJobDefectsMaterial" Relationship="Self.FK_ServiceJobDefectsMaterial_Materials" FromRole="Materials" ToRole="ServiceJobDefectsMaterial" />
+    <NavigationProperty Name="ServiceJobPackageMaterial" Relationship="Self.FK_ServiceJobPackageMaterial_Materials" FromRole="Materials" ToRole="ServiceJobPackageMaterial" />
+  </EntityType>
+  <EntityType Name="MaterialType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="IdTecniCenter" Type="Guid" />
+    <Property Name="Name" Type="String" MaxLength="499" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdCreatedUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CreatedDatetime" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="IdUpdatedUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UpdatedDatetime" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Materials" Relationship="Self.FK_Materials_MaterialType" FromRole="MaterialType" ToRole="Materials" />
+  </EntityType>
+  <EntityType Name="PaymentMethod">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="IdTecniCenter" Type="Guid" />
+    <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdCreatedUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CreatedDatetime" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="IdUpdatedUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UpdatedDatetime" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PurchaseOrder">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="IdTecniCenter" Type="Guid" />
+    <Property Name="PoNumber" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DiscountAmount" Type="Double" Nullable="false" />
+    <Property Name="DiscountPercentage" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SubTotal" Type="Double" Nullable="false" />
+    <Property Name="Tax" Type="Double" Nullable="false" />
+    <Property Name="GrandTotal" Type="Double" Nullable="false" />
+    <Property Name="IdSupplier" Type="Guid" Nullable="false" />
+    <Property Name="SupplierName" Type="String" MaxLength="499" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SupplierEmail" Type="String" MaxLength="499" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SupplierTel" Type="String" MaxLength="499" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SupplierFax" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SupplierAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SupplierTax" Type="Double" Nullable="false" />
+    <Property Name="PoDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdCreatedUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CreatedDatetime" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="IdUpdatedUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UpdatedDatetime" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="IdReceivedUser" Type="Guid" Nullable="false" />
+    <Property Name="ReceivedDatetime" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PurchaseOrderItems">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="IdTecniCenter" Type="Guid" />
+    <Property Name="IdPurchaseOrder" Type="Guid" Nullable="false" />
+    <Property Name="IdMaterial" Type="Guid" Nullable="false" />
+    <Property Name="MaterialSku" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="OrderedQty" Type="Int32" Nullable="false" />
+    <Property Name="ReceivedQty" Type="Int32" Nullable="false" />
+    <Property Name="Cost" Type="Double" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PurchaseOrderStatus">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="IdTecniCenter" Type="Guid" />
+    <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdCreatedUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CreatedDatetime" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="IdUpdatedUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UpdatedDatetime" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="EncPurchaseOrder" Relationship="Self.FK_EncPurchaseOrder_PurchaseOrderStatus" FromRole="PurchaseOrderStatus" ToRole="EncPurchaseOrder" />
+  </EntityType>
+  <EntityType Name="ServiceJobDefects">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="IdTecniCenter" Type="Guid" />
+    <Property Name="IdServiceJob" Type="Guid" Nullable="false" />
+    <Property Name="IdDefect" Type="Guid" Nullable="false" />
+    <Property Name="DefectName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdStartedUser" Type="Guid" Nullable="false" />
+    <Property Name="StartedDatetime" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="IdEndedUser" Type="Guid" Nullable="false" />
+    <Property Name="EndedDatetime" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Defects" Relationship="Self.FK_ServiceJobDefects_Defects" FromRole="ServiceJobDefects" ToRole="Defects" />
+    <NavigationProperty Name="EncServiceJobs" Relationship="Self.FK_ServiceJobDefects_EncServiceJobs" FromRole="ServiceJobDefects" ToRole="EncServiceJobs" />
+  </EntityType>
+  <EntityType Name="ServiceJobDefectsMaterial">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="IdTecniCenter" Type="Guid" />
+    <Property Name="IdServiceJob" Type="Guid" Nullable="false" />
+    <Property Name="IdServiceJobDefects" Type="Guid" Nullable="false" />
+    <Property Name="IdMaterial" Type="Guid" Nullable="false" />
+    <Property Name="MaterialSku" Type="String" MaxLength="499" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MaterialName" Type="String" MaxLength="499" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Request_Qty" Type="Int32" Nullable="false" />
+    <Property Name="IssuedQty" Type="Int32" Nullable="false" />
+    <Property Name="Cost" Type="Double" Nullable="false" />
+    <Property Name="Price" Type="Double" Nullable="false" />
+    <Property Name="RequestedUser" Type="Int32" Nullable="false" />
+    <Property Name="RequestedDatetime" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="IdIssuedUser" Type="Guid" />
+    <Property Name="IssuedDatetime" Type="DateTime" Precision="0" />
+    <Property Name="CustomerApproved" Type="Int32" Nullable="false" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="EncServiceJobs" Relationship="Self.FK_ServiceJobDefectsMaterial_EncServiceJobs" FromRole="ServiceJobDefectsMaterial" ToRole="EncServiceJobs" />
+    <NavigationProperty Name="Materials" Relationship="Self.FK_ServiceJobDefectsMaterial_Materials" FromRole="ServiceJobDefectsMaterial" ToRole="Materials" />
+  </EntityType>
+  <EntityType Name="ServiceJobPackageMaterial">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="IdTecniCenter" Type="Guid" />
+    <Property Name="IdServiceJob" Type="Guid" Nullable="false" />
+    <Property Name="IdServiceJobPackage" Type="Guid" Nullable="false" />
+    <Property Name="Idtask" Type="Guid" Nullable="false" />
+    <Property Name="IdMaterial" Type="Guid" Nullable="false" />
+    <Property Name="MaterialSku" Type="String" MaxLength="499" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MaterialName" Type="String" MaxLength="499" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="RequestQty" Type="Int32" Nullable="false" />
+    <Property Name="IssuedQty" Type="Int32" Nullable="false" />
+    <Property Name="Cost" Type="Double" Nullable="false" />
+    <Property Name="Price" Type="Double" Nullable="false" />
+    <Property Name="IdRequestedUser" Type="Guid" Nullable="false" />
+    <Property Name="RequestedDatetime" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="IdIssuedUser" Type="Guid" Nullable="false" />
+    <Property Name="IssuedDatetime" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="RequestApproved" Type="Int32" Nullable="false" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="EncServiceJobs" Relationship="Self.FK_ServiceJobPackageMaterial_EncServiceJobs" FromRole="ServiceJobPackageMaterial" ToRole="EncServiceJobs" />
+    <NavigationProperty Name="Materials" Relationship="Self.FK_ServiceJobPackageMaterial_Materials" FromRole="ServiceJobPackageMaterial" ToRole="Materials" />
+    <NavigationProperty Name="ServiceJobPackages" Relationship="Self.FK_ServiceJobPackageMaterial_ServiceJobPackages" FromRole="ServiceJobPackageMaterial" ToRole="ServiceJobPackages" />
+    <NavigationProperty Name="Tasks" Relationship="Self.FK_ServiceJobPackageMaterial_Tasks" FromRole="ServiceJobPackageMaterial" ToRole="Tasks" />
+  </EntityType>
+  <EntityType Name="ServiceJobPackages">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="IdTecniCenter" Type="Guid" />
+    <Property Name="IdServiceJob" Type="Guid" Nullable="false" />
+    <Property Name="Idpackage" Type="Guid" Nullable="false" />
+    <Property Name="PackageName" Type="String" MaxLength="499" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PackagePrice" Type="Double" Nullable="false" />
+    <Property Name="PackageType" Type="Int32" Nullable="false" />
+    <Property Name="DiscountApplicable" Type="Int32" Nullable="false" />
+    <Property Name="IdStartedUser" Type="Guid" Nullable="false" />
+    <Property Name="StartedDatetime" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="IdEndedUser" Type="Guid" Nullable="false" />
+    <Property Name="EndedDatetime" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="EncServiceJobs" Relationship="Self.FK_ServiceJobPackages_EncServiceJobs" FromRole="ServiceJobPackages" ToRole="EncServiceJobs" />
+    <NavigationProperty Name="ServiceJobPackageMaterial" Relationship="Self.FK_ServiceJobPackageMaterial_ServiceJobPackages" FromRole="ServiceJobPackages" ToRole="ServiceJobPackageMaterial" />
+    <NavigationProperty Name="ServicePackage" Relationship="Self.FK_ServiceJobPackages_ServicePackage" FromRole="ServiceJobPackages" ToRole="ServicePackage" />
+  </EntityType>
+  <EntityType Name="ServiceJobPayments">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="IdTecniCenter" Type="Guid" />
+    <Property Name="IdServiceJob" Type="Guid" Nullable="false" />
+    <Property Name="InvoiceNumb" Type="String" MaxLength="99" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdPaymentType" Type="Guid" Nullable="false" />
+    <Property Name="PaymentTypeName" Type="String" MaxLength="99" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PaymentAmount" Type="Double" Nullable="false" />
+    <Property Name="ChequeNumber" Type="String" MaxLength="499" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdCreatedUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CreatedDatetime" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="IdUpdatedUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IpdatedDatetime" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="EncServiceJobs" Relationship="Self.FK_ServiceJobPayments_EncServiceJobs" FromRole="ServiceJobPayments" ToRole="EncServiceJobs" />
+  </EntityType>
+  <EntityType Name="ServiceJobs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="IdTecniCenter" Type="Guid" />
+    <Property Name="InvoiceNumber" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DiscountPercentage" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DiscountAmt" Type="Double" Nullable="false" />
+    <Property Name="SubtotalAmt" Type="Double" Nullable="false" />
+    <Property Name="TaxAmt" Type="Double" Nullable="false" />
+    <Property Name="GrandtotalAmt" Type="Double" Nullable="false" />
+    <Property Name="IdServiceAdvisor" Type="Guid" Nullable="false" />
+    <Property Name="IdTechnician" Type="Guid" Nullable="false" />
+    <Property Name="IdCustomer" Type="Guid" Nullable="false" />
+    <Property Name="Firstname" Type="String" MaxLength="499" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Lastname" Type="String" MaxLength="499" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="499" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Mobile" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdCar" Type="Guid" Nullable="false" />
+    <Property Name="CarPlateNumber" Type="String" MaxLength="499" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MileageBefore" Type="Int32" Nullable="false" />
+    <Property Name="MileageAfter" Type="Int32" Nullable="false" />
+    <Property Name="IdCreatedUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CreatedDatetime" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="IdUpdatedUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IpdatedDatetime" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="IdEndedUser" Type="Guid" Nullable="false" />
+    <Property Name="EndedDatetime" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="IdInvoiceUser" Type="Guid" Nullable="false" />
+    <Property Name="InvoiceDatetime" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="PaymentAction" Type="Int32" Nullable="false" />
+    <Property Name="Vt_Status" Type="Int32" Nullable="false" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ServiceJobStatus">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="IdTecniCenter" Type="Guid" />
+    <Property Name="Name" Type="String" MaxLength="499" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdCreatedUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CreatedDatetime" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="IdUpdatedUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UpdatedDatetime" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="EncServiceJobs" Relationship="Self.FK_EncServiceJobs_ServiceJobStatus" FromRole="ServiceJobStatus" ToRole="EncServiceJobs" />
+  </EntityType>
+  <EntityType Name="ServicePackage">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="IdTecniCenter" Type="Guid" />
+    <Property Name="Name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Price" Type="Double" Nullable="false" />
+    <Property Name="CarMakeTipe" Type="Int32" Nullable="false" />
+    <Property Name="DiscountApplicable" Type="Int32" Nullable="false" />
+    <Property Name="TimeService" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="IdCreatedUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CreatedDatetime" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="IdUpdatedUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UpdatedDatetime" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="status" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="DetServiceJobs" Relationship="Self.FK_DetServiceJobs_ServicePackage" FromRole="ServicePackage" ToRole="DetServiceJobs" />
+    <NavigationProperty Name="ServiceJobPackages" Relationship="Self.FK_ServiceJobPackages_ServicePackage" FromRole="ServicePackage" ToRole="ServiceJobPackages" />
+    <NavigationProperty Name="TecniCenter" Relationship="Self.FK_ServicePackage_TecniCenter" FromRole="ServicePackage" ToRole="TecniCenter" />
+    <NavigationProperty Name="ServicePackageTasks" Relationship="Self.FK_ServicePackageTasks_ServicePackage" FromRole="ServicePackage" ToRole="ServicePackageTasks" />
+    <NavigationProperty Name="TecniCenterCalendar" Relationship="Self.FK_TecniCenterCalendar_ServicePackage" FromRole="ServicePackage" ToRole="TecniCenterCalendar" />
+  </EntityType>
+  <EntityType Name="ServicePackageTasks">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="IdTecniCenter" Type="Guid" />
+    <Property Name="IdServicePackage" Type="Guid" Nullable="false" />
+    <Property Name="Task" Type="Guid" Nullable="false" />
+    <Property Name="IdCreatedUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CreatedDatetime" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="IdUpdatedUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UpdatedDatetime" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="status" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ServicePackage" Relationship="Self.FK_ServicePackageTasks_ServicePackage" FromRole="ServicePackageTasks" ToRole="ServicePackage" />
+    <NavigationProperty Name="Tasks" Relationship="Self.FK_ServicePackageTasks_Tasks" FromRole="ServicePackageTasks" ToRole="Tasks" />
+  </EntityType>
+  <EntityType Name="SiteSetting">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="IdTecniCenter" Type="Guid" />
+    <Property Name="SiteName" Type="String" MaxLength="499" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SiteLogo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Telephone" Type="String" MaxLength="499" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Fax" Type="String" MaxLength="499" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Timezone" Type="String" MaxLength="499" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Pagination" Type="Int32" Nullable="false" />
+    <Property Name="Tax" Type="Double" Nullable="false" />
+    <Property Name="Currency" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="DatetimeFormat" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IsUpdatedUser" Type="Guid" Nullable="false" />
+    <Property Name="UpdatedDatetime" Type="DateTime" Nullable="false" Precision="0" />
+  </EntityType>
+  <EntityType Name="Suppliers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="IdTecniCenter" Type="Guid" />
+    <Property Name="Name" Type="String" MaxLength="499" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="499" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Telephone" Type="String" MaxLength="90" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Fax" Type="String" MaxLength="90" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nit" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IdCreatedUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CreatedDatetime" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="IdUpdatedUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UpdatedDatetime" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="EncPurchaseOrder" Relationship="Self.FK_EncPurchaseOrder_Suppliers" FromRole="Suppliers" ToRole="EncPurchaseOrder" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Tasks">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="IdTecniCenter" Type="Guid" />
+    <Property Name="Name" Type="String" MaxLength="4999" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdCreatedUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CreatedDatetime" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="IdUpdatedUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UpdatedDatetime" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ServiceJobPackageMaterial" Relationship="Self.FK_ServiceJobPackageMaterial_Tasks" FromRole="Tasks" ToRole="ServiceJobPackageMaterial" />
+    <NavigationProperty Name="ServicePackageTasks" Relationship="Self.FK_ServicePackageTasks_Tasks" FromRole="Tasks" ToRole="ServicePackageTasks" />
+  </EntityType>
+  <EntityType Name="TecniCenter">
+    <Key>
+      <PropertyRef Name="IdTecnicentro" />
+    </Key>
+    <Property Name="IdTecnicentro" Type="Guid" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Nit" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Direccion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Telefono" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Celular" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Mapa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Logo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Observaciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="EncPurchaseOrder" Relationship="Self.FK_EncPurchaseOrder_TecniCenter" FromRole="TecniCenter" ToRole="EncPurchaseOrder" />
+    <NavigationProperty Name="EncServiceJobs" Relationship="Self.FK_EncServiceJobs_TecniCenter" FromRole="TecniCenter" ToRole="EncServiceJobs" />
+    <NavigationProperty Name="ServicePackage" Relationship="Self.FK_ServicePackage_TecniCenter" FromRole="TecniCenter" ToRole="ServicePackage" />
+    <NavigationProperty Name="TecniCenterCalendar" Relationship="Self.FK_TecniCenterCalendar_TecniCenter" FromRole="TecniCenter" ToRole="TecniCenterCalendar" />
+    <NavigationProperty Name="TecniCenterTimes" Relationship="Self.FK_TecniCenterTimes_TecniCenter" FromRole="TecniCenter" ToRole="TecniCenterTimes" />
+    <NavigationProperty Name="Impuesto" Relationship="DBGIVPlusModel.FK_Impuesto_TecniCenter" FromRole="TecniCenter" ToRole="Impuesto" />
+  </EntityType>
+  <EntityType Name="TecniCenterCalendar">
+    <Key>
+      <PropertyRef Name="IdCalendar" />
+    </Key>
+    <Property Name="IdCalendar" Type="Guid" Nullable="false" />
+    <Property Name="IdTecniCenter" Type="Guid" Nullable="false" />
+    <Property Name="IdNetUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IdVehiculo" Type="Guid" Nullable="false" />
+    <Property Name="IdEmpleado" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="IdServicePackage" Type="Guid" Nullable="false" />
+    <Property Name="FechaServicio" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DescripcionServicio" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TipoServicio" Type="Int32" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_TecniCenterCalendar_AspNetUsers" FromRole="TecniCenterCalendar" ToRole="AspNetUsers" />
+    <NavigationProperty Name="Cars" Relationship="Self.FK_TecniCenterCalendar_Cars" FromRole="TecniCenterCalendar" ToRole="Cars" />
+    <NavigationProperty Name="ServicePackage" Relationship="Self.FK_TecniCenterCalendar_ServicePackage" FromRole="TecniCenterCalendar" ToRole="ServicePackage" />
+    <NavigationProperty Name="TecniCenter" Relationship="Self.FK_TecniCenterCalendar_TecniCenter" FromRole="TecniCenterCalendar" ToRole="TecniCenter" />
+  </EntityType>
+  <EntityType Name="TecniCenterTimes">
+    <Key>
+      <PropertyRef Name="IdTimeTecnicentro" />
+    </Key>
+    <Property Name="IdTimeTecnicentro" Type="Guid" Nullable="false" />
+    <Property Name="IdTecnicentro" Type="Guid" />
+    <Property Name="Dia" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Festivo" Type="Int32" Nullable="false" />
+    <Property Name="HoraInicial" Type="Time" Precision="7" />
+    <Property Name="HoraFinal" Type="Time" Precision="7" />
+    <Property Name="HoraEntreServicios" Type="Time" Precision="7" />
+    <Property Name="Observaciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TecniCenter" Relationship="Self.FK_TecniCenterTimes_TecniCenter" FromRole="TecniCenterTimes" ToRole="TecniCenter" />
+  </EntityType>
+  <EntityType Name="Timezones">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="IdTecniCenter" Type="Guid" />
+    <Property Name="Code" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Timezone" Type="String" MaxLength="499" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="IdTecniCenter" Type="Guid" />
+    <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Details" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdCreatedUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CreatedDatetime" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="IdUpdatedUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UpdatedDatetime" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_AspNetUsers_UserRoles" FromRole="UserRoles" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="IdTecniCenter" Type="Guid" />
+    <Property Name="Fullname" Type="String" MaxLength="499" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="499" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdRole" Type="Guid" Nullable="false" />
+    <Property Name="CreatedUser" Type="Guid" Nullable="false" />
+    <Property Name="CreatedDatetime" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="IdUpdatedUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UpdatedDatetime" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tercero">
+    <Key>
+      <PropertyRef Name="IdTercero" />
+      <PropertyRef Name="PrimerNombre" />
+      <PropertyRef Name="SegundoNombre" />
+      <PropertyRef Name="IdTipoIdentificacion" />
+      <PropertyRef Name="NumeroIdentificacion" />
+      <PropertyRef Name="Correo" />
+      <PropertyRef Name="Celular" />
+      <PropertyRef Name="Telefono" />
+      <PropertyRef Name="IdCiudad" />
+      <PropertyRef Name="IdPais" />
+      <PropertyRef Name="IdRol" />
+      <PropertyRef Name="IdCreatedUser" />
+      <PropertyRef Name="CreatedDateTime" />
+      <PropertyRef Name="UpdateCreatedUser" />
+      <PropertyRef Name="UpdateDateTime" />
+    </Key>
+    <Property Name="IdTercero" Type="Guid" Nullable="false" />
+    <Property Name="PrimerNombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SegundoNombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IdTipoIdentificacion" Type="Guid" Nullable="false" />
+    <Property Name="NumeroIdentificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Correo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Celular" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IdCiudad" Type="Guid" Nullable="false" />
+    <Property Name="IdPais" Type="Guid" Nullable="false" />
+    <Property Name="IdRol" Type="Guid" Nullable="false" />
+    <Property Name="IdUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="IdCreatedUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="UpdateCreatedUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UpdateDateTime" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="Status" Type="Int32" />
+  </EntityType>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+    <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetRoles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AspNetUserClaims_AspNetUsers">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+    <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaims">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AspNetUserLogins_AspNetUsers">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+    <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogins">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AspNetUserRoles_AspNetUsers">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AspNetUsers_Countries">
+    <End Role="Countries" Type="Self.Countries" Multiplicity="0..1" />
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Countries">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUsers">
+        <PropertyRef Name="IdCountry" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AspNetUsers_CustomerGroups">
+    <End Role="CustomerGroups" Type="Self.CustomerGroups" Multiplicity="0..1" />
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CustomerGroups">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUsers">
+        <PropertyRef Name="IdCustomerGroup" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AspNetUsers_UserRoles">
+    <End Role="UserRoles" Type="Self.UserRoles" Multiplicity="0..1" />
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserRoles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUsers">
+        <PropertyRef Name="IdRol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cars_AspNetUsers">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+    <End Role="Cars" Type="Self.Cars" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Cars">
+        <PropertyRef Name="IdOwner" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TecniCenterCalendar_AspNetUsers">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+    <End Role="TecniCenterCalendar" Type="Self.TecniCenterCalendar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TecniCenterCalendar">
+        <PropertyRef Name="IdNetUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cars_CarMake">
+    <End Role="CarMake" Type="Self.CarMake" Multiplicity="1" />
+    <End Role="Cars" Type="Self.Cars" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CarMake">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Cars">
+        <PropertyRef Name="IdCarMake" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EncServiceJobs_Cars">
+    <End Role="Cars" Type="Self.Cars" Multiplicity="1" />
+    <End Role="EncServiceJobs" Type="Self.EncServiceJobs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cars">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EncServiceJobs">
+        <PropertyRef Name="IdCar" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TecniCenterCalendar_Cars">
+    <End Role="Cars" Type="Self.Cars" Multiplicity="1" />
+    <End Role="TecniCenterCalendar" Type="Self.TecniCenterCalendar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cars">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TecniCenterCalendar">
+        <PropertyRef Name="IdVehiculo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceJobDefects_Defects">
+    <End Role="Defects" Type="Self.Defects" Multiplicity="1" />
+    <End Role="ServiceJobDefects" Type="Self.ServiceJobDefects" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Defects">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ServiceJobDefects">
+        <PropertyRef Name="IdDefect" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DetalleImpuesto_DetPurchaseOrder">
+    <End Role="DetPurchaseOrder" Type="Self.DetPurchaseOrder" Multiplicity="1" />
+    <End Role="DetalleImpuesto" Type="Self.DetalleImpuesto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DetPurchaseOrder">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DetalleImpuesto">
+        <PropertyRef Name="IdDetPurchaseOrder" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DetalleImpuesto_Impuesto">
+    <End Role="Impuesto" Type="Self.Impuesto" Multiplicity="0..1" />
+    <End Role="DetalleImpuesto" Type="Self.DetalleImpuesto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Impuesto">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DetalleImpuesto">
+        <PropertyRef Name="IdImpuesto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DetPurchaseOrder_EncPurchaseOrder">
+    <End Role="EncPurchaseOrder" Type="Self.EncPurchaseOrder" Multiplicity="1" />
+    <End Role="DetPurchaseOrder" Type="Self.DetPurchaseOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EncPurchaseOrder">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DetPurchaseOrder">
+        <PropertyRef Name="IdEncPurchaseOrder" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DetPurchaseOrder_Materials">
+    <End Role="Materials" Type="Self.Materials" Multiplicity="1" />
+    <End Role="DetPurchaseOrder" Type="Self.DetPurchaseOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Materials">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DetPurchaseOrder">
+        <PropertyRef Name="IdMaterial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DetServiceJobs_EncServiceJobs">
+    <End Role="EncServiceJobs" Type="Self.EncServiceJobs" Multiplicity="1" />
+    <End Role="DetServiceJobs" Type="Self.DetServiceJobs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EncServiceJobs">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DetServiceJobs">
+        <PropertyRef Name="IdEncServiceJobs" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DetServiceJobs_Materials">
+    <End Role="Materials" Type="Self.Materials" Multiplicity="0..1" />
+    <End Role="DetServiceJobs" Type="Self.DetServiceJobs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Materials">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DetServiceJobs">
+        <PropertyRef Name="IdMaterial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DetServiceJobs_ServicePackage">
+    <End Role="ServicePackage" Type="Self.ServicePackage" Multiplicity="0..1" />
+    <End Role="DetServiceJobs" Type="Self.DetServiceJobs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServicePackage">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DetServiceJobs">
+        <PropertyRef Name="IdServicePackage" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EncPurchaseOrder_PurchaseOrderStatus">
+    <End Role="PurchaseOrderStatus" Type="Self.PurchaseOrderStatus" Multiplicity="1" />
+    <End Role="EncPurchaseOrder" Type="Self.EncPurchaseOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PurchaseOrderStatus">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EncPurchaseOrder">
+        <PropertyRef Name="Status" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EncPurchaseOrder_Suppliers">
+    <End Role="Suppliers" Type="Self.Suppliers" Multiplicity="1" />
+    <End Role="EncPurchaseOrder" Type="Self.EncPurchaseOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Suppliers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EncPurchaseOrder">
+        <PropertyRef Name="IdSupplier" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EncPurchaseOrder_TecniCenter">
+    <End Role="TecniCenter" Type="Self.TecniCenter" Multiplicity="0..1" />
+    <End Role="EncPurchaseOrder" Type="Self.EncPurchaseOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TecniCenter">
+        <PropertyRef Name="IdTecnicentro" />
+      </Principal>
+      <Dependent Role="EncPurchaseOrder">
+        <PropertyRef Name="IdTecniCenter" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EncServiceJobs_ServiceJobStatus">
+    <End Role="ServiceJobStatus" Type="Self.ServiceJobStatus" Multiplicity="1" />
+    <End Role="EncServiceJobs" Type="Self.EncServiceJobs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceJobStatus">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EncServiceJobs">
+        <PropertyRef Name="Status" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EncServiceJobs_TecniCenter">
+    <End Role="TecniCenter" Type="Self.TecniCenter" Multiplicity="0..1" />
+    <End Role="EncServiceJobs" Type="Self.EncServiceJobs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TecniCenter">
+        <PropertyRef Name="IdTecnicentro" />
+      </Principal>
+      <Dependent Role="EncServiceJobs">
+        <PropertyRef Name="IdTecniCenter" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceJobDefects_EncServiceJobs">
+    <End Role="EncServiceJobs" Type="Self.EncServiceJobs" Multiplicity="1" />
+    <End Role="ServiceJobDefects" Type="Self.ServiceJobDefects" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EncServiceJobs">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ServiceJobDefects">
+        <PropertyRef Name="IdServiceJob" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceJobDefectsMaterial_EncServiceJobs">
+    <End Role="EncServiceJobs" Type="Self.EncServiceJobs" Multiplicity="1" />
+    <End Role="ServiceJobDefectsMaterial" Type="Self.ServiceJobDefectsMaterial" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EncServiceJobs">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ServiceJobDefectsMaterial">
+        <PropertyRef Name="IdServiceJob" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceJobPackageMaterial_EncServiceJobs">
+    <End Role="EncServiceJobs" Type="Self.EncServiceJobs" Multiplicity="1" />
+    <End Role="ServiceJobPackageMaterial" Type="Self.ServiceJobPackageMaterial" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EncServiceJobs">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ServiceJobPackageMaterial">
+        <PropertyRef Name="IdServiceJob" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceJobPackages_EncServiceJobs">
+    <End Role="EncServiceJobs" Type="Self.EncServiceJobs" Multiplicity="1" />
+    <End Role="ServiceJobPackages" Type="Self.ServiceJobPackages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EncServiceJobs">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ServiceJobPackages">
+        <PropertyRef Name="IdServiceJob" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceJobPayments_EncServiceJobs">
+    <End Role="EncServiceJobs" Type="Self.EncServiceJobs" Multiplicity="1" />
+    <End Role="ServiceJobPayments" Type="Self.ServiceJobPayments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EncServiceJobs">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ServiceJobPayments">
+        <PropertyRef Name="IdServiceJob" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Inventory_Materials">
+    <End Role="Materials" Type="Self.Materials" Multiplicity="1" />
+    <End Role="Inventory" Type="Self.Inventory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Materials">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Inventory">
+        <PropertyRef Name="IdMaterials" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InventoryUpdatedLogs_Inventory">
+    <End Role="Inventory" Type="Self.Inventory" Multiplicity="1" />
+    <End Role="InventoryUpdatedLogs" Type="Self.InventoryUpdatedLogs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Inventory">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="InventoryUpdatedLogs">
+        <PropertyRef Name="IdInventory" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InventoryUpdatedLogs_Materials">
+    <End Role="Materials" Type="Self.Materials" Multiplicity="1" />
+    <End Role="InventoryUpdatedLogs" Type="Self.InventoryUpdatedLogs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Materials">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="InventoryUpdatedLogs">
+        <PropertyRef Name="IdMaterial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Materials_MaterialType">
+    <End Role="MaterialType" Type="Self.MaterialType" Multiplicity="1" />
+    <End Role="Materials" Type="Self.Materials" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MaterialType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Materials">
+        <PropertyRef Name="MaterialType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceJobDefectsMaterial_Materials">
+    <End Role="Materials" Type="Self.Materials" Multiplicity="1" />
+    <End Role="ServiceJobDefectsMaterial" Type="Self.ServiceJobDefectsMaterial" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Materials">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ServiceJobDefectsMaterial">
+        <PropertyRef Name="IdMaterial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceJobPackageMaterial_Materials">
+    <End Role="Materials" Type="Self.Materials" Multiplicity="1" />
+    <End Role="ServiceJobPackageMaterial" Type="Self.ServiceJobPackageMaterial" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Materials">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ServiceJobPackageMaterial">
+        <PropertyRef Name="IdMaterial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceJobPackageMaterial_ServiceJobPackages">
+    <End Role="ServiceJobPackages" Type="Self.ServiceJobPackages" Multiplicity="1" />
+    <End Role="ServiceJobPackageMaterial" Type="Self.ServiceJobPackageMaterial" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceJobPackages">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ServiceJobPackageMaterial">
+        <PropertyRef Name="IdServiceJobPackage" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceJobPackageMaterial_Tasks">
+    <End Role="Tasks" Type="Self.Tasks" Multiplicity="1" />
+    <End Role="ServiceJobPackageMaterial" Type="Self.ServiceJobPackageMaterial" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tasks">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ServiceJobPackageMaterial">
+        <PropertyRef Name="Idtask" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceJobPackages_ServicePackage">
+    <End Role="ServicePackage" Type="Self.ServicePackage" Multiplicity="1" />
+    <End Role="ServiceJobPackages" Type="Self.ServiceJobPackages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServicePackage">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ServiceJobPackages">
+        <PropertyRef Name="Idpackage" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServicePackage_TecniCenter">
+    <End Role="TecniCenter" Type="Self.TecniCenter" Multiplicity="0..1" />
+    <End Role="ServicePackage" Type="Self.ServicePackage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TecniCenter">
+        <PropertyRef Name="IdTecnicentro" />
+      </Principal>
+      <Dependent Role="ServicePackage">
+        <PropertyRef Name="IdTecniCenter" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServicePackageTasks_ServicePackage">
+    <End Role="ServicePackage" Type="Self.ServicePackage" Multiplicity="1" />
+    <End Role="ServicePackageTasks" Type="Self.ServicePackageTasks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServicePackage">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ServicePackageTasks">
+        <PropertyRef Name="IdServicePackage" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TecniCenterCalendar_ServicePackage">
+    <End Role="ServicePackage" Type="Self.ServicePackage" Multiplicity="1" />
+    <End Role="TecniCenterCalendar" Type="Self.TecniCenterCalendar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServicePackage">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TecniCenterCalendar">
+        <PropertyRef Name="IdServicePackage" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServicePackageTasks_Tasks">
+    <End Role="Tasks" Type="Self.Tasks" Multiplicity="1" />
+    <End Role="ServicePackageTasks" Type="Self.ServicePackageTasks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tasks">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ServicePackageTasks">
+        <PropertyRef Name="Task" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TecniCenterCalendar_TecniCenter">
+    <End Role="TecniCenter" Type="Self.TecniCenter" Multiplicity="1" />
+    <End Role="TecniCenterCalendar" Type="Self.TecniCenterCalendar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TecniCenter">
+        <PropertyRef Name="IdTecnicentro" />
+      </Principal>
+      <Dependent Role="TecniCenterCalendar">
+        <PropertyRef Name="IdTecniCenter" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TecniCenterTimes_TecniCenter">
+    <End Role="TecniCenter" Type="Self.TecniCenter" Multiplicity="0..1" />
+    <End Role="TecniCenterTimes" Type="Self.TecniCenterTimes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TecniCenter">
+        <PropertyRef Name="IdTecnicentro" />
+      </Principal>
+      <Dependent Role="TecniCenterTimes">
+        <PropertyRef Name="IdTecnicentro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DBGIVPlusEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" />
+    <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" />
+    <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" />
+    <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" />
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
+    <EntitySet Name="CarMake" EntityType="Self.CarMake" />
+    <EntitySet Name="Cars" EntityType="Self.Cars" />
+    <EntitySet Name="CiSessions" EntityType="Self.CiSessions" />
+    <EntitySet Name="Countries" EntityType="Self.Countries" />
+    <EntitySet Name="Currency" EntityType="Self.Currency" />
+    <EntitySet Name="CustomerGroups" EntityType="Self.CustomerGroups" />
+    <EntitySet Name="Customers" EntityType="Self.Customers" />
+    <EntitySet Name="Defects" EntityType="Self.Defects" />
+    <EntitySet Name="DetalleImpuesto" EntityType="Self.DetalleImpuesto" />
+    <EntitySet Name="DetPurchaseOrder" EntityType="Self.DetPurchaseOrder" />
+    <EntitySet Name="DetServiceJobs" EntityType="Self.DetServiceJobs" />
+    <EntitySet Name="EncPurchaseOrder" EntityType="Self.EncPurchaseOrder" />
+    <EntitySet Name="EncServiceJobs" EntityType="Self.EncServiceJobs" />
+    <EntitySet Name="Impuesto" EntityType="Self.Impuesto" />
+    <EntitySet Name="Inventory" EntityType="Self.Inventory" />
+    <EntitySet Name="InventoryUpdatedLogs" EntityType="Self.InventoryUpdatedLogs" />
+    <EntitySet Name="Materials" EntityType="Self.Materials" />
+    <EntitySet Name="MaterialType" EntityType="Self.MaterialType" />
+    <EntitySet Name="PaymentMethod" EntityType="Self.PaymentMethod" />
+    <EntitySet Name="PurchaseOrder" EntityType="Self.PurchaseOrder" />
+    <EntitySet Name="PurchaseOrderItems" EntityType="Self.PurchaseOrderItems" />
+    <EntitySet Name="PurchaseOrderStatus" EntityType="Self.PurchaseOrderStatus" />
+    <EntitySet Name="ServiceJobDefects" EntityType="Self.ServiceJobDefects" />
+    <EntitySet Name="ServiceJobDefectsMaterial" EntityType="Self.ServiceJobDefectsMaterial" />
+    <EntitySet Name="ServiceJobPackageMaterial" EntityType="Self.ServiceJobPackageMaterial" />
+    <EntitySet Name="ServiceJobPackages" EntityType="Self.ServiceJobPackages" />
+    <EntitySet Name="ServiceJobPayments" EntityType="Self.ServiceJobPayments" />
+    <EntitySet Name="ServiceJobs" EntityType="Self.ServiceJobs" />
+    <EntitySet Name="ServiceJobStatus" EntityType="Self.ServiceJobStatus" />
+    <EntitySet Name="ServicePackage" EntityType="Self.ServicePackage" />
+    <EntitySet Name="ServicePackageTasks" EntityType="Self.ServicePackageTasks" />
+    <EntitySet Name="SiteSetting" EntityType="Self.SiteSetting" />
+    <EntitySet Name="Suppliers" EntityType="Self.Suppliers" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Tasks" EntityType="Self.Tasks" />
+    <EntitySet Name="TecniCenter" EntityType="Self.TecniCenter" />
+    <EntitySet Name="TecniCenterCalendar" EntityType="Self.TecniCenterCalendar" />
+    <EntitySet Name="TecniCenterTimes" EntityType="Self.TecniCenterTimes" />
+    <EntitySet Name="Timezones" EntityType="Self.Timezones" />
+    <EntitySet Name="UserRoles" EntityType="Self.UserRoles" />
+    <EntitySet Name="Users" EntityType="Self.Users" />
+    <EntitySet Name="Tercero" EntityType="Self.Tercero" />
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AspNetUserClaims_AspNetUsers" Association="Self.FK_AspNetUserClaims_AspNetUsers">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AspNetUserLogins_AspNetUsers" Association="Self.FK_AspNetUserLogins_AspNetUsers">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AspNetUserRoles_AspNetUsers" Association="Self.FK_AspNetUserRoles_AspNetUsers">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AspNetUsers_Countries" Association="Self.FK_AspNetUsers_Countries">
+      <End Role="Countries" EntitySet="Countries" />
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AspNetUsers_CustomerGroups" Association="Self.FK_AspNetUsers_CustomerGroups">
+      <End Role="CustomerGroups" EntitySet="CustomerGroups" />
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AspNetUsers_UserRoles" Association="Self.FK_AspNetUsers_UserRoles">
+      <End Role="UserRoles" EntitySet="UserRoles" />
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cars_AspNetUsers" Association="Self.FK_Cars_AspNetUsers">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="Cars" EntitySet="Cars" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TecniCenterCalendar_AspNetUsers" Association="Self.FK_TecniCenterCalendar_AspNetUsers">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="TecniCenterCalendar" EntitySet="TecniCenterCalendar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cars_CarMake" Association="Self.FK_Cars_CarMake">
+      <End Role="CarMake" EntitySet="CarMake" />
+      <End Role="Cars" EntitySet="Cars" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EncServiceJobs_Cars" Association="Self.FK_EncServiceJobs_Cars">
+      <End Role="Cars" EntitySet="Cars" />
+      <End Role="EncServiceJobs" EntitySet="EncServiceJobs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TecniCenterCalendar_Cars" Association="Self.FK_TecniCenterCalendar_Cars">
+      <End Role="Cars" EntitySet="Cars" />
+      <End Role="TecniCenterCalendar" EntitySet="TecniCenterCalendar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceJobDefects_Defects" Association="Self.FK_ServiceJobDefects_Defects">
+      <End Role="Defects" EntitySet="Defects" />
+      <End Role="ServiceJobDefects" EntitySet="ServiceJobDefects" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DetalleImpuesto_DetPurchaseOrder" Association="Self.FK_DetalleImpuesto_DetPurchaseOrder">
+      <End Role="DetPurchaseOrder" EntitySet="DetPurchaseOrder" />
+      <End Role="DetalleImpuesto" EntitySet="DetalleImpuesto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DetalleImpuesto_Impuesto" Association="Self.FK_DetalleImpuesto_Impuesto">
+      <End Role="Impuesto" EntitySet="Impuesto" />
+      <End Role="DetalleImpuesto" EntitySet="DetalleImpuesto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DetPurchaseOrder_EncPurchaseOrder" Association="Self.FK_DetPurchaseOrder_EncPurchaseOrder">
+      <End Role="EncPurchaseOrder" EntitySet="EncPurchaseOrder" />
+      <End Role="DetPurchaseOrder" EntitySet="DetPurchaseOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DetPurchaseOrder_Materials" Association="Self.FK_DetPurchaseOrder_Materials">
+      <End Role="Materials" EntitySet="Materials" />
+      <End Role="DetPurchaseOrder" EntitySet="DetPurchaseOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DetServiceJobs_EncServiceJobs" Association="Self.FK_DetServiceJobs_EncServiceJobs">
+      <End Role="EncServiceJobs" EntitySet="EncServiceJobs" />
+      <End Role="DetServiceJobs" EntitySet="DetServiceJobs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DetServiceJobs_Materials" Association="Self.FK_DetServiceJobs_Materials">
+      <End Role="Materials" EntitySet="Materials" />
+      <End Role="DetServiceJobs" EntitySet="DetServiceJobs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DetServiceJobs_ServicePackage" Association="Self.FK_DetServiceJobs_ServicePackage">
+      <End Role="ServicePackage" EntitySet="ServicePackage" />
+      <End Role="DetServiceJobs" EntitySet="DetServiceJobs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EncPurchaseOrder_PurchaseOrderStatus" Association="Self.FK_EncPurchaseOrder_PurchaseOrderStatus">
+      <End Role="PurchaseOrderStatus" EntitySet="PurchaseOrderStatus" />
+      <End Role="EncPurchaseOrder" EntitySet="EncPurchaseOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EncPurchaseOrder_Suppliers" Association="Self.FK_EncPurchaseOrder_Suppliers">
+      <End Role="Suppliers" EntitySet="Suppliers" />
+      <End Role="EncPurchaseOrder" EntitySet="EncPurchaseOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EncPurchaseOrder_TecniCenter" Association="Self.FK_EncPurchaseOrder_TecniCenter">
+      <End Role="TecniCenter" EntitySet="TecniCenter" />
+      <End Role="EncPurchaseOrder" EntitySet="EncPurchaseOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EncServiceJobs_ServiceJobStatus" Association="Self.FK_EncServiceJobs_ServiceJobStatus">
+      <End Role="ServiceJobStatus" EntitySet="ServiceJobStatus" />
+      <End Role="EncServiceJobs" EntitySet="EncServiceJobs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EncServiceJobs_TecniCenter" Association="Self.FK_EncServiceJobs_TecniCenter">
+      <End Role="TecniCenter" EntitySet="TecniCenter" />
+      <End Role="EncServiceJobs" EntitySet="EncServiceJobs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceJobDefects_EncServiceJobs" Association="Self.FK_ServiceJobDefects_EncServiceJobs">
+      <End Role="EncServiceJobs" EntitySet="EncServiceJobs" />
+      <End Role="ServiceJobDefects" EntitySet="ServiceJobDefects" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceJobDefectsMaterial_EncServiceJobs" Association="Self.FK_ServiceJobDefectsMaterial_EncServiceJobs">
+      <End Role="EncServiceJobs" EntitySet="EncServiceJobs" />
+      <End Role="ServiceJobDefectsMaterial" EntitySet="ServiceJobDefectsMaterial" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceJobPackageMaterial_EncServiceJobs" Association="Self.FK_ServiceJobPackageMaterial_EncServiceJobs">
+      <End Role="EncServiceJobs" EntitySet="EncServiceJobs" />
+      <End Role="ServiceJobPackageMaterial" EntitySet="ServiceJobPackageMaterial" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceJobPackages_EncServiceJobs" Association="Self.FK_ServiceJobPackages_EncServiceJobs">
+      <End Role="EncServiceJobs" EntitySet="EncServiceJobs" />
+      <End Role="ServiceJobPackages" EntitySet="ServiceJobPackages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceJobPayments_EncServiceJobs" Association="Self.FK_ServiceJobPayments_EncServiceJobs">
+      <End Role="EncServiceJobs" EntitySet="EncServiceJobs" />
+      <End Role="ServiceJobPayments" EntitySet="ServiceJobPayments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Inventory_Materials" Association="Self.FK_Inventory_Materials">
+      <End Role="Materials" EntitySet="Materials" />
+      <End Role="Inventory" EntitySet="Inventory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InventoryUpdatedLogs_Inventory" Association="Self.FK_InventoryUpdatedLogs_Inventory">
+      <End Role="Inventory" EntitySet="Inventory" />
+      <End Role="InventoryUpdatedLogs" EntitySet="InventoryUpdatedLogs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InventoryUpdatedLogs_Materials" Association="Self.FK_InventoryUpdatedLogs_Materials">
+      <End Role="Materials" EntitySet="Materials" />
+      <End Role="InventoryUpdatedLogs" EntitySet="InventoryUpdatedLogs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Materials_MaterialType" Association="Self.FK_Materials_MaterialType">
+      <End Role="MaterialType" EntitySet="MaterialType" />
+      <End Role="Materials" EntitySet="Materials" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceJobDefectsMaterial_Materials" Association="Self.FK_ServiceJobDefectsMaterial_Materials">
+      <End Role="Materials" EntitySet="Materials" />
+      <End Role="ServiceJobDefectsMaterial" EntitySet="ServiceJobDefectsMaterial" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceJobPackageMaterial_Materials" Association="Self.FK_ServiceJobPackageMaterial_Materials">
+      <End Role="Materials" EntitySet="Materials" />
+      <End Role="ServiceJobPackageMaterial" EntitySet="ServiceJobPackageMaterial" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceJobPackageMaterial_ServiceJobPackages" Association="Self.FK_ServiceJobPackageMaterial_ServiceJobPackages">
+      <End Role="ServiceJobPackages" EntitySet="ServiceJobPackages" />
+      <End Role="ServiceJobPackageMaterial" EntitySet="ServiceJobPackageMaterial" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceJobPackageMaterial_Tasks" Association="Self.FK_ServiceJobPackageMaterial_Tasks">
+      <End Role="Tasks" EntitySet="Tasks" />
+      <End Role="ServiceJobPackageMaterial" EntitySet="ServiceJobPackageMaterial" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceJobPackages_ServicePackage" Association="Self.FK_ServiceJobPackages_ServicePackage">
+      <End Role="ServicePackage" EntitySet="ServicePackage" />
+      <End Role="ServiceJobPackages" EntitySet="ServiceJobPackages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServicePackage_TecniCenter" Association="Self.FK_ServicePackage_TecniCenter">
+      <End Role="TecniCenter" EntitySet="TecniCenter" />
+      <End Role="ServicePackage" EntitySet="ServicePackage" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServicePackageTasks_ServicePackage" Association="Self.FK_ServicePackageTasks_ServicePackage">
+      <End Role="ServicePackage" EntitySet="ServicePackage" />
+      <End Role="ServicePackageTasks" EntitySet="ServicePackageTasks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TecniCenterCalendar_ServicePackage" Association="Self.FK_TecniCenterCalendar_ServicePackage">
+      <End Role="ServicePackage" EntitySet="ServicePackage" />
+      <End Role="TecniCenterCalendar" EntitySet="TecniCenterCalendar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServicePackageTasks_Tasks" Association="Self.FK_ServicePackageTasks_Tasks">
+      <End Role="Tasks" EntitySet="Tasks" />
+      <End Role="ServicePackageTasks" EntitySet="ServicePackageTasks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TecniCenterCalendar_TecniCenter" Association="Self.FK_TecniCenterCalendar_TecniCenter">
+      <End Role="TecniCenter" EntitySet="TecniCenter" />
+      <End Role="TecniCenterCalendar" EntitySet="TecniCenterCalendar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TecniCenterTimes_TecniCenter" Association="Self.FK_TecniCenterTimes_TecniCenter">
+      <End Role="TecniCenter" EntitySet="TecniCenter" />
+      <End Role="TecniCenterTimes" EntitySet="TecniCenterTimes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Impuesto_TecniCenter" Association="DBGIVPlusModel.FK_Impuesto_TecniCenter">
+      <End Role="TecniCenter" EntitySet="TecniCenter" />
+      <End Role="Impuesto" EntitySet="Impuesto" />
+    </AssociationSet>
+  </EntityContainer>
+  <Association Name="FK_Impuesto_TecniCenter">
+    <End Type="DBGIVPlusModel.TecniCenter" Role="TecniCenter" Multiplicity="1" />
+    <End Type="DBGIVPlusModel.Impuesto" Role="Impuesto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TecniCenter">
+        <PropertyRef Name="IdTecnicentro" />
+      </Principal>
+      <Dependent Role="Impuesto">
+        <PropertyRef Name="IdTecniCentro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
