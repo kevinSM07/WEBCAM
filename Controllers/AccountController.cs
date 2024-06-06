@@ -194,48 +194,29 @@ namespace WEBCAM.Controllers
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
-        {
-            //if (Session["Creadotecnicentro"] != null)
-            //{
-            //    model.Email = Session["EmailTecnicentro"].ToString();
-            //}            
+        {           
             if (ModelState.IsValid)
             {
-                ////string nombre = ViewBag.Nombres;
-                ////string Apellidos = ViewBag.Apellidos;
-                ////string Identificacion = ViewBag.Identificacion;
-                ////string Celular = ViewBag.Celular;
-                ////string Direccion = ViewBag.Direccion;
-                ////string CodigoPostal = ViewBag.CodigoPostal;
-                ////string Ciudad = ViewBag.Ciudad;
-                //model.Email = ViewBag.EmailTecnicentro;
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    //esto hace que apenas se registre inmediatamente 
-                    //await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-
-                    // Para obtener más información sobre cómo habilitar la confirmación de cuentas y el restablecimiento de contraseña, visite https://go.microsoft.com/fwlink/?LinkID=320771
-                    // Enviar correo electrónico con este vínculo
                     string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     await UserManager.SendEmailAsync(user.Id, "Confirmar cuenta", "Para confirmar la cuenta, haga clic <a href=\"" + callbackUrl + "\">aquí</a>");
                     AspNetUsers VerificarUsuario = new AspNetUsers();
                     VerificarUsuario = db.AspNetUsers.FirstOrDefault(m => m.Id == user.Id);
-                    VerificarUsuario.Status = "0";
+                    VerificarUsuario.Status = "1";
+                    VerificarUsuario.EmailConfirmed = true;
                     db.SaveChanges();
                     return RedirectToAction("login", "Account");
 
                 }
                 AddErrors(result);
             }
-
-            // Si llegamos a este punto, es que se ha producido un error y volvemos a mostrar el formulario
             return View(model);
         }
 
-        //
         // GET: /Account/ConfirmEmail
         [AllowAnonymous]
         public async Task<ActionResult> ConfirmEmail(string userId, string code)
@@ -248,7 +229,6 @@ namespace WEBCAM.Controllers
             return View(result.Succeeded ? "ConfirmEmail" : "Error");
         }
 
-        //
         // GET: /Account/ForgotPassword
         [AllowAnonymous]
         public ActionResult ForgotPassword()
@@ -256,7 +236,6 @@ namespace WEBCAM.Controllers
             return View();
         }
 
-        //
         // POST: /Account/ForgotPassword
         [HttpPost]
         [AllowAnonymous]
@@ -284,7 +263,6 @@ namespace WEBCAM.Controllers
             return View(model);
         }
 
-        //
         // GET: /Account/ForgotPasswordConfirmation
         [AllowAnonymous]
         public ActionResult ForgotPasswordConfirmation()
@@ -292,7 +270,6 @@ namespace WEBCAM.Controllers
             return View();
         }
 
-        //
         // GET: /Account/ResetPassword
         [AllowAnonymous]
         public ActionResult ResetPassword(string code)
@@ -300,7 +277,6 @@ namespace WEBCAM.Controllers
             return code == null ? View("Error") : View();
         }
 
-        //
         // POST: /Account/ResetPassword
         [HttpPost]
         [AllowAnonymous]
@@ -326,7 +302,6 @@ namespace WEBCAM.Controllers
             return View();
         }
 
-        //
         // GET: /Account/ResetPasswordConfirmation
         [AllowAnonymous]
         public ActionResult ResetPasswordConfirmation()
@@ -334,7 +309,6 @@ namespace WEBCAM.Controllers
             return View();
         }
 
-        //
         // POST: /Account/ExternalLogin
         [HttpPost]
         [AllowAnonymous]
@@ -345,7 +319,6 @@ namespace WEBCAM.Controllers
             return new ChallengeResult(provider, Url.Action("ExternalLoginCallback", "Account", new { ReturnUrl = returnUrl }));
         }
 
-        //
         // GET: /Account/SendCode
         [AllowAnonymous]
         public async Task<ActionResult> SendCode(string returnUrl, bool rememberMe)
@@ -360,7 +333,6 @@ namespace WEBCAM.Controllers
             return View(new SendCodeViewModel { Providers = factorOptions, ReturnUrl = returnUrl, RememberMe = rememberMe });
         }
 
-        //
         // POST: /Account/SendCode
         [HttpPost]
         [AllowAnonymous]
@@ -380,7 +352,6 @@ namespace WEBCAM.Controllers
             return RedirectToAction("VerifyCode", new { Provider = model.SelectedProvider, ReturnUrl = model.ReturnUrl, RememberMe = model.RememberMe });
         }
 
-        //
         // GET: /Account/ExternalLoginCallback
         [AllowAnonymous]
         public async Task<ActionResult> ExternalLoginCallback(string returnUrl)

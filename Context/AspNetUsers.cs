@@ -19,7 +19,8 @@ namespace WEBCAM.Context
         {
             this.AspNetUserClaims = new HashSet<AspNetUserClaims>();
             this.AspNetUserLogins = new HashSet<AspNetUserLogins>();
-            this.TblDocumentosUsuarios = new HashSet<TblDocumentosUsuarios>();
+            this.TblFotosUsuario = new HashSet<TblFotosUsuario>();
+            this.TblVideosUsuario = new HashSet<TblVideosUsuario>();
             this.AspNetRoles = new HashSet<AspNetRoles>();
         }
     
@@ -60,7 +61,9 @@ namespace WEBCAM.Context
         public virtual TblGeneros TblGeneros { get; set; }
         public virtual TblTiposDocumentos TblTiposDocumentos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TblDocumentosUsuarios> TblDocumentosUsuarios { get; set; }
+        public virtual ICollection<TblFotosUsuario> TblFotosUsuario { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TblVideosUsuario> TblVideosUsuario { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AspNetRoles> AspNetRoles { get; set; }
     }

@@ -13,6 +13,7 @@ using WEBCAM.Models;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNet.Identity.Owin;
+using DocumentFormat.OpenXml.Drawing.Charts;
 
 namespace WEBCAM.Controllers
 {
@@ -54,41 +55,43 @@ namespace WEBCAM.Controllers
             Session["Id"] = Usuarioactual.Id;
             Session["PromedioCamposUsuario"] = PromedioCamposUsuario(Usuarioactual);
 
-            List<TblDocumentosUsuarios> DocumentoUsuario = new List<TblDocumentosUsuarios>();
-            DocumentoUsuario = db.TblDocumentosUsuarios.Where(m=>m.Estado != null).ToList();
-            foreach (var item in DocumentoUsuario)
+            //List<TblDocumentosUsuarios> DocumentoUsuario = new List<TblDocumentosUsuarios>();
+            //DocumentoUsuario = db.TblDocumentosUsuarios.Where(m=>m.Estado != null).ToList();
+            //foreach (var item in DocumentoUsuario)
+            //{
+            //    TblDocumentosUsuarios itemdocumento = new TblDocumentosUsuarios();
+            //    itemdocumento = db.TblDocumentosUsuarios.FirstOrDefault(m => m.Id == item.Id);
+            //    DateTime fehcaActual = DateTime.Now.Date;
+            //    DateTime fecha = (DateTime)itemdocumento.FechaFinal;
+            //    TimeSpan diferenciafecha = fecha - fehcaActual;
+            //    int days = (int)diferenciafecha.TotalDays;
+
+            //    itemdocumento.Estado = 0; 
+            //    db.SaveChanges();
+            //}
+            //ViewBag.DocumentosUsuarios = DocumentoUsuario;
+
+            List<TblFotosUsuario> FotosUsuario = new List<TblFotosUsuario>();
+            FotosUsuario = db.TblFotosUsuario.Where(m => m.Estado != null).ToList();
+
+            foreach (var item in db.AspNetUsers)
             {
-                TblDocumentosUsuarios itemdocumento = new TblDocumentosUsuarios();
-                itemdocumento = db.TblDocumentosUsuarios.FirstOrDefault(m => m.Id == item.Id);
-                DateTime fehcaActual = DateTime.Now.Date;
-                DateTime fecha = (DateTime)itemdocumento.FechaFinal;
-                TimeSpan diferenciafecha = fecha - fehcaActual;
-                int days = (int)diferenciafecha.TotalDays;
-                if (days <= 30)
+                foreach (var itemRuta in item.TblFotosUsuario.Where(m => m.IdUsuario == item.Id))
                 {
-                    if (days <= 10)
+                    if (string.IsNullOrEmpty(itemRuta.Ruta))
                     {
-                        if (days <= 0)
-                        {
-                            itemdocumento.Estado = 3;
-                        }
-                        else
-                        {
-                            itemdocumento.Estado = 2;
-                        }
+                        itemRuta.Ruta = $"<img src=\"~/Content/FotosUsuarios/{itemRuta.Ruta}\" height=\"30\" width=\"30\" />";
                     }
                     else
                     {
-                        itemdocumento.Estado = 1;
+                        itemRuta.Ruta = $"<img src=\"~/Content/FotosUsuarios/{itemRuta.Ruta}\" height=\"30\" width=\"30\" />";
+                        //itemRuta.Ruta = "Content/FotosUsuarios/" + itemRuta.Ruta;
                     }
                 }
-                else
-                {
-                    itemdocumento.Estado = 0;
-                }
-                db.SaveChanges();
             }
-            ViewBag.DocumentosUsuarios = DocumentoUsuario;
+
+
+            ViewBag.FotosUsuario = FotosUsuario;
 
             foreach (var itemRol in listadoRol)
             {
@@ -99,17 +102,6 @@ namespace WEBCAM.Controllers
                 Session["status"] = ListadoOperacionesRol; //HttpContext.User.Identity.Name;
 
                 AspNetUsers usuario = db.AspNetUsers.FirstOrDefault(m => m.Id == user.Id);
-                if (usuario.AspNetRoles.Count(m => m.Id == "7f452e0e-e916-4142-9e6f-1cd048ed3a4a") > 0)
-                {
-                    Session["RolUsuario"] = "7f452e0e-e916-4142-9e6f-1cd048ed3a4a";
-                }
-                else
-                {
-                    if (usuario.AspNetRoles.Count(m => m.Id == "7c88f22f-fea4-4091-97b4-aa1092c74476") > 0)
-                    {
-                        Session["RolUsuario"] = "7c88f22f-fea4-4091-97b4-aa1092c74476";
-                    }
-                }
                 foreach (var item in usuario.AspNetRoles)
                 {
                     Session["RolUsuario"] = item.Name;

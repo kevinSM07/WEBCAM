@@ -21,145 +21,35 @@
         </div><!-- /.container-fluid -->
     </div>
 
-    @if ((int)Session["PromedioCamposUsuario"] == 100)
-    {
-        <!-- /.content-header -->
-        if (Session["RolUsuario"] == null)
-        {
-            <h1> Aun no se le ha asignado un rol, Favor comunicarse con el administrador</h1>
-        }
-        else
-        {
-            if (Session["RolUsuario"].ToString() == "Administrador")
-            {
-                <!-- Small boxes (Stat box) -->
-                <div class="row">
-                    <div class="col-lg-3 col-6">
-                        <!-- small box -->
-                        <div class="small-box bg-info">
-                            <div class="inner">
-                                <h3>@Session["UsuariosPendientes"]</h3>
+    <!-- Small boxes (Stat box) -->
+    <div class="row">
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-info">
+                <div class="inner">
+                    <h3>@Session["UsuariosPendientes"]</h3>
 
-                                <p>Usuarios Pendientes por asignación</p>
-                            </div>
-                            <div class="icon">
-                                <i class="ion ion-bag"></i>
-                            </div>
-                            <a href="@Url.Action("Index", "AspNetUsers",new {IdUsuarioPendientes = Session["IdUsuario"]}, null)" class="small-box-footer">Click para mas información <i class="fas fa-arrow-circle-right"></i></a>
-                        </div>
-                    </div>
-
+                    <p>Usuarios Pendientes por asignación</p>
                 </div>
-
-                <br />
-
-                <div id="content-wrapper" class="d-flex flex-column">
-                    <div id="content">
-                        <div class="card shadow mb-4">
-                            <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-black">Estado de Documentos de Usuarios</h6>
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table id="example1" class="table table-bordered table-striped table-dark table-responsive-lg ">
-                                        <thead>
-                                            <tr>
-                                                <th class="text-warning">Acciones</th>
-                                                <th class="text-warning">Usuario</th>
-                                                <th class="text-warning">Documento</th>
-                                                <th class="text-warning">Estado</th>
-                                                <th class="text-warning">Fecha</th>
-                                            </tr>
-                                        </thead>
-                                        <tfoot>
-                                            <tr>
-                                                <th class="text-warning">Acciones</th>
-                                                <th class="text-warning">Usuario</th>
-                                                <th class="text-warning">Documento</th>
-                                                <th class="text-warning">Estado</th>
-                                                <th class="text-warning">Fecha</th>
-                                            </tr>
-                                        </tfoot>
-                                        <tbody>
-                                            @{
-                                                foreach (var item in ViewBag.DocumentosUsuarios)
-                                                {
-
-                                                    if (@item.Estado == 1)
-                                                    {
-                                                        <tr>
-                                                            <td>
-                                                                <a href="@Url.Action("Edit", "DocumentosUsuarios", new { id = item.Id })" class="btn btn-sm btn-dark" title="Editar">
-                                                                    <img src="~/Content/img/ico/streamlinehq-interface-edit-pencil-interface-essential-50.png" height="20" width="20" />
-                                                                </a>
-                                                            </td>
-                                                            <td>@item.AspNetUsers.Nombre</td>
-                                                            <td>@item.Nombre</td>
-                                                            <td><span class="badge badge-secondary">Pronto a Vencer</span></td>
-                                                            <td>@item.FechaFinal</td>
-                                                        </tr>
-                                                    }
-                                                    else
-                                                    {
-                                                        if (@item.Estado == 2)
-                                                        {
-                                                            <tr>
-                                                                <td>
-                                                                    <a href="@Url.Action("Edit", "DocumentosUsuarios", new { id = item.Id })" class="btn btn-sm btn-dark" title="Editar">
-                                                                        <img src="~/Content/img/ico/streamlinehq-interface-edit-pencil-interface-essential-50.png" height="20" width="20" />
-                                                                    </a>
-                                                                </td>
-                                                                <td>@item.AspNetUsers.Nombre</td>
-                                                                <td>@item.Nombre</td>
-                                                                <td><span class="badge badge-warning">Limite Vencimiento</span></td>
-                                                                <td>@item.FechaFinal</td>
-                                                            </tr>
-                                                        }
-                                                        else
-                                                        {
-                                                            if (@item.Estado == 3)
-                                                            {
-                                                                <tr>
-                                                                    <td>
-                                                                        <a href="@Url.Action("Edit", "DocumentosUsuarios", new { id = item.Id })" class="btn btn-sm btn-dark" title="Editar">
-                                                                            <img src="~/Content/img/ico/streamlinehq-interface-edit-pencil-interface-essential-50.png" height="20" width="20" />
-                                                                        </a>
-                                                                    </td>
-                                                                    <td>@item.AspNetUsers.Nombre</td>
-                                                                    <td>@item.Nombre</td>
-                                                                    <td><span class="badge badge-danger">Vencido</span></td>
-                                                                    <td>@item.FechaFinal</td>
-                                                                </tr>
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>              
-            }
-        }
-    }
-    else
-    {
-        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <div class="callout callout-danger">
-                <a href="@Url.Action("Edit", "AspNetUsers", new {Id=Session["Id"]})">
-                    <center>
-                        <div>
-                            <img src="~/Content/img/formulario.png" heigth="130px" width="130" />
-                            <h3>Debe completar primero los datos personales del usuario</h3>
-                        </div>
-                    </center>
-                </a>
+                <div class="icon">
+                    <i class="ion ion-bag"></i>
+                </div>
+                <a href="@Url.Action("Index", "AspNetUsers", new { IdUsuarioPendientes = Session["IdUsuario"] }, null)" class="small-box-footer">Click para mas información <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
+
+    </div>
+
+    <br />
+    @{
+        foreach (var item in ViewBag.FotosUsuario)
+        {          
+            <a href="@Url.Action("Index", "DocumentosUsuarios", new { Usuarioid = item.Id })" class="btn btn-sm btn-success">
+                <img src="~/Content/FotosUsuarios/0000000/prueba 1.png" height="200" width="200" />
+            </a>
+        }
     }
+
 </div>
 
 <section class="content">

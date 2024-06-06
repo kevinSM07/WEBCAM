@@ -13,8 +13,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>EcTranSoft</RootNamespace>
-    <AssemblyName>EcTranSoft</AssemblyName>
+    <RootNamespace>WEBCAM</RootNamespace>
+    <AssemblyName>WEBCAM</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
@@ -46,6 +46,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AForge, Version=2.2.5.0, Culture=neutral, PublicKeyToken=c1db6ff4eaa06aeb, processorArchitecture=MSIL">
+      <HintPath>packages\AForge.2.2.5\lib\AForge.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Video, Version=2.2.5.0, Culture=neutral, PublicKeyToken=cbfb6e07d173c401, processorArchitecture=MSIL">
+      <HintPath>packages\AForge.Video.2.2.5\lib\AForge.Video.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Video.DirectShow, Version=2.2.5.0, Culture=neutral, PublicKeyToken=61ea4348d43881b7, processorArchitecture=MSIL">
+      <HintPath>packages\AForge.Video.DirectShow.2.2.5\lib\AForge.Video.DirectShow.dll</HintPath>
+    </Reference>
     <Reference Include="Barcode, Version=2.0.0.20, Culture=neutral, PublicKeyToken=6dc438ab78a525b3, processorArchitecture=MSIL" />
     <Reference Include="DocumentFormat.OpenXml, Version=3.0.2.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
       <HintPath>packages\DocumentFormat.OpenXml.3.0.2\lib\net46\DocumentFormat.OpenXml.dll</HintPath>
@@ -315,6 +324,12 @@
     <Compile Include="Context\RolOperacion.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Context\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\sp_helpdiagrams_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Context\sysdiagrams.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -324,7 +339,7 @@
     <Compile Include="Context\TblDepartamentos.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Context\TblDocumentosUsuarios.cs">
+    <Compile Include="Context\TblFotosUsuario.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Context\TblGeneros.cs">
@@ -336,6 +351,9 @@
     <Compile Include="Context\TblTiposDocumentos.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Context\TblVideosUsuario.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AspNetRolesController.cs" />
     <Compile Include="Controllers\AspNetUserClaimsController.cs" />
@@ -343,7 +361,7 @@
     <Compile Include="Controllers\AspNetUsersController.cs" />
     <Compile Include="Controllers\CiudadesController.cs" />
     <Compile Include="Controllers\DepartamentosController.cs" />
-    <Compile Include="Controllers\DocumentosUsuariosController.cs" />
+    <Compile Include="Controllers\FotosUsuariosController.cs" />
     <Compile Include="Controllers\GenerosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -4235,11 +4253,6 @@
     <Content Include="Views\Ciudades\Details.cshtml" />
     <Content Include="Views\Ciudades\Edit.cshtml" />
     <Content Include="Views\Ciudades\Index.cshtml" />
-    <Content Include="Views\Campos\Create.cshtml" />
-    <Content Include="Views\Campos\Delete.cshtml" />
-    <Content Include="Views\Campos\Details.cshtml" />
-    <Content Include="Views\Campos\Edit.cshtml" />
-    <Content Include="Views\Campos\Index.cshtml" />
     <Content Include="Views\Formularios\Create.cshtml" />
     <Content Include="Views\Formularios\Delete.cshtml" />
     <Content Include="Views\Formularios\Details.cshtml" />
@@ -4266,14 +4279,15 @@
     <Content Include="Views\RolOperacions\Details.cshtml" />
     <Content Include="Views\RolOperacions\Edit.cshtml" />
     <Content Include="Views\RolOperacions\Index.cshtml" />
-    <Content Include="Views\DocumentosUsuarios\Index.cshtml" />
-    <Content Include="Views\DocumentosUsuarios\Create.cshtml" />
-    <Content Include="Views\DocumentosUsuarios\Edit.cshtml" />
+    <Content Include="Views\FotosUsuarios\Create.cshtml" />
+    <Content Include="Views\FotosUsuarios\Edit.cshtml" />
+    <Content Include="Views\FotosUsuarios\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Assets\" />
     <Folder Include="Content\Codigos\" />
+    <Folder Include="Content\FotosUsuarios\" />
     <Folder Include="Views\HomeViewModels\" />
   </ItemGroup>
   <ItemGroup>

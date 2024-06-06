@@ -11,12 +11,16 @@ using WEBCAM.Context;
 using WEBCAM.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using AForge.Video.DirectShow;
 
 namespace WEBCAM.Controllers
 {
     [Authorize]
     public class AspNetUsersController : Controller
     {
+        //private bool HayDispositivos;
+        //private FilterInfoCollection MisDispositivos;
+        //private VideoCaptureDevice MiWebcam;
         private WEBCAMEntities db = new WEBCAMEntities();
         private ApplicationDbContext defaultdb = new ApplicationDbContext();
 
@@ -42,17 +46,17 @@ namespace WEBCAM.Controllers
 
                 foreach (var item in listadoPendiente)
                 {
-                    foreach (var itemRuta in item.TblDocumentosUsuarios.Where(m => m.Idusuario == item.Id))
-                    {
-                        if (string.IsNullOrEmpty(itemRuta.Ruta))
-                        {
-                            itemRuta.Ruta = "Content/DocumentosUsuarios/" + item.NroIdentificacion + "/" + itemRuta.Nombre + ".pdf";
-                        }
-                        else
-                        {
-                            itemRuta.Ruta = "Content/DocumentosUsuarios/" + itemRuta.Ruta;
-                        }
-                    }
+                    //foreach (var itemRuta in item.TblDocumentosUsuarios.Where(m => m.Idusuario == item.Id))
+                    //{
+                    //    if (string.IsNullOrEmpty(itemRuta.Ruta))
+                    //    {
+                    //        itemRuta.Ruta = "Content/DocumentosUsuarios/" + item.NroIdentificacion + "/" + itemRuta.Nombre + ".pdf";
+                    //    }
+                    //    else
+                    //    {
+                    //        itemRuta.Ruta = "Content/DocumentosUsuarios/" + itemRuta.Ruta;
+                    //    }
+                    //}
                 }
                 ViewBag.Rol = new SelectList(db.AspNetRoles, "Name", "Name");
 
@@ -66,17 +70,17 @@ namespace WEBCAM.Controllers
 
                 foreach (var item in db.AspNetUsers)
                 {
-                    foreach (var itemRuta in item.TblDocumentosUsuarios.Where(m => m.Idusuario == item.Id))
-                    {
-                        if (string.IsNullOrEmpty(itemRuta.Ruta))
-                        {
-                            itemRuta.Ruta = "Content/DocumentosUsuarios/" + item.NroIdentificacion + "/" + itemRuta.Nombre + ".pdf";
-                        }
-                        else
-                        {
-                            itemRuta.Ruta = "Content/DocumentosUsuarios/" + itemRuta.Ruta;
-                        }
-                    }
+                    //foreach (var itemRuta in item.TblDocumentosUsuarios.Where(m => m.Idusuario == item.Id))
+                    //{
+                    //    if (string.IsNullOrEmpty(itemRuta.Ruta))
+                    //    {
+                    //        itemRuta.Ruta = "Content/DocumentosUsuarios/" + item.NroIdentificacion + "/" + itemRuta.Nombre + ".pdf";
+                    //    }
+                    //    else
+                    //    {
+                    //        itemRuta.Ruta = "Content/DocumentosUsuarios/" + itemRuta.Ruta;
+                    //    }
+                    //}
                 }
 
                 if (!string.IsNullOrEmpty(BtnAsignar))
@@ -103,6 +107,37 @@ namespace WEBCAM.Controllers
             //return RedirectToAction("Index", new { Vehiculoid = Vehiculo.Id });
         }
 
+        //public void CargaDispositivos()
+        //{
+        //    MisDispositivos = new FilterInfoCollection(FilterCategory.VideoInputDevice);
+
+        //    if (MisDispositivos.Count > 0)
+        //    {
+        //        HayDispositivos = true;
+        //        for (int i = 0; i < MisDispositivos.Count; i++)
+        //        {
+                    
+        //        }
+        //    }
+        //    else
+        //    {
+        //        HayDispositivos = false;
+        //    }
+
+        //}
+
+        public void SubirArchivo2(HttpPostedFileBase file)
+        {
+            SubirArchivoModelo modelo = new SubirArchivoModelo();
+            if (file != null)
+            {
+                string ruta = Server.MapPath("~/Content/Plantillas/");
+                string pathArchivo = Path.Combine(ruta + Session["Id"] + "Usuarios.xls");
+                ruta += file.FileName;
+                modelo.SubirArchivo(pathArchivo, file);
+            }
+            //return RedirectToAction("Index", new { Vehiculoid = Vehiculo.Id });
+        }
         public ActionResult Confirmar(string IdUsuario)
         {
             AspNetUsers UsuarioActual = new AspNetUsers();

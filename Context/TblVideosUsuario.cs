@@ -12,16 +12,14 @@ namespace WEBCAM.Context
     using System;
     using System.Collections.Generic;
     
-    public partial class TblDocumentosUsuarios
+    public partial class TblVideosUsuario
     {
         public System.Guid Id { get; set; }
+        public string IdUsuario { get; set; }
         public string Nombre { get; set; }
-        public string Observaciones { get; set; }
-        public Nullable<int> Estado { get; set; }
-        public string Idusuario { get; set; }
-        public Nullable<System.DateTime> FechaInicio { get; set; }
-        public Nullable<System.DateTime> FechaFinal { get; set; }
         public string Ruta { get; set; }
+        public int Estado { get; set; }
+    
         public virtual AspNetUsers AspNetUsers { get; set; }
     }
 }

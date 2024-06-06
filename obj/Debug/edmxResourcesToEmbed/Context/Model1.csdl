@@ -77,7 +77,8 @@
     <NavigationProperty Name="TblCiudades" Relationship="Self.FK_AspNetUsers_TblCiudades" FromRole="AspNetUsers" ToRole="TblCiudades" />
     <NavigationProperty Name="TblGeneros" Relationship="Self.FK_AspNetUsers_TblGeneros" FromRole="AspNetUsers" ToRole="TblGeneros" />
     <NavigationProperty Name="TblTiposDocumentos" Relationship="Self.FK_AspNetUsers_TblTiposDocumentos" FromRole="AspNetUsers" ToRole="TblTiposDocumentos" />
-    <NavigationProperty Name="TblDocumentosUsuarios" Relationship="Self.FK_TblDocumentosUsuarios_AspNetUsers" FromRole="AspNetUsers" ToRole="TblDocumentosUsuarios" />
+    <NavigationProperty Name="TblFotosUsuario" Relationship="Self.FK_TblFotosUsuario_AspNetUsers" FromRole="AspNetUsers" ToRole="TblFotosUsuario" />
+    <NavigationProperty Name="TblVideosUsuario" Relationship="Self.FK_TblVideosUsuario_AspNetUsers" FromRole="AspNetUsers" ToRole="TblVideosUsuario" />
     <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
   </EntityType>
   <EntityType Name="Modulo">
@@ -139,18 +140,16 @@
     <NavigationProperty Name="TblCiudades" Relationship="Self.FK_TblCiudades" FromRole="TblDepartamentos" ToRole="TblCiudades" />
     <NavigationProperty Name="TblPaises" Relationship="Self.FK_TblDepartamentos" FromRole="TblDepartamentos" ToRole="TblPaises" />
   </EntityType>
-  <EntityType Name="TblDocumentosUsuarios">
+  <EntityType Name="TblFotosUsuario">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Guid" Nullable="false" />
-    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Observaciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="Estado" Type="Int32" />
-    <Property Name="Idusuario" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="FechaInicio" Type="DateTime" Precision="3" />
-    <Property Name="FechaFinal" Type="DateTime" Precision="3" />
-    <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_TblDocumentosUsuarios_AspNetUsers" FromRole="TblDocumentosUsuarios" ToRole="AspNetUsers" />
+    <Property Name="Nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IdUsuario" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Estado" Type="Int32" Nullable="false" />
+    <Property Name="Ruta" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_TblFotosUsuario_AspNetUsers" FromRole="TblFotosUsuario" ToRole="AspNetUsers" />
   </EntityType>
   <EntityType Name="TblGeneros">
     <Key>
@@ -176,6 +175,17 @@
     <Property Name="Id" Type="Guid" Nullable="false" />
     <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_AspNetUsers_TblTiposDocumentos" FromRole="TblTiposDocumentos" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="TblVideosUsuario">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="IdUsuario" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Ruta" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Estado" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_TblVideosUsuario_AspNetUsers" FromRole="TblVideosUsuario" ToRole="AspNetUsers" />
   </EntityType>
   <Association Name="FK_RolOperacion_AspNetRoles">
     <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1" />
@@ -249,15 +259,27 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_TblDocumentosUsuarios_AspNetUsers">
-    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
-    <End Role="TblDocumentosUsuarios" Type="Self.TblDocumentosUsuarios" Multiplicity="*" />
+  <Association Name="FK_TblFotosUsuario_AspNetUsers">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+    <End Role="TblFotosUsuario" Type="Self.TblFotosUsuario" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="AspNetUsers">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="TblDocumentosUsuarios">
-        <PropertyRef Name="Idusuario" />
+      <Dependent Role="TblFotosUsuario">
+        <PropertyRef Name="IdUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblVideosUsuario_AspNetUsers">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+    <End Role="TblVideosUsuario" Type="Self.TblVideosUsuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TblVideosUsuario">
+        <PropertyRef Name="IdUsuario" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -329,10 +351,11 @@
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
     <EntitySet Name="TblCiudades" EntityType="Self.TblCiudades" />
     <EntitySet Name="TblDepartamentos" EntityType="Self.TblDepartamentos" />
-    <EntitySet Name="TblDocumentosUsuarios" EntityType="Self.TblDocumentosUsuarios" />
+    <EntitySet Name="TblFotosUsuario" EntityType="Self.TblFotosUsuario" />
     <EntitySet Name="TblGeneros" EntityType="Self.TblGeneros" />
     <EntitySet Name="TblPaises" EntityType="Self.TblPaises" />
     <EntitySet Name="TblTiposDocumentos" EntityType="Self.TblTiposDocumentos" />
+    <EntitySet Name="TblVideosUsuario" EntityType="Self.TblVideosUsuario" />
     <AssociationSet Name="FK_RolOperacion_AspNetRoles" Association="Self.FK_RolOperacion_AspNetRoles">
       <End Role="AspNetRoles" EntitySet="AspNetRoles" />
       <End Role="RolOperacion" EntitySet="RolOperacion" />
@@ -357,9 +380,13 @@
       <End Role="TblTiposDocumentos" EntitySet="TblTiposDocumentos" />
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />
     </AssociationSet>
-    <AssociationSet Name="FK_TblDocumentosUsuarios_AspNetUsers" Association="Self.FK_TblDocumentosUsuarios_AspNetUsers">
+    <AssociationSet Name="FK_TblFotosUsuario_AspNetUsers" Association="Self.FK_TblFotosUsuario_AspNetUsers">
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-      <End Role="TblDocumentosUsuarios" EntitySet="TblDocumentosUsuarios" />
+      <End Role="TblFotosUsuario" EntitySet="TblFotosUsuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblVideosUsuario_AspNetUsers" Association="Self.FK_TblVideosUsuario_AspNetUsers">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="TblVideosUsuario" EntitySet="TblVideosUsuario" />
     </AssociationSet>
     <AssociationSet Name="FK_Operaciones_Modulo" Association="Self.FK_Operaciones_Modulo">
       <End Role="Modulo" EntitySet="Modulo" />
@@ -381,5 +408,46 @@
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />
       <End Role="AspNetRoles" EntitySet="AspNetRoles" />
     </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(WECAMDBModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(WECAMDBModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
   </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
 </Schema>

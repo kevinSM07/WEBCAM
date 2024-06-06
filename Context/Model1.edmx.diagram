@@ -4,29 +4,31 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="366040d4553e49a69d7c3bdda5b7138b" Name="Diagram1">
+      <Diagram DiagramId="b761fbcb05d64220985d373038b767d2" Name="Diagram1">
         <EntityTypeShape EntityType="WECAMDBModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="WECAMDBModel.AspNetRoles" Width="1.5" PointX="9.75" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="WECAMDBModel.AspNetUserClaims" Width="1.5" PointX="9.75" PointY="4" IsExpanded="true" />
-        <EntityTypeShape EntityType="WECAMDBModel.AspNetUserLogins" Width="1.5" PointX="9.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="WECAMDBModel.AspNetUsers" Width="1.5" PointX="7.5" PointY="2.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="WECAMDBModel.Modulo" Width="1.5" PointX="7.5" PointY="13.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="WECAMDBModel.Operaciones" Width="1.5" PointX="9.75" PointY="13.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="WECAMDBModel.RolOperacion" Width="1.5" PointX="12" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="WECAMDBModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="WECAMDBModel.TblCiudades" Width="1.5" PointX="5.25" PointY="5.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="WECAMDBModel.TblDepartamentos" Width="1.5" PointX="3" PointY="5.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="WECAMDBModel.TblDocumentosUsuarios" Width="1.5" PointX="9.75" PointY="9.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="WECAMDBModel.TblGeneros" Width="1.5" PointX="5.25" PointY="2.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="WECAMDBModel.TblPaises" Width="1.5" PointX="0.75" PointY="5.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="WECAMDBModel.TblTiposDocumentos" Width="1.5" PointX="5.25" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WECAMDBModel.AspNetRoles" Width="1.5" PointX="9.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WECAMDBModel.AspNetUserClaims" Width="1.5" PointX="9.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WECAMDBModel.AspNetUserLogins" Width="1.5" PointX="9.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="WECAMDBModel.AspNetUsers" Width="1.5" PointX="7.5" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="WECAMDBModel.Modulo" Width="1.5" PointX="7.5" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WECAMDBModel.Operaciones" Width="1.5" PointX="9.75" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WECAMDBModel.RolOperacion" Width="1.5" PointX="12" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WECAMDBModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WECAMDBModel.TblCiudades" Width="1.5" PointX="5.25" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="WECAMDBModel.TblDepartamentos" Width="1.5" PointX="3" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="WECAMDBModel.TblFotosUsuario" Width="1.5" PointX="9.75" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WECAMDBModel.TblGeneros" Width="1.5" PointX="5.25" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="WECAMDBModel.TblPaises" Width="1.5" PointX="0.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="WECAMDBModel.TblTiposDocumentos" Width="1.5" PointX="5.25" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WECAMDBModel.TblVideosUsuario" Width="1.5" PointX="9.75" PointY="12.25" IsExpanded="true" />
         <AssociationConnector Association="WECAMDBModel.FK_RolOperacion_AspNetRoles" ManuallyRouted="false" />
         <AssociationConnector Association="WECAMDBModel.FK_AspNetUserClaims_AspNetUsers" ManuallyRouted="false" />
         <AssociationConnector Association="WECAMDBModel.FK_AspNetUserLogins_AspNetUsers" ManuallyRouted="false" />
         <AssociationConnector Association="WECAMDBModel.FK_AspNetUsers_TblCiudades" ManuallyRouted="false" />
         <AssociationConnector Association="WECAMDBModel.FK_AspNetUsers_TblGeneros" ManuallyRouted="false" />
         <AssociationConnector Association="WECAMDBModel.FK_AspNetUsers_TblTiposDocumentos" ManuallyRouted="false" />
-        <AssociationConnector Association="WECAMDBModel.FK_TblDocumentosUsuarios_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="WECAMDBModel.FK_TblFotosUsuario_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="WECAMDBModel.FK_TblVideosUsuario_AspNetUsers" ManuallyRouted="false" />
         <AssociationConnector Association="WECAMDBModel.FK_Operaciones_Modulo" ManuallyRouted="false" />
         <AssociationConnector Association="WECAMDBModel.FK_RolOperacion_Operaciones" ManuallyRouted="false" />
         <AssociationConnector Association="WECAMDBModel.FK_TblCiudades" ManuallyRouted="false" />

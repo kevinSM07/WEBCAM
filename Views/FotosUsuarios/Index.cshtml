@@ -1,20 +1,21 @@
-﻿@model IEnumerable<WEBCAM.Context.TblCampos>
+﻿﻿@model IEnumerable<WEBCAM.Context.TblFotosUsuario>
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Listado de Campos</h2>
+<h2>Listado de Documentos de Usuarios</h2>
 
 <br />
+
 <div class="margin">
     <div class="btn-group">
-        <button type="button" class="btn btn-warning">Crear Campo</button>
+        <button type="button" class="btn btn-warning">Acciones Documento Usuario</button>
         <button type="button" class="btn btn-warning dropdown-toggle dropdown-hover dropdown-icon" data-toggle="dropdown">
             <span class="sr-only">Toggle Dropdown</span>
         </button>
         <div class="dropdown-menu" role="menu">
-            <a class="dropdown-item" href="@Url.Action("Create", "Campos", null,null)">Crear Nuevo Campo</a>
+            <a class="dropdown-item" href="@Url.Action("Create", "FotosUsuarios", null,null)">Crear Foto Usuario</a>
         </div>
     </div>
 </div>
@@ -25,36 +26,28 @@
 
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Informacion de Campos</h6>
+                <h6 class="m-0 font-weight-bold text-warning">Informacion de Fotos de Usuarios</h6>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
                     <table id="example1" class="table table-bordered table-striped table-dark table-responsive-lg ">
                         <thead>
                             <tr>
-                                <th class="text-warning">Acciones</th>
                                 <th class="text-warning">
-                                    @Html.DisplayNameFor(model => model.Nombre)
+                                    Acciones
                                 </th>
                                 <th class="text-warning">
-                                    @Html.DisplayNameFor(model => model.Valor)
-                                </th>
-                                <th class="text-warning">
-                                    @Html.DisplayNameFor(model => model.Descripcion)
+                                    Nombre
                                 </th>
                             </tr>
                         </thead>
                         <tfoot>
                             <tr>
-                                <th class="text-warning">Acciones</th>
                                 <th class="text-warning">
-                                    @Html.DisplayNameFor(model => model.Nombre)
+                                    Acciones
                                 </th>
                                 <th class="text-warning">
-                                    @Html.DisplayNameFor(model => model.Valor)
-                                </th>
-                                <th class="text-warning">
-                                    @Html.DisplayNameFor(model => model.Descripcion)
+                                    Nombre
                                 </th>
                             </tr>
                         </tfoot>
@@ -63,33 +56,18 @@
                             {
                                 <tr>
                                     <td>
-                                        <a href="@Url.Action("Edit", "Campos", new { id = item.Id })" class="btn btn-sm btn-dark" title="Editar">
-
+                                        <a href="@item.Ruta" class="btn btn-sm btn-dark" title="Visualizar">
+                                            <img src="~/Content/img/icons8-visible-80.png" height="20" width="20" />
+                                        </a>
+                                        <a href="@Url.Action("Edit", "FotosUsuarios", new { id = item.Id })" class="btn btn-sm btn-dark" title="Editar">
                                             <img src="~/Content/img/ico/streamlinehq-interface-edit-pencil-interface-essential-50.png" height="20" width="20" />
                                         </a>
-                                        <a href="@Url.Action("Details", "Campos", new { id = item.Id })" class="btn btn-sm btn-dark" title="Ver">
-
-                                            <img src="~/Content/img/ico/streamlinehq-interface-edit-view-interface-essential-50.png" height="20" width="20" />
-                                        </a>
-                                        <a href="@Url.Action("Delete", "Campos", new { id = item.Id })" class="btn btn-sm btn-dark" title="Eliminar">
-
-                                            <img src="~/Content/img/ico/streamlinehq-interface-delete-2-interface-essential-50.png" height="20" width="20" />
-                                        </a>
-
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.Nombre)
                                     </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Valor)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Descripcion)
-                                    </td>
-
                                 </tr>
                             }
-
                         </tbody>
                     </table>
                 </div>
